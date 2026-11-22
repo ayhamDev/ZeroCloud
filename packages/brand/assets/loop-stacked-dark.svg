@@ -1,0 +1,57 @@
+<svg viewBox="0 0 140 92" width="140" height="92" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-wave 2.4s ease-in-out infinite; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut 2.4s ease-in-out infinite; }
+    @keyframes zc-wave {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      30% { transform: scale(0.68); opacity: 0.3; }
+      60% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes zc-cut {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      30% { transform: scale(1.55); opacity: 1; }
+    }
+  </style>
+  <rect x="0" y="0" width="140" height="92" rx="16" fill="#09090B"/>
+  <g transform="translate(38, 2)">
+    <g fill="#FFFFFF">
+      <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="28.4" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="21.2" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="28.4" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="35.6" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="14"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="21.2" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="28.4" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="6.8"  cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="14"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="21.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle class="zc-c" style="animation-delay:.32s" cx="35.6" cy="32"   r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="28.4" cy="39.2" r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle class="zc-d" style="animation-delay:.40s" cx="42.8" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="50"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="35.6" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="42.8" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="28.4" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle class="zc-d" style="animation-delay:.56s" cx="50"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="57.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.56s" cx="42.8" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+  <text x="70" y="76" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="2">CLOUD</tspan>
+  </text>
+</svg>

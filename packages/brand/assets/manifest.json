@@ -1,0 +1,112 @@
+[
+  {
+    "file": "icon-tiny-light.svg",
+    "source": "brand-kit",
+    "variant": 1
+  },
+  {
+    "file": "icon-tiny-dark.svg",
+    "source": "brand-kit",
+    "variant": 2
+  },
+  {
+    "file": "icon-light.svg",
+    "source": "brand-kit",
+    "variant": 3
+  },
+  {
+    "file": "icon-dark.svg",
+    "source": "brand-kit",
+    "variant": 4
+  },
+  {
+    "file": "icon-current.svg",
+    "source": "brand-kit",
+    "variant": 5
+  },
+  {
+    "file": "tile-black.svg",
+    "source": "brand-kit",
+    "variant": 6
+  },
+  {
+    "file": "tile-white.svg",
+    "source": "brand-kit",
+    "variant": 7
+  },
+  {
+    "file": "tile-gray.svg",
+    "source": "brand-kit",
+    "variant": 8
+  },
+  {
+    "file": "lockup-light.svg",
+    "source": "brand-kit",
+    "variant": 9
+  },
+  {
+    "file": "lockup-dark.svg",
+    "source": "brand-kit",
+    "variant": 10
+  },
+  {
+    "file": "lockup-current.svg",
+    "source": "brand-kit",
+    "variant": 11
+  },
+  {
+    "file": "stacked-light.svg",
+    "source": "brand-kit",
+    "variant": 12
+  },
+  {
+    "file": "stacked-dark.svg",
+    "source": "brand-kit",
+    "variant": 13
+  },
+  {
+    "file": "loop-icon-light.svg",
+    "source": "brand-kit",
+    "variant": 14
+  },
+  {
+    "file": "loop-tile-dark.svg",
+    "source": "brand-kit",
+    "variant": 15
+  },
+  {
+    "file": "loop-lockup-light.svg",
+    "source": "brand-kit",
+    "variant": 16
+  },
+  {
+    "file": "loop-stacked-dark.svg",
+    "source": "brand-kit",
+    "variant": 17
+  },
+  {
+    "file": "once-icon-light.svg",
+    "source": "once",
+    "variant": 1
+  },
+  {
+    "file": "once-tile-dark.svg",
+    "source": "once",
+    "variant": 2
+  },
+  {
+    "file": "once-lockup-light.svg",
+    "source": "once",
+    "variant": 3
+  },
+  {
+    "file": "once-lockup-dark.svg",
+    "source": "once",
+    "variant": 4
+  },
+  {
+    "file": "once-stacked-dark.svg",
+    "source": "once",
+    "variant": 5
+  }
+]

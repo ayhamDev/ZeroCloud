@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":pinAllExceptPeerDependencies"],
+  "schedule": ["before 6am on monday"],
+  "timezone": "Africa/Cairo",
+  "rangeStrategy": "pin",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["@capacitor/**"],
+      "groupName": "Capacitor"
+    },
+    {
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
+      "groupName": "React"
+    },
+    {
+      "matchPackageNames": ["vitest", "@vitest/**"],
+      "groupName": "Vitest"
+    }
+  ]
+}

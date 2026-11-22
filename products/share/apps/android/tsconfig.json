@@ -1,0 +1,8 @@
+{
+  "extends": "../../../../tooling/typescript/base.json",
+  "compilerOptions": {
+    "types": ["bun"]
+  },
+  "include": ["src", "*.ts"],
+  "exclude": ["node_modules", "dist", "build", "android", ".hutch"]
+}

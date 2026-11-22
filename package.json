@@ -1,0 +1,74 @@
+{
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "name": "zerocloud",
+  "packageManager": "bun@1.4.5",
+  "engines": {
+    "bun": ">=1.4.5",
+    "node": ">=24.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "products/*/apps/*",
+    "products/*/packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter @zerocloud/share-web dev",
+    "dev:desktop": "bun run build:web && bun run --filter @zerocloud/share-desktop dev",
+    "build:web": "turbo run build --filter=@zerocloud/share-web",
+    "build": "turbo run build",
+    "desktop:prepare": "bun run --filter @zerocloud/share-desktop prepare:sdk",
+    "desktop:build": "bun run build:web && bun run --filter @zerocloud/share-desktop bundle",
+    "android:sync": "bun run build:web && bun run --filter @zerocloud/share-android sync",
+    "android:open": "bun run --filter @zerocloud/share-android open",
+    "android:test": "bun run scripts/android.ts test",
+    "android:build": "bun run android:sync && bun run scripts/android.ts assembleDebug",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "turbo run typecheck && bun run typecheck:tooling",
+    "check:boundaries": "bun run scripts/check-boundaries.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:runtime": "bun test ./tests/runtime",
+    "test:e2e": "bun run scripts/playwright.ts test",
+    "test:e2e:ui": "bun run scripts/playwright.ts test --ui",
+    "check": "bun run lint && bun run check:boundaries && bun run typecheck && bun run test:coverage && bun run test:runtime && bun run build:web && bun run test:e2e",
+    "doctor": "bun run scripts/doctor.ts",
+    "setup:hooks": "simple-git-hooks",
+    "audit:dependencies": "bun audit",
+    "typecheck:tooling": "tsc --noEmit -p tsconfig.json",
+    "test:browsers:install": "bun run scripts/playwright.ts install chromium",
+    "android:test:device": "bun run scripts/android.ts connectedDebugAndroidTest",
+    "android:test:compile": "bun run scripts/android.ts compileDebugAndroidTestJavaWithJavac"
+  },
+  "devDependencies": {
+    "bun": "1.4.5",
+    "@biomejs/biome": "2.6.8",
+    "turbo": "2.11.13",
+    "typescript": "7.0.2",
+    "@types/bun": "1.4.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vitest": "5.1.1",
+    "@vitest/coverage-v8": "5.1.1",
+    "happy-dom": "21.0.4",
+    "@playwright/test": "1.65.1",
+    "@axe-core/playwright": "4.14.0",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "8.0.0",
+    "simple-git-hooks": "2.14.0",
+    "lint-staged": "17.6.2",
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bunx --no-install lint-staged",
+    "commit-msg": "bunx --no-install commitlint --edit \"$1\""
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,cjs,json,jsonc,css}": "biome check --write --no-errors-on-unmatched"
+  }
+}

@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.ico binary
+*.jar binary
+
+# Preserve the supplied source documents verbatim.
+packages/brand/source/*.txt -whitespace

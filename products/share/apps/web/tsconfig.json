@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tooling/typescript/base.json",
+  "compilerOptions": {
+    "types": ["vite/client", "@testing-library/jest-dom/vitest"],
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"]
+  },
+  "include": ["src", "*.ts"],
+  "exclude": ["node_modules", "dist", "build", "android", ".hutch"]
+}

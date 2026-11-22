@@ -1,0 +1,327 @@
+Here are the **non-looped (play-once)** versions of the **Micro-Dot Cut** animations. 
+
+Each icon sweeps into place diagonally from upper-left to lower-right in under `1 second` with a crisp micro-snap, then locks cleanly into its final static state (`animation-fill-mode: both` prevents any flicker before the delay starts).
+
+---
+
+### 1. Icon Only — Light Mode (Transparent BG)
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes zc-in {
+      0%   { transform: scale(0); opacity: 0; }
+      65%  { transform: scale(1.16); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-cut-in {
+      0%   { transform: scale(0); opacity: 0; }
+      55%  { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+  <g fill="#09090B">
+    <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="28.4" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="21.2" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="28.4" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="35.6" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="14"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="21.2" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="28.4" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="6.8"  cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="14"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="21.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle class="zc-c" style="animation-delay:.20s" cx="35.6" cy="32"   r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="28.4" cy="39.2" r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle class="zc-d" style="animation-delay:.25s" cx="42.8" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="50"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="35.6" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="42.8" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="28.4" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle class="zc-d" style="animation-delay:.35s" cx="50"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="57.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.35s" cx="42.8" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="50"   cy="46.4" r="2.6"/>
+  </g>
+</svg>
+```
+
+---
+
+### 2. Icon Only — Dark Mode (On `#09090B` Black Tile)
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes zc-in {
+      0%   { transform: scale(0); opacity: 0; }
+      65%  { transform: scale(1.16); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-cut-in {
+      0%   { transform: scale(0); opacity: 0; }
+      55%  { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#09090B"/>
+  <g transform="translate(32,32) scale(0.78) translate(-32,-32)">
+    <g fill="#FFFFFF">
+      <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="28.4" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="21.2" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="28.4" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="35.6" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="14"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="21.2" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="28.4" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="6.8"  cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="14"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="21.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle class="zc-c" style="animation-delay:.20s" cx="35.6" cy="32"   r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.20s" cx="28.4" cy="39.2" r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.20s" cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle class="zc-d" style="animation-delay:.25s" cx="42.8" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="50"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.25s" cx="35.6" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="42.8" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.25s" cx="28.4" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle class="zc-d" style="animation-delay:.35s" cx="50"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="57.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.35s" cx="42.8" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+</svg>
+```
+*(Delete the `<rect .../>` and outer `<g transform="...">` wrapper for transparent Dark Mode.)*
+
+---
+
+### 3. Horizontal Lockup — Light Mode (`ZERO CLOUD` Slides In)
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-t { animation: zc-text-x 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+    @keyframes zc-in {
+      0%   { transform: scale(0); opacity: 0; }
+      65%  { transform: scale(1.16); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-cut-in {
+      0%   { transform: scale(0); opacity: 0; }
+      55%  { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-text-x {
+      0%   { opacity: 0; transform: translateX(-10px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+  <g fill="#09090B">
+    <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="28.4" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="21.2" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="28.4" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="35.6" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="14"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="21.2" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="28.4" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="6.8"  cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="14"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="21.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle class="zc-c" style="animation-delay:.20s" cx="35.6" cy="32"   r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="28.4" cy="39.2" r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle class="zc-d" style="animation-delay:.25s" cx="42.8" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="50"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="35.6" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="42.8" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="28.4" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle class="zc-d" style="animation-delay:.35s" cx="50"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="57.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.35s" cx="42.8" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text class="zc-t" x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" fill="#09090B">ZERO</tspan>
+    <tspan font-weight="400" fill="#71717A" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+---
+
+### 4. Horizontal Lockup — Dark Mode (Transparent BG)
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-t { animation: zc-text-x 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+    @keyframes zc-in {
+      0%   { transform: scale(0); opacity: 0; }
+      65%  { transform: scale(1.16); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-cut-in {
+      0%   { transform: scale(0); opacity: 0; }
+      55%  { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-text-x {
+      0%   { opacity: 0; transform: translateX(-10px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+  <g fill="#FFFFFF">
+    <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="28.4" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="21.2" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="28.4" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="35.6" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="14"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="21.2" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="28.4" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.05s" cx="6.8"  cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.10s" cx="14"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="21.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.15s" cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#3F3F46">
+    <circle class="zc-c" style="animation-delay:.20s" cx="35.6" cy="32"   r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="28.4" cy="39.2" r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.20s" cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#A1A1AA">
+    <circle class="zc-d" style="animation-delay:.25s" cx="42.8" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="50"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="35.6" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="42.8" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.25s" cx="28.4" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.30s" cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#52525B">
+    <circle class="zc-d" style="animation-delay:.35s" cx="50"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="57.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.35s" cx="42.8" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text class="zc-t" x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+---
+
+### 5. Stacked Splash Lockup — Dark Mode (`ZERO CLOUD` Rises Up)
+```svg
+<svg viewBox="0 0 140 92" width="140" height="92" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .zc-t { animation: zc-text-y 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+    @keyframes zc-in {
+      0%   { transform: scale(0); opacity: 0; }
+      65%  { transform: scale(1.16); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-cut-in {
+      0%   { transform: scale(0); opacity: 0; }
+      55%  { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zc-text-y {
+      0%   { opacity: 0; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <rect x="0" y="0" width="140" height="92" rx="16" fill="#09090B"/>
+  <g transform="translate(38, 2)">
+    <g fill="#FFFFFF">
+      <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="28.4" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="21.2" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="28.4" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="35.6" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="14"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="21.2" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="28.4" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.05s" cx="6.8"  cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.10s" cx="14"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="21.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.15s" cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle class="zc-c" style="animation-delay:.20s" cx="35.6" cy="32"   r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.20s" cx="28.4" cy="39.2" r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.20s" cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle class="zc-d" style="animation-delay:.25s" cx="42.8" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="50"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.25s" cx="35.6" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="42.8" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.25s" cx="28.4" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.30s" cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle class="zc-d" style="animation-delay:.35s" cx="50"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="57.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.35s" cx="42.8" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+  <text class="zc-t" x="70" y="76" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="2">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+---
+
+### Pro Tip for Web/App Developers
+* **Replay on Transfer Complete or Hover:** Since these play once on mount, in React you can replay the animation anytime (e.g., when a P2P transfer finishes) by incrementing a `key` prop on the `<svg key={replayCount}>`, or in vanilla JS by cloning/re-inserting the SVG node.

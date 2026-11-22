@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "prepare:sdk": "bun ../../../../scripts/electrobun.ts prepare",
+    "dev": "bun ../../../../scripts/prepare-desktop.ts && bun ../../../../scripts/electrobun.ts dev",
+    "bundle": "bun ../../../../scripts/prepare-desktop.ts && bun ../../../../scripts/electrobun.ts build --env=stable",
+    "typecheck": "tsc --noEmit"
+  },
+  "name": "@zerocloud/share-desktop",
+  "dependencies": {
+    "@zerocloud/share-core": "workspace:*"
+  },
+  "devDependencies": {
+    "electrobun": "2.0.7"
+  }
+}

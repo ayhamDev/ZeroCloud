@@ -1,0 +1,627 @@
+Here is the complete **ZeroCloud Brand Kit** built around **#2 (Micro-Dot Cut Variant)**—covering **No Words** and **With Words**, **all sizes**, **all monochrome/background variations**, and **self-contained animated SVGs**.
+
+---
+
+## 1. Sizes Guide & Tiny-Size (`16px–24px`) Icons
+
+Because SVGs use `viewBox`, every logo below scales cleanly to any size (`32`, `48`, `64`, `128`, `256`, `512`) just by changing `width` and `height`. 
+
+However, for **16px–24px** (browser favicons, status bars), use these micro-tuned versions with slightly thicker dots (`r="2.85"` and `r="1.7"`) so the cut stays visible on low-DPI screens:
+
+**Tiny Icon (`16px–24px`) — Light Mode**
+```svg
+<svg viewBox="0 0 64 64" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#09090B">
+    <circle cx="21.2" cy="17.6" r="2.85"/><circle cx="28.4" cy="17.6" r="2.85"/>
+    <circle cx="14"   cy="24.8" r="2.85"/><circle cx="21.2" cy="24.8" r="2.85"/><circle cx="28.4" cy="24.8" r="2.85"/><circle cx="35.6" cy="24.8" r="2.85"/>
+    <circle cx="6.8"  cy="32"   r="2.85"/><circle cx="14"   cy="32"   r="2.85"/><circle cx="21.2" cy="32"   r="2.85"/><circle cx="28.4" cy="32"   r="2.85"/>
+    <circle cx="6.8"  cy="39.2" r="2.85"/><circle cx="14"   cy="39.2" r="2.85"/><circle cx="21.2" cy="39.2" r="2.85"/>
+    <circle cx="14"   cy="46.4" r="2.85"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle cx="35.6" cy="32" r="1.7"/><circle cx="28.4" cy="39.2" r="1.7"/><circle cx="21.2" cy="46.4" r="1.7"/>
+  </g>
+  <g fill="#71717A">
+    <circle cx="42.8" cy="32"   r="2.85"/><circle cx="50"   cy="32"   r="2.85"/>
+    <circle cx="35.6" cy="39.2" r="2.85"/><circle cx="42.8" cy="39.2" r="2.85"/>
+    <circle cx="28.4" cy="46.4" r="2.85"/><circle cx="35.6" cy="46.4" r="2.85"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle cx="50"   cy="39.2" r="2.85"/><circle cx="57.2" cy="39.2" r="2.85"/>
+    <circle cx="42.8" cy="46.4" r="2.85"/><circle cx="50"   cy="46.4" r="2.85"/>
+  </g>
+</svg>
+```
+
+**Tiny Icon (`16px–24px`) — Dark Mode**
+```svg
+<svg viewBox="0 0 64 64" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#FFFFFF">
+    <circle cx="21.2" cy="17.6" r="2.85"/><circle cx="28.4" cy="17.6" r="2.85"/>
+    <circle cx="14"   cy="24.8" r="2.85"/><circle cx="21.2" cy="24.8" r="2.85"/><circle cx="28.4" cy="24.8" r="2.85"/><circle cx="35.6" cy="24.8" r="2.85"/>
+    <circle cx="6.8"  cy="32"   r="2.85"/><circle cx="14"   cy="32"   r="2.85"/><circle cx="21.2" cy="32"   r="2.85"/><circle cx="28.4" cy="32"   r="2.85"/>
+    <circle cx="6.8"  cy="39.2" r="2.85"/><circle cx="14"   cy="39.2" r="2.85"/><circle cx="21.2" cy="39.2" r="2.85"/>
+    <circle cx="14"   cy="46.4" r="2.85"/>
+  </g>
+  <g fill="#3F3F46">
+    <circle cx="35.6" cy="32" r="1.7"/><circle cx="28.4" cy="39.2" r="1.7"/><circle cx="21.2" cy="46.4" r="1.7"/>
+  </g>
+  <g fill="#A1A1AA">
+    <circle cx="42.8" cy="32"   r="2.85"/><circle cx="50"   cy="32"   r="2.85"/>
+    <circle cx="35.6" cy="39.2" r="2.85"/><circle cx="42.8" cy="39.2" r="2.85"/>
+    <circle cx="28.4" cy="46.4" r="2.85"/><circle cx="35.6" cy="46.4" r="2.85"/>
+  </g>
+  <g fill="#52525B">
+    <circle cx="50"   cy="39.2" r="2.85"/><circle cx="57.2" cy="39.2" r="2.85"/>
+    <circle cx="42.8" cy="46.4" r="2.85"/><circle cx="50"   cy="46.4" r="2.85"/>
+  </g>
+</svg>
+```
+
+---
+
+## 2. No Words (Icon Only) — All Colors & Backgrounds
+
+### A. Light Mode (Transparent BG — Best on White / Light Gray)
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#09090B">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+</svg>
+```
+
+### B. Dark Mode (Transparent BG — Best on Black / Dark Gray)
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#FFFFFF">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#3F3F46">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#A1A1AA">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#52525B">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+</svg>
+```
+
+### C. Universal `currentColor` (Adapts to ANY Background or CSS Color)
+Set any CSS `color` on the SVG or its parent, and opacity handles the depth automatically.
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="1">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g opacity="0.22">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g opacity="0.58">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g opacity="0.32">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+</svg>
+```
+
+### D. App Icon Tiles (Black, White, and Industrial Gray Backgrounds)
+
+**Black App Tile (`#09090B`)**
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#09090B"/>
+  <g transform="translate(32,32) scale(0.78) translate(-32,-32)">
+    <g fill="#FFFFFF">
+      <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+      <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+      <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+      <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+      <circle cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+      <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+      <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+      <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+</svg>
+```
+
+**White App Tile (`#FFFFFF` with subtle border)**
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="1.5"/>
+  <g transform="translate(32,32) scale(0.78) translate(-32,-32)">
+    <g fill="#09090B">
+      <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+      <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+      <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+      <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+      <circle cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#D4D4D8">
+      <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#71717A">
+      <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+      <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+      <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#B4B4BC">
+      <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+      <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+</svg>
+```
+
+**Industrial Gray App Tile (`#27272A`)**
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#27272A"/>
+  <g transform="translate(32,32) scale(0.78) translate(-32,-32)">
+    <g fill="#FFFFFF">
+      <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+      <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+      <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+      <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+      <circle cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+      <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+      <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#71717A">
+      <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+      <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+</svg>
+```
+
+---
+
+## 3. With Words (Horizontal & Stacked Lockups)
+
+### A. Horizontal — Light Mode (Transparent BG)
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#09090B">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" fill="#09090B">ZERO</tspan>
+    <tspan font-weight="400" fill="#71717A" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+### B. Horizontal — Dark Mode (Transparent BG)
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#FFFFFF">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#3F3F46">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#A1A1AA">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#52525B">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+### C. Horizontal — Universal `currentColor`
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="1">
+    <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+    <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+    <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+    <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+    <circle cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g opacity="0.22">
+    <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g opacity="0.58">
+    <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+    <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+    <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g opacity="0.32">
+    <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+    <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" opacity="1">ZERO</tspan>
+    <tspan font-weight="400" opacity="0.58" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+### D. Stacked Lockup — Light Mode & Dark Mode *(For Splash / About Screens)*
+
+**Stacked — Light Mode**
+```svg
+<svg viewBox="0 0 140 92" width="140" height="92" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(38, 2)">
+    <g fill="#09090B">
+      <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+      <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+      <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+      <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+      <circle cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#D4D4D8">
+      <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#71717A">
+      <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+      <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+      <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#B4B4BC">
+      <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+      <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+  <text x="70" y="76" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2.5">
+    <tspan font-weight="800" fill="#09090B">ZERO</tspan>
+    <tspan font-weight="400" fill="#71717A" dx="2">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+**Stacked — Dark Mode (On `#09090B` Black Card)**
+```svg
+<svg viewBox="0 0 140 92" width="140" height="92" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="140" height="92" rx="16" fill="#09090B"/>
+  <g transform="translate(38, 2)">
+    <g fill="#FFFFFF">
+      <circle cx="21.2" cy="17.6" r="2.6"/><circle cx="28.4" cy="17.6" r="2.6"/>
+      <circle cx="14"   cy="24.8" r="2.6"/><circle cx="21.2" cy="24.8" r="2.6"/><circle cx="28.4" cy="24.8" r="2.6"/><circle cx="35.6" cy="24.8" r="2.6"/>
+      <circle cx="6.8"  cy="32"   r="2.6"/><circle cx="14"   cy="32"   r="2.6"/><circle cx="21.2" cy="32"   r="2.6"/><circle cx="28.4" cy="32"   r="2.6"/>
+      <circle cx="6.8"  cy="39.2" r="2.6"/><circle cx="14"   cy="39.2" r="2.6"/><circle cx="21.2" cy="39.2" r="2.6"/>
+      <circle cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle cx="35.6" cy="32" r="1.4"/><circle cx="28.4" cy="39.2" r="1.4"/><circle cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle cx="42.8" cy="32"   r="2.6"/><circle cx="50"   cy="32"   r="2.6"/>
+      <circle cx="35.6" cy="39.2" r="2.6"/><circle cx="42.8" cy="39.2" r="2.6"/>
+      <circle cx="28.4" cy="46.4" r="2.6"/><circle cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle cx="50"   cy="39.2" r="2.6"/><circle cx="57.2" cy="39.2" r="2.6"/>
+      <circle cx="42.8" cy="46.4" r="2.6"/><circle cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+  <text x="70" y="76" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="2">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+---
+
+## 4. Animated Variations *(Self-Contained CSS Inside SVG)*
+
+These feature a clean, rhythmic **P2P data-wave animation** sweeping diagonally across the matrix from upper-left to lower-right, with the 3 micro-cut dots pulsing subtly as data passes through. They work standalone in any browser, HTML file, React app, or `<img>` tag.
+
+### A. Animated Icon Only — Light Mode
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-wave 2.4s ease-in-out infinite; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut 2.4s ease-in-out infinite; }
+    @keyframes zc-wave {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      30% { transform: scale(0.68); opacity: 0.35; }
+      60% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes zc-cut {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      30% { transform: scale(1.55); opacity: 1; }
+    }
+  </style>
+  <g fill="#09090B">
+    <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="28.4" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="21.2" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="28.4" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="35.6" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="14"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="21.2" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="28.4" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="6.8"  cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="14"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="21.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle class="zc-c" style="animation-delay:.32s" cx="35.6" cy="32"   r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.32s" cx="28.4" cy="39.2" r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.32s" cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle class="zc-d" style="animation-delay:.40s" cx="42.8" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="50"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="35.6" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="42.8" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="28.4" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle class="zc-d" style="animation-delay:.56s" cx="50"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.64s" cx="57.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.56s" cx="42.8" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.64s" cx="50"   cy="46.4" r="2.6"/>
+  </g>
+</svg>
+```
+
+### B. Animated Icon Only — Dark Mode (On `#09090B` Black Tile)
+```svg
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-wave 2.4s ease-in-out infinite; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut 2.4s ease-in-out infinite; }
+    @keyframes zc-wave {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      30% { transform: scale(0.68); opacity: 0.3; }
+      60% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes zc-cut {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      30% { transform: scale(1.55); opacity: 1; }
+    }
+  </style>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#09090B"/>
+  <g transform="translate(32,32) scale(0.78) translate(-32,-32)">
+    <g fill="#FFFFFF">
+      <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="28.4" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="21.2" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="28.4" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="35.6" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="14"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="21.2" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="28.4" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="6.8"  cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="14"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="21.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle class="zc-c" style="animation-delay:.32s" cx="35.6" cy="32"   r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="28.4" cy="39.2" r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle class="zc-d" style="animation-delay:.40s" cx="42.8" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="50"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="35.6" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="42.8" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="28.4" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle class="zc-d" style="animation-delay:.56s" cx="50"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="57.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.56s" cx="42.8" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+</svg>
+```
+*(To make this Dark Mode transparent instead of a tile, delete the `<rect .../>` line and remove the outer `<g transform="...">` wrapper.)*
+
+### C. Animated Horizontal Lockup — Light Mode
+```svg
+<svg viewBox="0 0 270 64" width="270" height="64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-wave 2.4s ease-in-out infinite; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut 2.4s ease-in-out infinite; }
+    @keyframes zc-wave {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      30% { transform: scale(0.68); opacity: 0.35; }
+      60% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes zc-cut {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      30% { transform: scale(1.55); opacity: 1; }
+    }
+  </style>
+  <g fill="#09090B">
+    <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="28.4" cy="17.6" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="21.2" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="28.4" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="35.6" cy="24.8" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="14"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="21.2" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="28.4" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.08s" cx="6.8"  cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.16s" cx="14"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="21.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.24s" cx="14"   cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#D4D4D8">
+    <circle class="zc-c" style="animation-delay:.32s" cx="35.6" cy="32"   r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.32s" cx="28.4" cy="39.2" r="1.4"/>
+    <circle class="zc-c" style="animation-delay:.32s" cx="21.2" cy="46.4" r="1.4"/>
+  </g>
+  <g fill="#71717A">
+    <circle class="zc-d" style="animation-delay:.40s" cx="42.8" cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="50"   cy="32"   r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="35.6" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="42.8" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.40s" cx="28.4" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.48s" cx="35.6" cy="46.4" r="2.6"/>
+  </g>
+  <g fill="#B4B4BC">
+    <circle class="zc-d" style="animation-delay:.56s" cx="50"   cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.64s" cx="57.2" cy="39.2" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.56s" cx="42.8" cy="46.4" r="2.6"/>
+    <circle class="zc-d" style="animation-delay:.64s" cx="50"   cy="46.4" r="2.6"/>
+  </g>
+  <text x="72" y="39" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="21" letter-spacing="3.5">
+    <tspan font-weight="800" fill="#09090B">ZERO</tspan>
+    <tspan font-weight="400" fill="#71717A" dx="4">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+### D. Animated Splash / Loading Lockup — Dark Mode
+```svg
+<svg viewBox="0 0 140 92" width="140" height="92" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .zc-d { transform-box: fill-box; transform-origin: center; animation: zc-wave 2.4s ease-in-out infinite; }
+    .zc-c { transform-box: fill-box; transform-origin: center; animation: zc-cut 2.4s ease-in-out infinite; }
+    @keyframes zc-wave {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      30% { transform: scale(0.68); opacity: 0.3; }
+      60% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes zc-cut {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      30% { transform: scale(1.55); opacity: 1; }
+    }
+  </style>
+  <rect x="0" y="0" width="140" height="92" rx="16" fill="#09090B"/>
+  <g transform="translate(38, 2)">
+    <g fill="#FFFFFF">
+      <circle class="zc-d" style="animation-delay:0s"    cx="21.2" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="28.4" cy="17.6" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="14"   cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="21.2" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="28.4" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="35.6" cy="24.8" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:0s"    cx="6.8"  cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="14"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="21.2" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="28.4" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.08s" cx="6.8"  cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.16s" cx="14"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="21.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.24s" cx="14"   cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#3F3F46">
+      <circle class="zc-c" style="animation-delay:.32s" cx="35.6" cy="32"   r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="28.4" cy="39.2" r="1.4"/>
+      <circle class="zc-c" style="animation-delay:.32s" cx="21.2" cy="46.4" r="1.4"/>
+    </g>
+    <g fill="#A1A1AA">
+      <circle class="zc-d" style="animation-delay:.40s" cx="42.8" cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="50"   cy="32"   r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="35.6" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="42.8" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.40s" cx="28.4" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.48s" cx="35.6" cy="46.4" r="2.6"/>
+    </g>
+    <g fill="#52525B">
+      <circle class="zc-d" style="animation-delay:.56s" cx="50"   cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="57.2" cy="39.2" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.56s" cx="42.8" cy="46.4" r="2.6"/>
+      <circle class="zc-d" style="animation-delay:.64s" cx="50"   cy="46.4" r="2.6"/>
+    </g>
+  </g>
+  <text x="70" y="76" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2.5">
+    <tspan font-weight="800" fill="#FFFFFF">ZERO</tspan>
+    <tspan font-weight="400" fill="#A1A1AA" dx="2">CLOUD</tspan>
+  </text>
+</svg>
+```
+
+---
+
+### Quick Size Reference
+Change `width` and `height` on any SVG above to match your target slot:
+* **Favicon / Tray:** `16` or `24` *(use Section 1 Tiny Icons)*
+* **Navbar / Buttons:** `32` or `40` *(for horizontal lockup, scale proportionally: `width="135" height="32"`)*
+* **App Store / Launcher Icon:** `128`, `256`, or `512` *(use Section 2D Tiles)*
+* **Loading / Transfer State:** Use Section 4 Animated SVGs (or trigger `.zc-d { animation-play-state: paused; }` via CSS when idle and `running` during active file transfers!).
