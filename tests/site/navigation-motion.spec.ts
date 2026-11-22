@@ -78,6 +78,10 @@ test('the transparent sticky header stays operable and clears anchored headings'
   await page.evaluate(() => window.scrollTo({ top: 360, behavior: 'instant' }));
   await expect(header).toHaveAttribute('data-stuck', '');
   await expect(header).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  const backdrop = await page
+    .locator('.mast-row')
+    .evaluate((row) => getComputedStyle(row, '::before').backdropFilter);
+  expect(backdrop).toContain('blur(');
   await expect
     .poll(() => header.evaluate((el) => el.getBoundingClientRect().top))
     .toBeCloseTo(0, 0);

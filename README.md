@@ -14,7 +14,7 @@ ZeroCloud is a family of apps designed to work on your own devices without depen
 
 The goal is independence: useful tools that keep working without an internet connection, a mandatory online account, or a company's servers remaining available.
 
-**ZeroCloudShare is in its setup stage.** The project website introduces the family and its first planned app. The Share workspace contains development infrastructure and minimal application shells. There are no app releases yet.
+**ZeroCloudShare is in its setup stage.** The [project website](https://zero-cloud.pages.dev/) introduces the family and its first planned app. The Share workspace contains development infrastructure and minimal application shells. There are no app releases yet.
 
 ## What ZeroCloud means
 

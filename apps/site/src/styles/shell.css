@@ -145,8 +145,8 @@ main:focus {
   inset: 0.76rem 0;
   border-radius: 999px;
   background: rgb(250 251 249 / 62%);
-  backdrop-filter: blur(16px) saturate(1.12);
   -webkit-backdrop-filter: blur(16px) saturate(1.12);
+  backdrop-filter: blur(16px) saturate(1.12);
   box-shadow: 0 9px 33px -14px #10251d3b;
   pointer-events: none;
 }
