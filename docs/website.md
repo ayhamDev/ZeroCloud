@@ -13,13 +13,13 @@ The family server uses port 14372. An app server uses port 14374. Use `SITE_URL`
 
 Connect the ZeroCloud repository and use these build settings for the family website. Its output includes the Share pages under `/apps/share/`.
 
-| Pages setting | Value |
-| --- | --- |
-| Production branch | `main` |
-| Framework preset | Astro |
-| Root directory | Leave blank to use the repository root |
-| Build command | `bun install --frozen-lockfile && bun run build:site` |
-| Build output directory | `apps/site/dist` |
+| Pages setting          | Value                                                 |
+| ---------------------- | ----------------------------------------------------- |
+| Production branch      | `main`                                                |
+| Framework preset       | Astro                                                 |
+| Root directory         | Leave blank to use the repository root                |
+| Build command          | `bun install --frozen-lockfile && bun run build:site` |
+| Build output directory | `apps/site/dist`                                      |
 
 Set `BUN_VERSION` to `1.4.5` and `SKIP_DEPENDENCY_INSTALL` to `1` for production and preview builds. The command installs from the shared `bun.lock` once and builds the website. The root `.node-version` selects Node 24. Set `SITE_URL` to the stable public origin of the site so that canonical links and the sitemap point to production. [Cloudflare Pages build settings](https://developers.cloudflare.com/pages/configuration/build-configuration/) · [Build image and environment variables](https://developers.cloudflare.com/pages/configuration/build-image/)
 
