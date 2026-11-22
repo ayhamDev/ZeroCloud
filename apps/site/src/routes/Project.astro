@@ -1,0 +1,43 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RevealText from '../components/RevealText.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { link, repository } from '../lib/site';
+---
+
+<SiteLayout
+  title="Project principles — ZeroCloud"
+  description="What zero required cloud dependence means for accounts, data, and connections between your devices."
+>
+  <div class="frame">
+    <Breadcrumbs items={[{ text: 'Home', href: link() }, { text: 'Project' }]} />
+    <header class="page-lead">
+      <p class="eyeline" data-enter>The project</p>
+      <h1 data-enter><RevealText text="What “local” means." /></h1>
+      <p data-enter>
+        “Zero” stands for zero required cloud services. A device can still connect to another
+        device, run a local service, or download an update.
+      </p>
+    </header>
+    <div class="prose">
+      <h2 data-enter><RevealText text="When the internet goes out" /></h2>
+      <p data-enter>
+        Two devices on the same reachable network can keep communicating even when that network
+        loses internet access. ZeroCloud is built around that distinction. Essential workflows
+        should continue on hardware the user controls.
+      </p>
+      <h2 data-enter><RevealText text="Who holds the data" /></h2>
+      <p data-enter>
+        The design calls for processing and storage on the device. When you choose to share
+        something, the intended destination is the device you selected. Finding a peer should also
+        be possible locally.
+      </p>
+      <h2 data-enter><RevealText text="Where the project stands" /></h2>
+      <p data-enter>
+        ZeroCloudShare is the first app. Its repository contains a desktop shell, an Android shell,
+        and their shared interface. The team has yet to implement pairing or file transport.
+      </p>
+      <a class="text-link" href={repository}>Read the project repository ↗</a>
+    </div>
+  </div>
+</SiteLayout>

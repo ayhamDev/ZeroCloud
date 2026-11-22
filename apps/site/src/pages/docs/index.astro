@@ -1,0 +1,34 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GuideDirectory from '../../components/GuideDirectory.astro';
+import RevealText from '../../components/RevealText.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { currentEdition, guidesFor } from '../../lib/content';
+import { guideLink, link } from '../../lib/site';
+
+const app = await currentEdition();
+const entries = await guidesFor(app);
+const introduction = entries[0];
+const description = app
+  ? `Explore the technologies behind ${app.data.name} and try a working example.`
+  : 'Learn how a local network connects your devices and how Share runs on desktop and Android.';
+---
+
+<SiteLayout title={`Documentation — ${app?.data.name ?? 'ZeroCloud'}`} description={description}>
+  <div class="frame library">
+    <Breadcrumbs items={[{ text: app?.data.name ?? 'Home', href: link() }, { text: 'Docs' }]} />
+    <header class="library-mast">
+      <h1 data-enter><RevealText text="Documentation" /></h1>
+      <div class="library-intro">
+        <p data-enter>{description}</p>
+        {introduction && (
+          <a class="library-start" href={guideLink(introduction.id)}>
+            Start with {introduction.data.title}
+            <span aria-hidden="true">→</span>
+          </a>
+        )}
+      </div>
+    </header>
+    <GuideDirectory entries={entries} search />
+  </div>
+</SiteLayout>

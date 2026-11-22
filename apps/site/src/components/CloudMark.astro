@@ -1,0 +1,13 @@
+---
+import Mark from './Mark.astro';
+---
+
+<div class="cover-emblem" data-cloud-mark aria-hidden="true">
+  <div class="cover-mark"><Mark /></div>
+</div>
+<script>
+  import { animateCloud } from '../scripts/cloud-motion';
+
+  for (const mark of document.querySelectorAll<HTMLElement>('[data-cloud-mark]'))
+    animateCloud(mark);
+</script>

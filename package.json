@@ -9,11 +9,19 @@
     "node": ">=24.0.0"
   },
   "workspaces": [
+    "apps/*",
     "packages/*",
     "products/*/apps/*",
     "products/*/packages/*"
   ],
   "scripts": {
+    "build:app-site": "node apps/site/scripts/app-site.mjs build",
+    "preview:app-site": "node apps/site/scripts/app-site.mjs preview",
+    "dev:app-site": "node apps/site/scripts/app-site.mjs dev",
+    "dev:site": "bun run --filter @zerocloud/site dev",
+    "build:site": "turbo run build --filter=@zerocloud/site",
+    "preview:site": "bun run --filter @zerocloud/site preview",
+    "test:site": "bun run scripts/playwright.ts test --config playwright.site.config.ts",
     "dev": "bun run --filter @zerocloud/share-web dev",
     "dev:desktop": "bun run build:web && bun run --filter @zerocloud/share-desktop dev",
     "build:web": "turbo run build --filter=@zerocloud/share-web",
@@ -34,7 +42,7 @@
     "test:runtime": "bun test ./tests/runtime",
     "test:e2e": "bun run scripts/playwright.ts test",
     "test:e2e:ui": "bun run scripts/playwright.ts test --ui",
-    "check": "bun run lint && bun run check:boundaries && bun run typecheck && bun run test:coverage && bun run test:runtime && bun run build:web && bun run test:e2e",
+    "check": "bun run lint && bun run check:boundaries && bun run typecheck && bun run test:coverage && bun run test:runtime && bun run build:web && bun run test:e2e && bun run test:site",
     "doctor": "bun run scripts/doctor.ts",
     "setup:hooks": "simple-git-hooks",
     "audit:dependencies": "bun audit",

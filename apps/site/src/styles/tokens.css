@@ -1,0 +1,37 @@
+@font-face {
+  font-family: Geist;
+  src: url("@fontsource-variable/geist/files/geist-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --ink: #09090b;
+  --canvas: #fafbf9;
+  --surface: #f1f3f1;
+  --raised: #fff;
+  --muted: #505954;
+  --line: #d9deda;
+  --mint: #b9efd1;
+  --accent: #155d40;
+  --focus: #116c49;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --radius-control: 12px;
+  --radius-inset: 16px;
+  --radius-panel: 28px;
+  --radius-cover: clamp(24px, 2.8vw, 42px);
+  --shadow: 0 1px 2px #17291d07, 0 10px 28px -12px #1c332525;
+  --lift: cubic-bezier(0.18, 0.76, 0.2, 1);
+  --fast: 180ms;
+  --settle: 660ms;
+  --nav-clearance: 6rem;
+  --font: Geist, system-ui, sans-serif;
+  --code: ui-monospace, "Cascadia Code", Consolas, monospace;
+}

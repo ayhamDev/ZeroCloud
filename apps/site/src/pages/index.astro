@@ -1,0 +1,16 @@
+---
+import AppOverview from '../components/AppOverview.astro';
+import FamilyHome from '../components/FamilyHome.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { currentEdition } from '../lib/content';
+
+const app = await currentEdition();
+---
+
+<SiteLayout
+  title={app ? `${app.data.name} — Overview` : 'ZeroCloud — Software for your own devices'}
+  description={app?.data.description ??
+    'A family of apps designed to work on your devices without cloud services. Explore ZeroCloudShare, technology documentation, examples, and downloads.'}
+>
+  {app ? <AppOverview app={app} /> : <FamilyHome />}
+</SiteLayout>

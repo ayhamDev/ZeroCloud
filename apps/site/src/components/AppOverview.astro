@@ -1,0 +1,57 @@
+---
+import { chapterSlug, chaptersFor, type Product } from '../lib/content';
+import { appLink, edition, link } from '../lib/site';
+import AppNav from './AppNav.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Field from './Field.astro';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  app: Product;
+}
+const { app } = Astro.props;
+const chapters = await chaptersFor(app);
+---
+
+<div class="frame">
+  <Breadcrumbs
+    items={edition
+      ? [{ text: app.data.name }]
+      : [
+          { text: 'Home', href: link() },
+          { text: 'Apps', href: link('apps/') },
+          { text: app.data.name },
+        ]}
+  />
+  <section class="app-cover" aria-labelledby="app-title">
+    <Field variant="dark" />
+    <div class="app-cover-copy">
+      <p class="eyeline" data-enter>{app.data.status}</p>
+      <h1 id="app-title" data-enter><RevealText text={app.data.name} /></h1>
+      <p data-enter>{app.data.description}</p>
+      <div class="actions" data-enter>
+        <a class="btn reversed" href={appLink(app.id, 'downloads')}>Downloads →</a
+        ><a class="text-link" href={app.data.source}>App source ↗</a>
+      </div>
+    </div>
+  </section>
+  <AppNav app={app} />
+  <div class="app-intro block">
+    <p class="eyeline" data-enter>Overview</p>
+    <p class="pull" data-enter><RevealText text={app.data.introduction} /></p>
+  </div>
+  <div class="chapter-grid">
+    {chapters.map((chapter) => (
+      <a class="surface chapter-tile" href={appLink(app.id, chapterSlug(chapter))} data-enter>
+        <h2>{chapter.data.title}</h2>
+        <p>{chapter.data.description}</p>
+        <span aria-hidden="true">→</span>
+      </a>
+    ))}
+    <a class="surface chapter-tile" href={appLink(app.id, 'technologies')} data-enter
+      ><h2>Technologies</h2>
+      <p>Read the guides and examples selected for {app.data.shortName}.</p>
+      <span aria-hidden="true">→</span></a
+    >
+  </div>
+</div>

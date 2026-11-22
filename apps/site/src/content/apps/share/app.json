@@ -1,0 +1,24 @@
+{
+  "name": "ZeroCloudShare",
+  "shortName": "Share",
+  "order": 1,
+  "description": "Direct file sharing between a desktop and an Android device on the same local network.",
+  "introduction": "A file on your laptop should be able to reach the phone beside it, even when the internet is down. Share is being designed around that local connection.",
+  "status": "In development",
+  "targets": ["Desktop", "Android"],
+  "source": "https://github.com/ayhamDev/ZeroCloud/tree/main/products/share",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [
+    "foundations/local-networks",
+    "foundations/bun-workspaces",
+    "interface/react-and-vite",
+    "platforms/electrobun",
+    "platforms/capacitor",
+    "examples/run-the-interface"
+  ],
+  "platformGuides": {
+    "Desktop": "platforms/electrobun",
+    "Android": "platforms/capacitor"
+  },
+  "downloads": []
+}

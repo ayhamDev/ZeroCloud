@@ -1,0 +1,8 @@
+{
+  "root": false,
+  "extends": "//",
+  "html": {
+    "experimentalFullSupportEnabled": true,
+    "formatter": { "enabled": true, "indentScriptAndStyle": true }
+  }
+}

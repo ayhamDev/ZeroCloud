@@ -1,0 +1,16 @@
+---
+import type { Guide } from '../lib/content';
+import { guideLink } from '../lib/site';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  entry: Guide;
+}
+const { entry } = Astro.props;
+---
+
+<a class="guide-item" href={guideLink(entry.id)}>
+  <strong data-enter><RevealText text={entry.data.title} /></strong>
+  <span class="guide-summary">{entry.data.description}</span>
+  <span class="guide-arrow" aria-hidden="true">→</span>
+</a>

@@ -1,0 +1,181 @@
+---
+import { type Guide, groupsOf } from '../lib/content';
+import { guideLink } from '../lib/site';
+import GuideRow from './GuideRow.astro';
+
+interface Props {
+  entries: Guide[];
+  search?: boolean;
+}
+const { entries, search = false } = Astro.props;
+const groups = groupsOf(entries);
+---
+
+<div class="guide-directory" data-directory>
+  {groups.length > 0 && (
+    <nav class="directory-rail" aria-label="Jump to topic">
+      <h2>Topics</h2>
+      <ul>
+        {groups.map((group) => (
+          <li>
+            <a href={`#topic-${group.slug}`}>
+              {group.title}
+              <span aria-hidden="true">{group.entries.length}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )}
+  <div class="directory-body">
+    {search && entries.length > 0 && (
+      <search aria-label="Documentation">
+        <form class="search-bar" hidden>
+          <label class="search-field" for="doc-query">
+            <i class="search-glass" aria-hidden="true"></i>
+            <span class="visually-hidden">Search documentation</span>
+            <input
+              type="search"
+              name="q"
+              id="doc-query"
+              aria-keyshortcuts="/"
+              placeholder="Search the guides"
+              autocomplete="off"
+            />
+            <span class="search-shortcut" aria-hidden="true">
+              /
+            </span>
+          </label>
+          <button class="clear-search" type="reset" hidden>
+            Clear
+          </button>
+        </form>
+      </search>
+    )}
+    <p class="result-count" role="status" data-count hidden></p>
+    <div class="guide-groups">
+      {groups.map((group) => (
+        <section class="guide-group" id={`topic-${group.slug}`} data-group>
+          <h2>
+            <a href={guideLink(group.slug)}>{group.title}</a>
+          </h2>
+          <ul>
+            {group.entries.map((entry) => (
+              <li
+                data-key={
+                  search
+                    ? [
+                        entry.data.title,
+                        entry.data.description,
+                        group.title,
+                        entry.data.kind,
+                        ...entry.data.keywords,
+                        entry.body ?? '',
+                      ]
+                        .join(' ')
+                        .toLowerCase()
+                    : undefined
+                }
+              >
+                <GuideRow entry={entry} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+    {entries.length === 0 && <p>Guides will appear here as they are published.</p>}
+  </div>
+</div>
+<script>
+  for (const directory of document.querySelectorAll<HTMLElement>('[data-directory]')) {
+    const groups = Array.from(directory.querySelectorAll<HTMLElement>('[data-group]'));
+    const rail = directory.querySelector<HTMLElement>('.directory-rail');
+    const jumps = Array.from(rail?.querySelectorAll<HTMLAnchorElement>('a') ?? []);
+    function markTopic() {
+      const available = groups.filter((group) => !group.hidden);
+      const current =
+        available
+          .filter((group) => group.getBoundingClientRect().top <= innerHeight * 0.38)
+          .at(-1) ?? available[0];
+      for (const jump of jumps) {
+        if (current && jump.hash === `#${current.id}`)
+          jump.setAttribute('aria-current', 'location');
+        else jump.removeAttribute('aria-current');
+      }
+    }
+    if ('IntersectionObserver' in window) {
+      const reading = new IntersectionObserver(markTopic, { rootMargin: '0px 0px -62% 0px' });
+      for (const group of groups) reading.observe(group);
+    }
+    const form = directory.querySelector<HTMLFormElement>('.search-bar');
+    const input = form?.querySelector<HTMLInputElement>('input');
+    const count = directory.querySelector<HTMLElement>('[data-count]');
+    const clear = form?.querySelector<HTMLButtonElement>('.clear-search');
+    if (!form || !input || !count || !clear) continue;
+
+    function filter() {
+      if (!input || !count || !clear) return;
+      const words = input.value.trim().toLowerCase().split(/\s+/u).filter(Boolean);
+      let matches = 0;
+      groups.forEach((group, index) => {
+        let visible = 0;
+        for (const row of group.querySelectorAll<HTMLElement>('[data-key]')) {
+          row.hidden = !words.every((word) => row.dataset.key?.includes(word));
+          if (!row.hidden) visible++;
+        }
+        group.hidden = visible === 0;
+        const jump = jumps[index];
+        if (jump?.parentElement) jump.parentElement.hidden = group.hidden;
+        const total = jump?.querySelector('span');
+        if (total) total.textContent = String(visible);
+        matches += visible;
+      });
+      if (rail) rail.hidden = matches === 0;
+      count.hidden = words.length === 0;
+      count.textContent = matches
+        ? `${matches} ${matches === 1 ? 'article' : 'articles'} found.`
+        : 'No matching articles. Try a different term.';
+      clear.hidden = !input.value;
+      markTopic();
+    }
+    function readQuery() {
+      if (input) input.value = new URL(location.href).searchParams.get('q') ?? '';
+      filter();
+    }
+    function update() {
+      const url = new URL(location.href);
+      if (input?.value.trim()) url.searchParams.set('q', input.value.trim());
+      else url.searchParams.delete('q');
+      history.replaceState(history.state, '', url);
+      filter();
+    }
+    form.hidden = false;
+    readQuery();
+    input.addEventListener('input', update);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      update();
+    });
+    form.addEventListener('reset', () => {
+      requestAnimationFrame(() => {
+        update();
+        input.focus();
+      });
+    });
+    window.addEventListener('popstate', readQuery);
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === '/' &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.metaKey &&
+        event.target instanceof Element &&
+        !event.target.closest('input,textarea,select,[contenteditable]')
+      ) {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+  }
+</script>

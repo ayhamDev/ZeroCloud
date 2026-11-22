@@ -6,6 +6,7 @@ const ignored = new Set([
   'node_modules',
   '.git',
   '.cache',
+  '.astro',
   '.hutch',
   '.turbo',
   '.prepared',
@@ -17,6 +18,7 @@ const ignored = new Set([
 ]);
 const allowed: Record<string, string[]> = {
   '@zerocloud/brand': [],
+  '@zerocloud/site': ['@zerocloud/brand'],
   '@zerocloud/share-contracts': [],
   '@zerocloud/share-core': ['@zerocloud/share-contracts'],
   '@zerocloud/share-web': ['@zerocloud/brand', '@zerocloud/share-core'],
@@ -68,7 +70,7 @@ for await (const path of walk(root)) {
       violations.push(`Pin a stable exact version for ${manifest.name}: ${dependency}.`);
   }
   for await (const source of walk(dirname(path))) {
-    if (!source.endsWith('.ts') && !source.endsWith('.tsx')) continue;
+    if (!/\.(?:ts|tsx|astro)$/u.test(source)) continue;
     if (source.includes('.test.') || source.endsWith('.d.ts')) continue;
     const content = await readFile(source, 'utf8');
     for (const match of content.matchAll(/(?:from\s+|import\s*)['"]([^'"]+)['"]/gu)) {

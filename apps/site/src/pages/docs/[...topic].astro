@@ -1,0 +1,125 @@
+---
+import { render } from 'astro:content';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import GuideRow from '../../components/GuideRow.astro';
+import RevealText from '../../components/RevealText.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { currentEdition, type Guide, groupsOf, guidesFor } from '../../lib/content';
+import { guideLink, link } from '../../lib/site';
+export async function getStaticPaths() {
+  const entries = await guidesFor(await currentEdition());
+  return [
+    ...groupsOf(entries).map((group) => ({
+      params: { topic: group.slug },
+      props: { groupSlug: group.slug },
+    })),
+    ...entries.map((entry) => ({
+      params: { topic: entry.id },
+      props: { groupSlug: entry.id.slice(0, entry.id.indexOf('/')), entry },
+    })),
+  ];
+}
+interface Props {
+  groupSlug: string;
+  entry?: Guide;
+}
+const { groupSlug, entry } = Astro.props;
+const app = await currentEdition();
+const entries = await guidesFor(app);
+const groups = groupsOf(entries);
+const group = groups.find((g) => g.slug === groupSlug);
+if (!group) throw new Error(`Missing documentation topic: ${groupSlug}`);
+const title = entry?.data.title ?? group.title;
+const description =
+  entry?.data.description ?? `Browse the ${group.title.toLowerCase()} guides and examples.`;
+const position = entry ? entries.findIndex((item) => item.id === entry.id) : -1;
+const previous = position > 0 ? entries[position - 1] : undefined;
+const next = position >= 0 ? entries[position + 1] : undefined;
+const rendered = entry ? await render(entry) : undefined;
+const Content = rendered?.Content;
+const headings = rendered?.headings.filter((h) => h.depth === 2) ?? [];
+---
+
+<SiteLayout
+  title={`${title} — ${app?.data.name ?? 'ZeroCloud'} docs`}
+  description={description}
+  article={!!entry}
+  ><div class="frame">
+    <Breadcrumbs
+      items={[
+        { text: app?.data.name ?? 'Home', href: link() },
+        { text: 'Docs', href: link('docs/') },
+        { text: group.title, ...(entry && { href: guideLink(group.slug) }) },
+        ...(entry ? [{ text: title }] : []),
+      ]}
+    />
+    <div class="doc-layout">
+      <header class="doc-heading">
+        <p class="eyeline">{entry?.data.kind ?? 'Topic'}</p>
+        <h1 data-enter><RevealText text={title} /></h1>
+        <p data-enter>{description}</p>
+      </header>
+      {headings.length > 0 && (
+        <nav class="on-page" aria-label="On this page">
+          <strong>On this page</strong>
+          {headings.map((h) => (
+            <a href={`#${h.slug}`}>{h.text}</a>
+          ))}
+        </nav>
+      )}
+      <div class="doc-content">
+        {Content ? (
+          <article class="prose" data-article>
+            <Content />
+          </article>
+        ) : (
+          <ul class="topic-index">
+            {group.entries.map((item) => (
+              <li>
+                <GuideRow entry={item} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {(previous || next) && (
+          <nav class="article-turn" aria-label="Adjacent articles">
+            {previous && (
+              <a href={guideLink(previous.id)} rel="prev">
+                <small>← Previous guide</small>
+                {previous.data.title}
+              </a>
+            )}
+            {next && (
+              <a href={guideLink(next.id)} rel="next">
+                <small>Next guide →</small>
+                {next.data.title}
+              </a>
+            )}
+          </nav>
+        )}
+      </div>
+      <nav class="doc-tree" aria-label="Documentation topics">
+        <strong>Documentation</strong
+        ><a class="doc-index-link" href={link('docs/')}>Search all articles</a>
+        {groups.map((g) => (
+          <details open={g.slug === groupSlug}>
+            <summary>{g.title}</summary>
+            <div>
+              <a
+                href={guideLink(g.slug)}
+                aria-current={!entry && groupSlug === g.slug ? 'page' : undefined}
+              >
+                Overview
+              </a>
+              {g.entries.map((e) => (
+                <a href={guideLink(e.id)} aria-current={entry?.id === e.id ? 'page' : undefined}>
+                  {e.data.title}
+                </a>
+              ))}
+            </div>
+          </details>
+        ))}
+      </nav>
+    </div>
+  </div></SiteLayout
+>

@@ -1,0 +1,109 @@
+---
+import {
+  allApps,
+  chapterSlug,
+  chaptersFor,
+  groupsOf,
+  guidesFor,
+  type Product,
+} from '../lib/content';
+import { appLink, guideLink, link, repository } from '../lib/site';
+import GitHubMark from './GitHubMark.astro';
+import LoopMark from './LoopMark.astro';
+
+interface Props {
+  app?: Product | undefined;
+}
+const { app } = Astro.props;
+const apps = app ? [app] : await allApps();
+const chapters = app ? await chaptersFor(app) : [];
+const groups = groupsOf(await guidesFor(app));
+const current = Astro.url.pathname;
+---
+
+<div class="mast-anchor" aria-hidden="true"></div>
+<header class="masthead">
+  <div class="frame mast-row">
+    <a class="signature" href={link()} aria-label={app ? `${app.data.name} home` : 'ZeroCloud home'}
+      ><LoopMark /><span class="brand-name">{app?.data.name ?? 'ZeroCloud'}</span></a
+    >
+    <nav class="primary-nav" aria-label="Main navigation">
+      <details class="nav-folder" name="primary-folders">
+        <summary>
+          {app ? app.data.shortName : 'Apps'}<i class="caret" aria-hidden="true"></i>
+        </summary>
+        <div class="flyout">
+          <a class="folder-home" href={app ? appLink(app.id) : link('apps/')}
+            >{app ? 'App overview' : 'All apps'}</a
+          >
+          {apps.map((product) => (
+            <div class="tree-branch">
+              {app ? (
+                chapters.map((chapter) => (
+                  <a href={appLink(app.id, chapterSlug(chapter))}>{chapter.data.title}</a>
+                ))
+              ) : (
+                <a href={appLink(product.id)}>{product.data.name}</a>
+              )}
+              <a class="sub-link" href={appLink(product.id, 'technologies')}>
+                Technologies
+              </a>
+              <a class="sub-link" href={appLink(product.id, 'downloads')}>
+                Downloads
+              </a>
+            </div>
+          ))}
+        </div>
+      </details>
+      <details class="nav-folder" name="primary-folders">
+        <summary>Docs<i class="caret" aria-hidden="true"></i></summary>
+        <div class="flyout">
+          <a class="folder-home" href={link('docs/')}>Documentation home</a>
+          <div class="tree-branch">
+            {groups.map((group) => <a href={guideLink(group.slug)}>{group.title}</a>)}
+          </div>
+        </div>
+      </details>
+      <a
+        href={link('downloads/')}
+        aria-current={current === link('downloads/') ? 'page' : undefined}
+        >Downloads</a
+      >
+    </nav>
+    <a class="source-button" href={app?.data.source ?? repository} aria-label="GitHub"
+      ><GitHubMark /><span>GitHub</span></a
+    >
+  </div>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('.masthead');
+  const anchor = document.querySelector('.mast-anchor');
+  if (header && anchor && 'IntersectionObserver' in window) {
+    header.setAttribute('data-docking', '');
+    const dock = new IntersectionObserver(([entry]) => {
+      if (entry)
+        header.toggleAttribute(
+          'data-stuck',
+          !entry.isIntersecting && entry.boundingClientRect.top < 0,
+        );
+    });
+    dock.observe(anchor);
+  }
+  const folders = document.querySelectorAll<HTMLDetailsElement>('.nav-folder');
+  document.addEventListener('click', (e) => {
+    if (!(e.target instanceof Node)) return;
+    for (const folder of folders) if (!folder.contains(e.target)) folder.open = false;
+  });
+  document.addEventListener('focusin', (e) => {
+    if (!(e.target instanceof Node)) return;
+    for (const folder of folders) if (!folder.contains(e.target)) folder.open = false;
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    for (const folder of folders)
+      if (folder.open) {
+        folder.open = false;
+        folder.querySelector('summary')?.focus();
+      }
+  });
+</script>

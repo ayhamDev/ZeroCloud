@@ -1,0 +1,23 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DownloadsPage from '../components/DownloadsPage.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { allApps, currentEdition } from '../lib/content';
+import { link } from '../lib/site';
+
+const app = await currentEdition();
+const apps = app ? [app] : await allApps();
+const name = app?.data.name ?? 'ZeroCloud';
+---
+
+<SiteLayout
+  title={`Downloads — ${name}`}
+  description={`Release availability and official download links for ${name}.`}
+>
+  <div class="frame">
+    <Breadcrumbs
+      items={[{ text: app?.data.name ?? 'Home', href: link() }, { text: 'Downloads' }]}
+    />
+    <DownloadsPage apps={apps} app={app} />
+  </div>
+</SiteLayout>

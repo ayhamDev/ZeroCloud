@@ -1,0 +1,15 @@
+---
+import loop from '@zerocloud/brand/loop-icon-light.svg?raw';
+---
+
+<span class="micro-mark loop-mark" data-motion-loop aria-hidden="true" set:html={loop} />
+<style is:global>
+  .loop-mark:not([data-playing]) circle {
+    animation-name: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loop-mark circle {
+      animation-name: none;
+    }
+  }
+</style>

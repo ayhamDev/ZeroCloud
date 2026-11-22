@@ -1,5 +1,6 @@
 node_modules/
 .cache/
+.astro/
 .turbo/
 .hutch/
 dist/

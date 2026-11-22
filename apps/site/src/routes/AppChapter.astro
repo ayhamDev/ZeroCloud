@@ -1,0 +1,95 @@
+---
+import { render } from 'astro:content';
+import AppNav from '../components/AppNav.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DownloadsPage from '../components/DownloadsPage.astro';
+import GuideDirectory from '../components/GuideDirectory.astro';
+import RevealText from '../components/RevealText.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import {
+  allApps,
+  type Chapter,
+  chapterSlug,
+  chaptersFor,
+  currentEdition,
+  guidesFor,
+  type Product,
+} from '../lib/content';
+import { appLink, edition, link } from '../lib/site';
+export async function getStaticPaths() {
+  const selected = await currentEdition();
+  const products = selected ? [selected] : await allApps();
+  const sets = await Promise.all(
+    products.map(async (app) => {
+      const chapters = await chaptersFor(app);
+      const rows: { slug: string; chapter?: Chapter }[] = [
+        ...chapters.map((chapter) => ({ slug: chapterSlug(chapter), chapter })),
+        { slug: 'technologies' },
+        ...(!selected ? [{ slug: 'downloads' }] : []),
+      ];
+      return rows.map((row) => ({
+        params: { ...(selected ? {} : { product: app.id }), chapter: row.slug },
+        props: { app, ...row },
+      }));
+    }),
+  );
+  return sets.flat();
+}
+interface Props {
+  app: Product;
+  slug: string;
+  chapter?: Chapter;
+}
+const { app, slug, chapter } = Astro.props;
+const title = chapter?.data.title ?? (slug === 'downloads' ? 'Downloads' : 'Technologies');
+const description =
+  chapter?.data.description ??
+  (slug === 'downloads'
+    ? `Release availability for ${app.data.name}.`
+    : `Technology guides and working examples for ${app.data.name}.`);
+const rendered = chapter ? await render(chapter) : undefined;
+const Content = rendered?.Content;
+const docs = slug === 'technologies' ? await guidesFor(app) : [];
+---
+
+<SiteLayout title={`${title} — ${app.data.name}`} description={description} article={!!chapter}
+  ><div class="frame">
+    <Breadcrumbs
+      items={[
+        ...(!edition ? [{ text: 'Apps', href: link('apps/') }] : []),
+        { text: app.data.name, href: appLink(app.id) },
+        { text: title },
+      ]}
+    />
+    {slug === 'downloads' ? (
+      <DownloadsPage apps={[app]} app={app} />
+    ) : (
+      <>
+        <header class="page-lead">
+          <p class="eyeline">{app.data.name}</p>
+          <h1 data-enter>
+            <RevealText text={`${title}.`} />
+          </h1>
+          <p data-enter>{description}</p>
+        </header>
+        <AppNav app={app} current={slug} />
+      </>
+    )}
+    {Content && (
+      <div class="article-spread">
+        <article class="prose">
+          <Content />
+        </article>
+        <nav class="on-page" aria-label="On this page">
+          <strong>On this page</strong>
+          {rendered?.headings
+            .filter((h) => h.depth === 2)
+            .map((h) => (
+              <a href={`#${h.slug}`}>{h.text}</a>
+            ))}
+        </nav>
+      </div>
+    )}
+    {slug === 'technologies' && <GuideDirectory entries={docs} />}
+  </div></SiteLayout
+>

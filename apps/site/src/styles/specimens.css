@@ -1,0 +1,183 @@
+.system-specimens {
+  display: grid;
+  gap: 1.35rem;
+  margin: var(--space-4) 0 var(--space-6);
+}
+.spacing-scale {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+.spacing-scale li {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+.spacing-scale i {
+  display: block;
+  border-radius: 0.28rem;
+  width: 1.45rem;
+  height: var(--step);
+  background: var(--accent);
+}
+.spacing-scale code {
+  font-size: 0.75rem;
+}
+@media (min-width: 1051px) {
+  .system-specimens {
+    max-width: 62rem;
+  }
+}
+.specimen {
+  padding: 1.2rem;
+}
+.specimen h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.6rem;
+}
+.specimen p {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.mark-spec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 25%;
+  gap: var(--space-4);
+  align-items: center;
+}
+.mark-inspector {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+}
+.sample-mark {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 12rem;
+  border-radius: var(--radius-inset);
+  background: var(--raised);
+  color: var(--ink);
+}
+.mark-inspector:has(input[value="dark"]:checked) .sample-mark {
+  background: var(--ink);
+  color: var(--raised);
+}
+.sample-mark .micro-mark {
+  aspect-ratio: 1;
+  width: 80%;
+}
+.surface-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.surface-switch legend {
+  margin: 0 auto 0.25rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+}
+.surface-switch label {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.77rem;
+  cursor: pointer;
+}
+.surface-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.surface-switch label:has(:checked) {
+  background: var(--ink);
+  color: white;
+}
+.surface-switch label:has(:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.swatch {
+  flex: 1 1 4.5rem;
+  font-size: 0.8rem;
+}
+.swatch i {
+  display: block;
+  height: 2.9rem;
+  background: var(--chip);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin-bottom: 0.3rem;
+}
+.swatch strong,
+.swatch code {
+  display: block;
+}
+.system-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.specimen .type-sample {
+  font-size: 3.8rem;
+  letter-spacing: -0.09em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.type-sample span {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  margin-left: 0.7rem;
+}
+.sample-inset {
+  padding: 0.9rem;
+  margin: var(--space-2) 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+.motion-sample {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+.motion-sample > strong {
+  font-size: 1.35rem;
+  letter-spacing: -0.05em;
+}
+@media (max-width: 600px) {
+  .mark-spec {
+    grid-template-columns: minmax(0, 1fr) minmax(6.4rem, 30%);
+    gap: var(--space-2);
+  }
+  .system-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (forced-colors: active) {
+  .swatch i {
+    border: 1px solid CanvasText;
+  }
+}

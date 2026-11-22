@@ -1,0 +1,58 @@
+---
+import { allApps, guidesFor, type Product } from '../lib/content';
+import { appLink, guideLink, link, repository } from '../lib/site';
+import GitHubMark from './GitHubMark.astro';
+import LoopMark from './LoopMark.astro';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  app?: Product | undefined;
+}
+const { app } = Astro.props;
+const products = app ? [app] : await allApps();
+const guides = await guidesFor(app);
+const firstGuide = guides[0];
+const example = guides.find(
+  (entry) => entry.data.kind === 'Example' && entry.id !== firstGuide?.id,
+);
+const name = app?.data.name ?? 'ZeroCloud';
+---
+
+<footer class="site-foot frame">
+  <div class="foot-inner">
+    <div class="foot-directory">
+      <p class="foot-note" data-enter>
+        <RevealText
+          text={app?.data.description ?? 'Offline-first software for your own devices.'}
+        />
+      </p>
+      <nav class="foot-links" aria-label="Footer navigation">
+        <div>
+          <h2>Explore</h2>
+          {products.map((product) => <a href={appLink(product.id)}>{product.data.name}</a>)}
+          <a href={link('downloads/')}>Downloads</a>
+          {!app && <a href={link('project/')}>Project principles</a>}
+        </div>
+        <div>
+          <h2>Documentation</h2>
+          <a href={link('docs/')}>All guides</a>
+          {firstGuide && <a href={guideLink(firstGuide.id)}>{firstGuide.data.title}</a>}
+          {example && <a href={guideLink(example.id)}>{example.data.title}</a>}
+        </div>
+      </nav>
+    </div>
+    <div class="foot-imprint">
+      <a
+        href={link()}
+        class:list={['foot-signature', { 'app-signature': !!app }]}
+        aria-label={`${name} home`}
+      >
+        <LoopMark /><span class="foot-name">{name}</span>
+      </a>
+      <div class="foot-utilities">
+        <a class="foot-source" href={app?.data.source ?? repository}><GitHubMark />GitHub</a>
+        <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </div>
+</footer>

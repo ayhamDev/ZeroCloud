@@ -1,0 +1,40 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RevealText from '../components/RevealText.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { allApps } from '../lib/content';
+import { appLink, link } from '../lib/site';
+
+const apps = await allApps();
+---
+
+<SiteLayout
+  title="App directory — ZeroCloud"
+  description="Explore the ZeroCloud app family. Each app has its own site, design notes, technology guides, and downloads."
+  ><div class="frame">
+    <Breadcrumbs items={[{ text: 'Home', href: link() }, { text: 'Apps' }]} />
+    <header class="page-lead">
+      <h1 data-enter><RevealText text="App directory." /></h1>
+      <p data-enter>Each project has its own site, development notes, and release history.</p>
+    </header>
+    <div class="index-list">
+      {apps.map((app) => (
+        <article class="surface directory-item" data-enter>
+          <div>
+            <span class="eyeline">{app.data.targets.join(' / ')}</span>
+            <h2>
+              <a href={appLink(app.id)}>{app.data.name}</a>
+            </h2>
+            <p>{app.data.description}</p>
+          </div>
+          <div class="directory-actions">
+            <span class="status-tag">{app.data.status}</span>
+            <a class="btn primary" href={appLink(app.id)}>
+              Visit app site →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div></SiteLayout
+>

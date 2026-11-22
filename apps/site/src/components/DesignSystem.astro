@@ -1,0 +1,136 @@
+---
+import '../styles/specimens.css';
+import { link } from '../lib/site';
+import tokens from '../styles/tokens.css?raw';
+import Mark from './Mark.astro';
+
+const tokenValues = new Map(
+  Array.from(tokens.matchAll(/(--[\w-]+):\s*([^;]+);/g), ([, key, value]) => [key, value?.trim()]),
+);
+const colors = [
+  ['Ink', '--ink'],
+  ['Canvas', '--canvas'],
+  ['Fog', '--surface'],
+  ['Mint', '--mint'],
+  ['Accent', '--accent'],
+] as const;
+const spacing = Array.from({ length: 8 }, (_, i) => `--space-${i + 1}`);
+---
+
+<div class="system-specimens">
+  <section class="surface specimen mark-spec" data-enter>
+    <div>
+      <h2>Micro-Dot Cut</h2>
+      <p>
+        Solid dots carry the body of the mark. Smaller dots and lighter weights open the diagonal
+        cut. Use the supplied geometry at both navigation and display sizes.
+      </p>
+    </div>
+    <div class="mark-inspector">
+      <div class="sample-mark"><Mark /></div>
+      <fieldset class="surface-switch">
+        <legend>Preview surface</legend>
+        <label><input type="radio" name="mark-surface" value="light" checked>Light</label>
+        <label><input type="radio" name="mark-surface" value="dark">Dark</label>
+      </fieldset>
+    </div>
+  </section>
+  <section class="specimen" data-enter>
+    <h2>Color</h2>
+    <div class="swatches">
+      {colors.map(([name, token]) => (
+        <div class="swatch">
+          <i style={`--chip:var(${token})`} aria-hidden="true"></i>
+          <strong>{name}</strong>
+          <code>{tokenValues.get(token)?.toUpperCase()}</code>
+        </div>
+      ))}
+    </div>
+  </section>
+  <div class="system-pair">
+    <section class="surface specimen" data-enter>
+      <h2>Type</h2>
+      <p class="type-sample">Aa<span>Geist</span></p>
+      <p>
+        Geist carries headings, interface labels, and articles. Monospace is reserved for commands
+        and technical values.
+      </p>
+    </section>
+    <section class="surface specimen" data-enter>
+      <h2>Surfaces</h2>
+      <div class="inset sample-inset">Inset surface</div>
+      <p>
+        Large panels use a 28px radius. White insets use 16px. Controls use a smaller 12px radius or
+        a full pill.
+      </p>
+    </section>
+  </div>
+  <section class="specimen" data-enter>
+    <h2>Spacing</h2>
+    <p>
+      The layout grows from a quarter-rem. The smallest steps separate labels. The largest leave
+      room between sections.
+    </p>
+    <ul class="spacing-scale">
+      {spacing.map((token) => (
+        <li>
+          <i style={`--step:var(${token})`} aria-hidden="true"></i>
+          <code>{tokenValues.get(token)}</code>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <section class="surface specimen" data-enter>
+    <h2>Controls</h2>
+    <p>
+      A filled pill leads to the main destination. A text link gives a secondary route. Both use the
+      same keyboard focus ring.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href={link('downloads/')}
+        >Downloads <span aria-hidden="true">→</span></a
+      ><a class="text-link" href={link('docs/')}>Documentation</a>
+    </div>
+  </section>
+  <section class="surface specimen" data-enter>
+    <h2>Motion</h2>
+    <p>
+      Text settles once on entry. The hero dots float and settle into place. The header and footer
+      marks play the supplied dot wave. The site follows the device’s motion preference. Replay the
+      transition below.
+    </p>
+    <div class="motion-sample">
+      <strong data-sample-text>Micro-Dot Cut</strong
+      ><button class="btn secondary" type="button" data-replay hidden>Replay transition</button>
+    </div>
+  </section>
+</div>
+<script>
+  const replay = document.querySelector<HTMLButtonElement>('[data-replay]');
+  const sample = document.querySelector<HTMLElement>('[data-sample-text]');
+  if (replay && sample) {
+    replay.hidden = false;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const reflectPreference = () => {
+      for (const a of sample.getAnimations()) a.cancel();
+      replay.disabled = preference.matches;
+      replay.textContent = replay.disabled ? 'Motion reduced' : 'Replay transition';
+    };
+    reflectPreference();
+    preference.addEventListener('change', reflectPreference);
+    replay.addEventListener('click', () => {
+      for (const a of sample.getAnimations()) a.cancel();
+      const styles = getComputedStyle(sample);
+      sample.animate(
+        [
+          { transform: 'translateY(.24em)', opacity: 0.72 },
+          { transform: 'translateY(0)', opacity: 1 },
+        ],
+        {
+          duration: parseFloat(styles.getPropertyValue('--settle')),
+          easing: styles.getPropertyValue('--lift').trim(),
+        },
+      );
+    });
+  }
+</script>

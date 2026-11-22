@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const words = text.trim().split(/\s+/u);
+---
+
+{words.map((word, index) => (
+  <>
+    {index > 0 && ' '}
+    <span class="reveal-word" style={`--word:${Math.min(index, 16)}`}>
+      <span>{word}</span>
+    </span>
+  </>
+))}

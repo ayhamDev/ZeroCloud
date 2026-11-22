@@ -1,0 +1,25 @@
+---
+import { chapterSlug, chaptersFor, type Product } from '../lib/content';
+import { appLink } from '../lib/site';
+
+interface Props {
+  app: Product;
+  current?: string;
+}
+const { app, current = '' } = Astro.props;
+const chapters = await chaptersFor(app);
+const items = [
+  { title: 'Overview', slug: '' },
+  ...chapters.map((entry) => ({ title: entry.data.title, slug: chapterSlug(entry) })),
+  { title: 'Technologies', slug: 'technologies' },
+  { title: 'Downloads', slug: 'downloads' },
+];
+---
+
+<nav class="app-tabs" aria-label={`${app.data.shortName} sections`}>
+  {items.map((item) => (
+    <a href={appLink(app.id, item.slug)} aria-current={item.slug === current ? 'page' : undefined}>
+      {item.title}
+    </a>
+  ))}
+</nav>

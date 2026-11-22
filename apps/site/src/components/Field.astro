@@ -1,0 +1,16 @@
+---
+import type { FieldVariant } from '../scripts/ink.worker';
+
+interface Props {
+  variant?: FieldVariant;
+}
+const { variant = 'light' } = Astro.props;
+---
+
+<div class="ink-field" aria-hidden="true"><canvas data-ink={variant}></canvas></div>
+<script>
+  import { prepareField } from '../scripts/ink';
+
+  for (const canvas of document.querySelectorAll<HTMLCanvasElement>('[data-ink]'))
+    prepareField(canvas);
+</script>

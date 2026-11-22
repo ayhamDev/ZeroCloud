@@ -1,0 +1,16 @@
+---
+import AppOverview from '../components/AppOverview.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { allApps, type Product } from '../lib/content';
+export async function getStaticPaths() {
+  return (await allApps()).map((app) => ({ params: { product: app.id }, props: { app } }));
+}
+interface Props {
+  app: Product;
+}
+const { app } = Astro.props;
+---
+
+<SiteLayout title={`${app.data.name} — Overview`} description={app.data.description}
+  ><AppOverview app={app} /></SiteLayout
+>

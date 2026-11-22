@@ -1,0 +1,40 @@
+---
+import RevealText from './RevealText.astro';
+---
+
+<section class="project-meaning block" id="what-is-zerocloud" aria-labelledby="meaning-title">
+  <div class="meaning-lead">
+    <h2 class="meaning-title" id="meaning-title" data-enter>
+      <span class="meaning-zero" aria-hidden="true">0</span>
+      <span class="visually-hidden">Zero </span>
+      <span class="meaning-words"><RevealText text="required cloud services." /></span>
+    </h2>
+    <p class="meaning-intro" data-enter>
+      That’s what the zero in ZeroCloud stands for. An app’s main job should keep working on
+      hardware you own, even if your internet connection drops or a service shuts down.
+    </p>
+  </div>
+  <dl class="meaning-index">
+    <div>
+      <dt data-enter><RevealText text="On your device" /></dt>
+      <dd>
+        Your device runs the app and keeps the working copy of your data. Opening it should never
+        depend on signing in to a hosted account.
+      </dd>
+    </div>
+    <div>
+      <dt data-enter><RevealText text="Across the room" /></dt>
+      <dd>
+        Two devices on a reachable local network can find each other and talk directly. Even that
+        first introduction can happen locally.
+      </dd>
+    </div>
+    <div>
+      <dt data-enter><RevealText text="Online by choice" /></dt>
+      <dd>
+        Go online for a download, an update, or a guide. Once an app is installed, those services
+        should be optional for its everyday use.
+      </dd>
+    </div>
+  </dl>
+</section>

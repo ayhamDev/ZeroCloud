@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { link } from '../lib/site';
+---
+
+<SiteLayout
+  title="Page not found — ZeroCloud"
+  description="Find your way back to the project or documentation."
+  noIndex
+>
+  <div class="frame block missing">
+    <p class="eyeline">404</p>
+    <h1 data-enter>Page not found.</h1>
+    <p>This address doesn’t lead to a published page.</p>
+    <a class="btn primary" href={link()}>Return home</a>
+  </div>
+</SiteLayout>

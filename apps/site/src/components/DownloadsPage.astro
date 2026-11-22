@@ -1,0 +1,111 @@
+---
+import type { Product } from '../lib/content';
+import { channelLabels, latestForPlatform } from '../lib/releases';
+import { githubReleaseRepository, repository } from '../lib/site';
+import '../styles/downloads.css';
+import AppNav from './AppNav.astro';
+import DownloadList from './DownloadList.astro';
+import Field from './Field.astro';
+import GitHubMark from './GitHubMark.astro';
+import ReleaseArchive from './ReleaseArchive.astro';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  apps: Product[];
+  app?: Product | undefined;
+}
+const { apps, app } = Astro.props;
+const single = apps.length === 1 ? apps[0] : undefined;
+const available = apps.some((product) => product.data.downloads.length > 0);
+const latest =
+  single?.data.targets.flatMap((platform) => latestForPlatform(single, platform)) ?? [];
+const singleFile = latest.length === 1 ? latest[0] : undefined;
+const github = single && githubReleaseRepository(single.data.releases);
+const platforms =
+  single &&
+  new Intl.ListFormat('en').format(
+    single.data.targets.map((target) => (target === 'Desktop' ? 'desktop' : target)),
+  );
+let summary = 'Public builds will appear here as the ZeroCloud apps reach their first release.';
+if (single && !available) {
+  summary = `${single.data.name} is awaiting its first public release for ${platforms}.`;
+} else if (available) {
+  summary = single
+    ? `Get the published files for ${single.data.name}. Versions are listed by platform.`
+    : 'Choose an app to find its published files and release history.';
+}
+
+const glyph = [
+  {
+    part: 'arrow',
+    rows: [
+      '    123    ',
+      '    234    ',
+      '    344    ',
+      '  3444443  ',
+      '   44443   ',
+      '    443    ',
+      '     4     ',
+    ],
+  },
+  { part: 'tray', rows: ['3         3', '44444444432'] },
+];
+---
+
+<header class="downloads-cover">
+  <Field variant="downloads" />
+  <h1 data-enter><RevealText text={app ? `${app.data.shortName} downloads` : 'Downloads'} /></h1>
+  <p class="downloads-intro" data-enter>{summary}</p>
+  <div class="downloads-action">
+    {singleFile ? (
+      <a class="btn reversed" href={singleFile.url}>
+        {singleFile.channel === 'stable'
+          ? 'Download'
+          : `Download ${channelLabels[singleFile.channel]}`}{' '}
+        for {singleFile.platform}
+      </a>
+    ) : single && available ? (
+      <a class="btn reversed" href={`#builds-${single.id}`}>
+        Choose a file
+      </a>
+    ) : apps.length > 1 ? (
+      <nav class="download-jumps" aria-label="Jump to an app">
+        {apps.map((product) => (
+          <a href={`#builds-${product.id}`}>{product.data.name}</a>
+        ))}
+      </nav>
+    ) : (
+      <a class="btn reversed" href={single?.data.releases ?? repository}>
+        {(github || !single) && <GitHubMark />}
+        {single ? (github ? 'GitHub releases' : 'Release history') : 'Visit the project'}
+      </a>
+    )}
+    <a class="archive-jump" href="#release-archive"
+      >Browse the archive <span aria-hidden="true">↓</span></a
+    >
+  </div>
+  <div class="download-glyph" aria-hidden="true" data-motion-loop>
+    {glyph.map(({ part, rows }) => (
+      <span class={`download-${part}`}>
+        {rows.map((row, y) =>
+          Array.from(
+            row,
+            (weight, x) =>
+              weight !== ' ' && (
+                <i
+                  style={{
+                    'grid-area': `${y + 1} / ${x + 1}`,
+                    '--weight': Number(weight) / 4,
+                    '--ripple-delay': part === 'tray' ? `${Math.abs(x - 5) * 48}ms` : undefined,
+                  }}
+                ></i>
+              ),
+          ),
+        )}
+      </span>
+    ))}
+  </div>
+</header>
+{app && <AppNav app={app} current="downloads" />}
+<DownloadList apps={apps} family={!app} />
+<ReleaseArchive apps={apps} />

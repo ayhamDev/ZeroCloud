@@ -1,0 +1,90 @@
+---
+import type { Product } from '../lib/content';
+import { channelLabels, latestForPlatform } from '../lib/releases';
+import { appLink, githubReleaseRepository, guideLink } from '../lib/site';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  apps: Product[];
+  family?: boolean;
+}
+const { apps, family = false } = Astro.props;
+---
+
+<div class="release-catalog">
+  {apps.map((app) => (
+    <section class="release-entry" id={`builds-${app.id}`} aria-label={`${app.data.name} releases`}>
+      <header class="release-summary">
+        <p class="release-stage">{app.data.status}</p>
+        <h2 data-enter>
+          <RevealText text={app.data.name} />
+        </h2>
+        <p class="release-description">{app.data.description}</p>
+        {(family || apps.length > 1 || app.data.downloads.length > 0) && (
+          <div class="release-resources">
+            {family && (
+              <a class="text-link" href={appLink(app.id)}>
+                About {app.data.shortName}
+              </a>
+            )}
+            {(apps.length > 1 || app.data.downloads.length > 0) && (
+              <a class="text-link" href={app.data.releases}>
+                {githubReleaseRepository(app.data.releases) ? 'GitHub releases' : 'Release history'}
+              </a>
+            )}
+          </div>
+        )}
+      </header>
+      <ul class="platform-list" aria-label={`Platforms for ${app.data.name}`}>
+        {app.data.targets.map((platform) => {
+          const files = latestForPlatform(app, platform);
+          const guide = app.data.platformGuides[platform];
+          return (
+            <li>
+              <div class="platform-line">
+                <span
+                  class="platform-icon"
+                  data-platform={platform.toLowerCase()}
+                  aria-hidden="true"
+                >
+                  <i></i>
+                </span>
+                <div class="platform-heading">
+                  <h3>{platform}</h3>
+                  <p>
+                    {files.length
+                      ? `${files.length} release ${files.length === 1 ? 'file' : 'files'}`
+                      : 'Awaiting first build'}
+                  </p>
+                </div>
+                {guide && (
+                  <a class="platform-guide" href={guideLink(guide)}>
+                    {platform} guide
+                  </a>
+                )}
+              </div>
+              {files.length > 0 && (
+                <ul class="published-files" aria-label={`${platform} release files`}>
+                  {files.map((file) => (
+                    <li>
+                      <a href={file.url}>
+                        <span class="file-name">
+                          <span class="visually-hidden">Download </span>
+                          {file.file}
+                        </span>
+                        <span class="file-version">
+                          Version {file.version}
+                          {file.channel !== 'stable' && ` · ${channelLabels[file.channel]}`}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))}
+</div>

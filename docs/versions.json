@@ -29,6 +29,14 @@
     "@capacitor/core": "8.6.2",
     "@capacitor/android": "8.6.2",
     "@capacitor/cli": "8.6.2",
-    "electrobun": "2.0.7"
+    "electrobun": "2.0.7",
+    "astro": "7.4.13",
+    "@astrojs/sitemap": "3.7.6",
+    "@astrojs/check": "0.9.12"
+  },
+  "workspaceOverrides": {
+    "@zerocloud/site": {
+      "typescript": "6.0.3"
+    }
   }
 }

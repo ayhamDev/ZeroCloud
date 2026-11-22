@@ -1,0 +1,81 @@
+---
+import sans from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
+import faviconDark from '@zerocloud/brand/icon-tiny-dark.svg?url';
+import faviconLight from '@zerocloud/brand/icon-tiny-light.svg?url';
+import Footer from '../components/Footer.astro';
+import Masthead from '../components/Masthead.astro';
+import { currentEdition } from '../lib/content';
+import { link, repository } from '../lib/site';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  noIndex?: boolean;
+  article?: boolean;
+}
+const { title, description, noIndex = false, article = false } = Astro.props;
+const app = await currentEdition();
+const name = app?.data.name ?? 'ZeroCloud';
+const canonical = Astro.site && !noIndex ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': article ? 'TechArticle' : 'WebPage',
+  name: title,
+  description,
+  ...(canonical && { url: canonical }),
+  inLanguage: 'en',
+  isPartOf: {
+    '@type': 'WebSite',
+    name,
+    ...(Astro.site && { url: new URL(link(), Astro.site).href }),
+  },
+  about: { '@type': 'Project', name, sameAs: app?.data.source ?? repository },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fafbf9">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <link rel="icon" type="image/svg+xml" href={faviconLight}>
+    <link rel="icon" type="image/svg+xml" media="(prefers-color-scheme: dark)" href={faviconDark}>
+    <link rel="preload" as="font" type="font/woff2" href={sans} crossorigin="anonymous">
+    {noIndex && <meta name="robots" content="noindex, follow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && Astro.site && (
+      <link
+        rel="sitemap"
+        type="application/xml"
+        href={new URL(link('sitemap-index.xml'), Astro.site).href}
+      />
+    )}
+    <meta property="og:type" content={article ? 'article' : 'website'}>
+    <meta property="og:site_name" content={name}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    {!noIndex && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+      />
+    )}
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">Skip to content</a>
+    <Masthead app={app} />
+    <main id="main" tabindex="-1"><slot /></main>
+    <Footer app={app} />
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

@@ -14,7 +14,7 @@ ZeroCloud is a family of apps designed to work on your own devices without depen
 
 The goal is independence: useful tools that keep working without an internet connection, a mandatory online account, or a company's servers remaining available.
 
-**This project is in its setup stage.** The repository contains development infrastructure and minimal application shells. Product features have not been implemented, and there are no releases yet.
+**ZeroCloudShare is in its setup stage.** The project website introduces the family and its first planned app. The Share workspace contains development infrastructure and minimal application shells. There are no app releases yet.
 
 ## What ZeroCloud means
 
@@ -49,6 +49,7 @@ ZeroCloud is the umbrella project. Share is its first product; future products c
 
 ```text
 ZeroCloud/
+├── apps/site/               Astro project website
 ├── products/
 │   └── share/
 │       ├── apps/
@@ -87,6 +88,20 @@ bun run check
 ```
 
 Native build and device-test commands are documented in the [development guide](docs/development.md) and [testing guide](docs/testing.md).
+
+### Project website
+
+The family website includes an app directory, project principles, technology guides, working examples, and downloads. Each app has its own pages within the family site and can also be built as an independent static website.
+
+| From the repository root       | Result                                                                  |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| `bun run dev:site`             | Family website on [localhost:14372](http://127.0.0.1:14372/)            |
+| `bun run dev:app-site share`   | Independent Share website on [localhost:14374](http://127.0.0.1:14374/) |
+| `bun run build:site`           | Static family website in `apps/site/dist/`                              |
+| `bun run build:app-site share` | Static Share website in `apps/site/build/sites/share/`                  |
+| `bun run test:site`            | Desktop and mobile browser checks for both editions                     |
+
+The [website guide](docs/website.md) covers app sites, documentation, release files, and public build settings. Contributors can find the shared typography, brand mark, and motion guidance in the [design system](docs/design-system.md).
 
 ## Development foundation
 
