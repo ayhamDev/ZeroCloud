@@ -1,3 +1,5 @@
+import './desktop-scroll';
+
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 let observer: IntersectionObserver | undefined;
 
