@@ -1,3 +1,8 @@
+.home-sections {
+  display: grid;
+  gap: var(--section-gap);
+  padding-block-start: var(--space-4);
+}
 .family-cover,
 .app-cover {
   position: relative;
@@ -88,7 +93,7 @@
 }
 .section-intro {
   max-width: 46rem;
-  margin: 0 auto clamp(1.8rem, 3.5vw, 3.6rem);
+  margin: 0 auto var(--content-gap);
   text-align: center;
 }
 .section-intro p {
@@ -100,7 +105,7 @@
 .chapter-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.9rem, 1.45vw, 1.65rem);
+  gap: clamp(1.5rem, 2vw, var(--space-6));
 }
 .surface {
   background: var(--surface);
@@ -233,9 +238,6 @@
   margin-bottom: 1.1rem;
   color: var(--muted);
 }
-.home-directory:last-child {
-  padding-block: 0;
-}
 .pull {
   font-size: clamp(1.8rem, 3.5vw, 3.6rem);
   font-weight: 490;
@@ -271,9 +273,6 @@
   background:
     radial-gradient(circle, var(--accent) 0 27%, transparent 32%) left center / 0.5rem 0.48rem
     repeat-x;
-}
-.project-meaning {
-  padding-block-end: 0;
 }
 .meaning-lead {
   display: grid;
@@ -325,8 +324,8 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.2rem, 5vw, 5rem);
   border-block-start: 1px solid var(--line);
-  margin-top: clamp(1.5rem, 3.5vw, 3.5rem);
-  padding-top: clamp(1.3rem, 2.5vw, 2.5rem);
+  margin-top: var(--content-gap);
+  padding-top: clamp(var(--space-5), 3vw, var(--space-7));
 }
 .meaning-index dt {
   margin-bottom: 0.48rem;
@@ -343,7 +342,7 @@
 @media (max-width: 760px) {
   .meaning-lead {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.05rem;
+    gap: var(--space-6);
   }
   .meaning-title {
     font-size: clamp(2rem, 6vw, 3.8rem);
@@ -355,7 +354,7 @@
 @media (max-width: 600px) {
   .meaning-index {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.45rem;
+    gap: var(--space-6);
   }
 }
 @media (forced-colors: active) {

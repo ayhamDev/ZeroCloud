@@ -1,5 +1,5 @@
 .archive {
-  margin-top: clamp(3rem, 6vw, 6rem);
+  margin-top: var(--section-gap);
   padding: clamp(1.1rem, 3.4vw, 3.4rem);
   background: #eef2ed;
   border-radius: var(--radius-cover);

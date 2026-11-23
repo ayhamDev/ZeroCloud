@@ -5,6 +5,7 @@
 }
 html {
   scroll-padding-top: var(--nav-clearance);
+  scroll-padding-block-end: calc(var(--edge-fade) + var(--space-4));
   color-scheme: light;
 }
 body {
@@ -88,7 +89,7 @@ main:focus {
   margin-inline: auto;
 }
 .block {
-  padding-block: clamp(var(--space-7), 6.4vw, 7rem);
+  padding-block: var(--section-gap);
 }
 .eyeline,
 .margin-label {
@@ -317,4 +318,18 @@ summary::-webkit-details-marker {
   padding-left: 1.2rem;
   font-size: 0.8rem;
   color: var(--muted);
+}
+.page-edge-fades {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--canvas), transparent) top / 100% var(--edge-fade) no-repeat,
+    linear-gradient(transparent, var(--canvas)) bottom / 100% var(--edge-fade) no-repeat;
+}
+@media print, (forced-colors: active), (prefers-contrast: more) {
+  .page-edge-fades {
+    display: none;
+  }
 }

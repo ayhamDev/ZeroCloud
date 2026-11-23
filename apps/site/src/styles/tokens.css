@@ -23,6 +23,9 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4rem;
+  --section-gap: clamp(5rem, 9vw, 8rem);
+  --content-gap: clamp(2rem, 4vw, 4rem);
+  --edge-fade: clamp(2rem, 5vh, 3rem);
   --radius-control: 12px;
   --radius-inset: 16px;
   --radius-panel: 28px;

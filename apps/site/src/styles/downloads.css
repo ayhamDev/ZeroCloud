@@ -118,8 +118,8 @@
 }
 .release-catalog {
   display: grid;
-  gap: clamp(3rem, 6vw, 6rem);
-  margin-top: clamp(2rem, 4.2vw, 4.4rem);
+  gap: var(--section-gap);
+  margin-top: var(--section-gap);
 }
 .app-tabs + .release-catalog {
   margin-top: 0;
@@ -359,7 +359,7 @@
 @media (max-width: 740px) {
   .release-entry {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.15rem;
+    gap: var(--space-6);
   }
   .release-description {
     max-width: 48ch;
@@ -381,9 +381,6 @@
   }
   .download-glyph {
     width: 100%;
-  }
-  .release-catalog {
-    margin-top: 1.8rem;
   }
 }
 @media (max-width: 400px) {

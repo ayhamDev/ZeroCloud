@@ -1,5 +1,5 @@
 .site-foot {
-  margin-top: clamp(3.5rem, 7.2vw, 7rem);
+  margin-top: var(--section-gap);
   margin-block-end: max(env(safe-area-inset-bottom), clamp(0.875rem, 2.8vw, 2.5rem));
   border-radius: var(--radius-cover);
   background: #15221c;
@@ -122,7 +122,7 @@
 @media (max-width: 680px) {
   .foot-directory {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.65rem;
+    gap: var(--space-6);
   }
   .foot-note {
     max-width: 23ch;
