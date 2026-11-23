@@ -5,7 +5,6 @@
 }
 html {
   scroll-padding-top: var(--nav-clearance);
-  scroll-padding-block-end: calc(var(--edge-fade) + var(--space-4));
   color-scheme: light;
 }
 body {
@@ -321,12 +320,11 @@ summary::-webkit-details-marker {
 }
 .page-edge-fades {
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto;
+  block-size: var(--edge-fade);
   z-index: 15;
   pointer-events: none;
-  background:
-    linear-gradient(var(--canvas), transparent) top / 100% var(--edge-fade) no-repeat,
-    linear-gradient(transparent, var(--canvas)) bottom / 100% var(--edge-fade) no-repeat;
+  background: linear-gradient(var(--canvas), transparent);
 }
 @media print, (forced-colors: active), (prefers-contrast: more) {
   .page-edge-fades {
