@@ -128,6 +128,7 @@ for (const width of [320, 500, 640, 768, 1024, 1440]) {
     );
     await page.setViewportSize({ width, height: 740 });
     await page.goto('./project/');
+    await page.evaluate(() => document.fonts.ready);
     // Stress the layout with the maximum four featured cards, long descriptions and six categories.
     // The catalog unit fixture separately verifies selection from 48 synthetic app records.
     const apps = page.locator('.nav-folder').first();
@@ -183,7 +184,13 @@ for (const width of [320, 500, 640, 768, 1024, 1440]) {
       const header = page.locator('.masthead');
       if (docked) await expect(header).toHaveAttribute('data-stuck', '');
       else await expect(header).not.toHaveAttribute('data-stuck', '');
+      await page.locator('.primary-nav').evaluate(async (element) => {
+        await Promise.all(
+          element.getAnimations().map((animation) => animation.finished.catch(() => {})),
+        );
+      });
       await apps.locator('summary').click();
+      await expect(apps).toHaveAttribute('data-menu-state', 'open');
       const panel = apps.locator('.mega-panel');
       await expect(panel).toBeVisible();
       await expect(panel.locator('.mega-card')).toHaveCount(4);
