@@ -305,6 +305,7 @@ test.describe('static HTML', () => {
     ]) {
       await page.goto(route);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         route,
@@ -313,6 +314,7 @@ test.describe('static HTML', () => {
     await page.locator('.nav-folder summary').filter({ hasText: 'Docs' }).click();
     await page.getByRole('link', { name: 'Hub documentation', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'No guides yet.' })).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

@@ -9,7 +9,7 @@ Read the root `AGENTS.md`, current package/workflow files, and the [release play
 
 ## Branches and scope
 
-- Use short branches from current `main`: `codex/feat-<topic>`, `codex/fix-<topic>` or `codex/release-<product>-<version>`. Inspect the checkout first. Preserve existing uncommitted work; never reset it or bundle unrelated changes into a release.
+- Use short, task-based branches from current `main`: `feat/<topic>`, `fix/<topic>` or `release/<product>-<version>`. Keep assistant names, branding, attribution and co-author trailers out of branch names, commits, PRs and releases. Delete completed feature branches after an authorized merge. Inspect the checkout first. Preserve existing uncommitted work; never reset it or bundle unrelated changes into a release.
 - Keep one root Bun workspace, Git repository and `bun.lock`. Version only the owning product. Website, Share and Hub releases are independent.
 - For setup-only requests, prepare the workflow without committing, pushing, merging, tagging, publishing or deploying. For an actual release request, follow the operations and environment already authorized by the user; do not request the same authorization again.
 

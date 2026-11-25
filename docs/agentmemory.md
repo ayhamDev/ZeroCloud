@@ -1,8 +1,8 @@
 # ZeroCloud project memory
 
-AgentMemory 0.9.33 is development tooling for this repository. It uses the existing root Bun workspace and lockfile. Codex configuration lives in `.codex/config.toml`; the 17 upstream memory skills are installed locally under `.agents/skills`. No user-level Codex configuration or global capture hooks are installed.
+AgentMemory 0.9.33 is development tooling for this repository. It uses the existing root Bun workspace and lockfile. The [project MCP configuration](../.codex/config.toml) and the 17 upstream memory skills under `.agents/skills` are repository-local. No user-level agent configuration or global capture hooks are installed.
 
-The project launcher starts an isolated instance automatically when Codex opens its MCP connection. Open a new Codex session in this trusted project after setup so it loads the server and skills. An already-running chat can use the REST fallback commands below.
+The project launcher starts an isolated instance automatically when the coding agent opens its MCP connection. Open a new session in this trusted project after setup so it loads the server and skills. An already-running chat can use the REST fallback commands below.
 
 The MCP entry's `cwd` names this checkout explicitly. Update it if the repository is moved to another path.
 
@@ -40,7 +40,7 @@ The `.agentmemory` directory is ignored by Git. It contains the actual long-term
 
 The launcher supplies a separate child-process profile, explicit data directory, environment file, secret, and ports. It forwards OS/network settings instead of inherited AgentMemory or AI-provider configuration. REST and viewer listeners bind to loopback. A server using a different secret will be rejected rather than reused. All memory tooling stays out of the product applications.
 
-Use this project's launcher instead of the upstream `connect codex` command, which writes user-level configuration. Do not import other repositories or chat histories into this instance. This setup uses explicit curated memories; it does not install automatic transcript capture.
+Use this project's launcher instead of the upstream host connector, which writes user-level configuration. Do not import other repositories or chat histories into this instance. This setup uses explicit curated memories; it does not install automatic transcript capture.
 
 ## Recall and retention
 
@@ -54,6 +54,6 @@ Current instructions and source files take precedence over historical memories. 
 2. If a port is occupied by another service, inspect that service; do not kill it or connect to it automatically. This project reserves ports 3211, 3213, and 49234.
 3. Restart only this instance with `bun run memory stop` followed by `bun run memory start`. The same data directory and secret are reused.
 4. If dependencies are missing, run `bun install --frozen-lockfile` from the root. Initial startup downloads and verifies the pinned iii-engine 0.25.1 and registry workers `state@0.22.22` and `http@0.22.8`.
-5. If Codex does not list the project MCP server, open a fresh session in the trusted ZeroCloud project and inspect `.codex/config.toml`.
+5. If the memory tools are not listed, open a fresh session in the trusted ZeroCloud project and inspect the [project MCP configuration](../.codex/config.toml).
 
 Upstream installation instructions: <https://raw.githubusercontent.com/rohitg00/agentmemory/main/INSTALL_FOR_AGENTS.md>. Skills were installed from source revision `5c9e2e698bda138dcb7de50ee4dd3260ee4fb8eb` using the skill installer with this repository's `.agents/skills` as the destination.

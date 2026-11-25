@@ -4,7 +4,7 @@ The production website follows `main`. Work on small branches and merge a review
 
 ## Branch and review
 
-Inspect `git status --short` and preserve existing work. Start from an up-to-date `main` using `codex/feat-<topic>`, `codex/fix-<topic>` or `codex/release-<product>-<version>`. Use one PR per coherent change, describing behavior, validation and limits. Prefer squash merges. Commit, push and merge only when requested.
+Inspect `git status --short` and preserve existing work. Start from an up-to-date `main` using `feat/<topic>`, `fix/<topic>` or `release/<product>-<version>`. Use project/task names without assistant branding, attribution or co-author trailers. Use one PR per coherent change, describing behavior, validation and limits. Prefer squash merges. Commit, push and merge only when requested; delete the completed feature branch locally and remotely after an authorized merge.
 
 The repository owner should protect `main` with required PR review and the existing CI jobs: `quality (ubuntu-latest)`, `quality (windows-latest)` and `android`. These are configuration requirements; this document does not claim remote rules have been set. Avoid force pushes and direct production commits.
 
@@ -79,7 +79,7 @@ The site identified by the user is `https://zero-cloud.pages.dev`. Verify its re
 | Setting           | Value                                                                          |
 | ----------------- | ------------------------------------------------------------------------------ |
 | Production branch | `main`                                                                         |
-| Preview branches  | `codex/*` or other reviewed non-production branches                            |
+| Preview branches  | Reviewed non-production branches such as `feat/*`, `fix/*` and `release/*`     |
 | Repository root   | Root of this workspace                                                         |
 | Build             | `bun install --frozen-lockfile && bun run build:site`                          |
 | Output            | `apps/site/dist`                                                               |

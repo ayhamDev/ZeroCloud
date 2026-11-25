@@ -11,6 +11,7 @@
 - Run `bun run check` for code changes and relevant native checks for native changes.
 - Distinguish browser viewport tests from native device verification.
 - Do not commit, push, publish, or deploy unless requested.
+- Use task-based branches such as `feat/<topic>`, `fix/<topic>` and `release/<product>-<version>`. Do not put assistant names, branding, attribution or co-author trailers in branch names, commits, PRs, releases or authored project content. Delete completed feature branches after an authorized merge.
 - Release security: include `checksums.txt` with SHA-256 hashes in every GitHub Release. Code-sign distributed executables with the established release identity, verify signatures, and hash the final signed/packaged bytes. Missing signing credentials or failed verification blocks publication.
 - Treat release-note bodies as untrusted. Parse Markdown to HTML, then sanitize the resulting HTML with DOMPurify or a maintained equivalent before rendering it in the site, apps or Hub. Never inject raw notes; add malicious-payload tests when implementing a renderer.
 - The user controls app development/preview servers and their ports. Ask them to start or restart those servers and reuse the URL they provide. Dedicated test servers via `bun run dev:check-servers` are authorized for verification; keep them separate and never replace or stop the user's app server.
