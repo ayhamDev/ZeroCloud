@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="zcc-motion zcc-once" data-motion-variant="once" width="128" height="128" viewBox="0 0 128 128" fill="#09090b">
+  <title>ZeroCloud Cast app icon</title>
+  <style>
+    .zcc-motion.zcc-once .zcc-screen-dot { opacity: .82; }
+    .zcc-motion.zcc-once .zcc-origin { transform-box: fill-box; transform-origin: center; }
+    .zcc-motion.zcc-once .zcc-wave { opacity: var(--zcc-opacity, 1); transform-box: view-box; transform-origin: 10px 54px; }
+    @media (prefers-reduced-motion: no-preference) {
+    .zcc-motion.zcc-once .zcc-screen-dot { animation: zcc-screen-ready-once var(--product-motion-duration, 1600ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay: calc(var(--zcc-step) * 35ms); }
+    .zcc-motion.zcc-once .zcc-origin { animation: zcc-cast-start-once var(--product-motion-duration, 1600ms) cubic-bezier(.32,.72,0,1) 1 both; }
+    .zcc-motion.zcc-once .zcc-wave { animation: zcc-signal-once var(--product-motion-duration, 1600ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay: var(--zcc-delay); }
+    }
+    [data-motion-product]:not([data-playing]) .zcc-motion.zcc-once .zcc-screen-dot, [data-motion-product]:not([data-playing]) .zcc-motion.zcc-once .zcc-origin, [data-motion-product]:not([data-playing]) .zcc-motion.zcc-once .zcc-wave { animation: none; }
+    @media print { .zcc-motion.zcc-once .zcc-screen-dot, .zcc-motion.zcc-once .zcc-origin, .zcc-motion.zcc-once .zcc-wave { animation: none; } }
+    @keyframes zcc-screen-ready-once { 0% { opacity: .2; } 100% { opacity: .82; } }
+    @keyframes zcc-cast-start-once { 0%, 100% { transform: none; } 36% { transform: scale(1.12); } }
+    @keyframes zcc-signal-once { 0% { opacity: .08; transform: scale(.86); } 58% { opacity: 1; } 100% { opacity: var(--zcc-opacity, 1); transform: none; } }
+    @media print { .zcc-motion.zcc-once * { animation: none !important; } }
+  </style>
+  <rect width="128" height="128" rx="32" fill="#ffc5b5"/>
+  <g transform="translate(16 16) scale(1.5)">
+    <circle class="zcc-screen-dot" style="--zcc-step:0" cx="14" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:1" cx="22" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:2" cx="30" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:3" cx="38" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:4" cx="46" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:5" cx="54" cy="10" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:6" cx="14" cy="18" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:7" cx="14" cy="26" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:8" cx="54" cy="18" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:9" cx="54" cy="26" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:10" cx="54" cy="34" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:11" cx="54" cy="42" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:12" cx="46" cy="42" r="2.6"/>
+    <circle class="zcc-screen-dot" style="--zcc-step:13" cx="38" cy="42" r="2.6"/>
+    <circle class="zcc-origin" cx="10" cy="54" r="3.2"/>
+    <g class="zcc-wave" style="--zcc-opacity:0.72;--zcc-delay:220ms">
+    <circle cx="10" cy="46" r="2.5"/>
+    <circle cx="16" cy="48" r="2.5"/>
+    <circle cx="18" cy="54" r="2.5"/>
+    </g>
+    <g class="zcc-wave" style="--zcc-opacity:0.38;--zcc-delay:400ms">
+    <circle cx="10" cy="36" r="2.5"/>
+    <circle cx="18" cy="38" r="2.5"/>
+    <circle cx="26" cy="44" r="2.5"/>
+    <circle cx="28" cy="54" r="2.5"/>
+    </g>
+  </g>
+</svg>

@@ -7,7 +7,9 @@ interface Props {
 const { variant = 'light' } = Astro.props;
 ---
 
-<div class="ink-field" aria-hidden="true"><canvas data-ink={variant}></canvas></div>
+<div class="ink-field" data-field={variant} aria-hidden="true">
+  <canvas data-ink={variant}></canvas>
+</div>
 <script>
   import { prepareField } from '../scripts/ink';
 

@@ -7,16 +7,16 @@ import { link, repository } from '../lib/site';
 
 <SiteLayout
   title="Project principles — ZeroCloud"
-  description="What zero required cloud dependence means for accounts, data, and connections between your devices."
+  description="ZeroCloud’s principles: control of your data, connections between your devices, and security by default."
 >
   <div class="frame">
     <Breadcrumbs items={[{ text: 'Home', href: link() }, { text: 'Project' }]} />
     <header class="page-lead">
       <p class="eyeline" data-enter>The project</p>
-      <h1 data-enter><RevealText text="What “local” means." /></h1>
+      <h1 data-enter><RevealText text="What ZeroCloud means." /></h1>
       <p data-enter>
-        “Zero” stands for zero required cloud services. A device can still connect to another
-        device, run a local service, or download an update.
+        Zero required cloud services. Your devices can work together while you keep control of your
+        data and the connections you choose.
       </p>
     </header>
     <div class="prose">
@@ -26,16 +26,16 @@ import { link, repository } from '../lib/site';
         loses internet access. ZeroCloud is built around that distinction. Essential workflows
         should continue on hardware the user controls.
       </p>
-      <h2 data-enter><RevealText text="Who holds the data" /></h2>
+      <h2 data-enter><RevealText text="Your devices hold the data" /></h2>
       <p data-enter>
         The design calls for processing and storage on the device. When you choose to share
         something, the intended destination is the device you selected. Finding a peer should also
         be possible locally.
       </p>
-      <h2 data-enter><RevealText text="Where the project stands" /></h2>
+      <h2 data-enter><RevealText text="Secure by default" /></h2>
       <p data-enter>
-        ZeroCloudShare is the first app. Its repository contains a desktop shell, an Android shell,
-        and their shared interface. The team has yet to implement pairing or file transport.
+        Encryption is a requirement for the data an app stores or exchanges. Access should be
+        explicit and controlled by you. These requirements guide every app we are building.
       </p>
       <a class="text-link" href={repository}>Read the project repository ↗</a>
     </div>

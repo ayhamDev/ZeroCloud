@@ -20,9 +20,9 @@ const watch = single && githubReleaseRepository(single.data.releases);
 <section class="archive" id="release-archive" aria-labelledby="archive-heading" data-archive>
   <header class="archive-head">
     <h2 id="archive-heading" data-enter><RevealText text="Release archive" /></h2>
-    <p>Search past builds by version, filename or processor architecture.</p>
+    <p data-enter>Search past builds by version, filename or processor architecture.</p>
   </header>
-  <form class="archive-tools" aria-label="Release filters" hidden>
+  <form class="archive-tools" aria-label="Release filters" hidden data-enter>
     <div class="archive-field archive-query">
       <label for="archive-query">Find a build</label>
       <span class="archive-input"
@@ -73,13 +73,13 @@ const watch = single && githubReleaseRepository(single.data.releases);
       </div>
     )}
   </form>
-  <div class="archive-count">
+  <div class="archive-count" data-enter>
     <p role="status" aria-live="polite" data-archive-count>
       {builds.length} {builds.length === 1 ? 'build' : 'builds'}
     </p>
     <button type="button" data-archive-clear hidden>Clear filters</button>
   </div>
-  <div data-archive-list>
+  <div data-archive-list data-enter>
     {builds.map(({ app, file }) => (
       <details
         class="archive-build"

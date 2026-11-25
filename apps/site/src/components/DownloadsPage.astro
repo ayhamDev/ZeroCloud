@@ -16,7 +16,7 @@ interface Props {
 }
 const { apps, app } = Astro.props;
 const single = apps.length === 1 ? apps[0] : undefined;
-const available = apps.some((product) => product.data.downloads.length > 0);
+const available = apps.some((product) => product.data.downloads.length > 0 || product.data.webUrl);
 const latest =
   single?.data.targets.flatMap((platform) => latestForPlatform(single, platform)) ?? [];
 const singleFile = latest.length === 1 ? latest[0] : undefined;
@@ -26,12 +26,15 @@ const platforms =
   new Intl.ListFormat('en').format(
     single.data.targets.map((target) => (target === 'Desktop' ? 'desktop' : target)),
   );
-let summary = 'Public builds will appear here as the ZeroCloud apps reach their first release.';
+let summary =
+  'Start with Hub, or choose your apps individually. Public builds will appear here as they become available.';
 if (single && !available) {
   summary = `${single.data.name} is awaiting its first public release for ${platforms}.`;
 } else if (available) {
   summary = single
-    ? `Get the published files for ${single.data.name}. Versions are listed by platform.`
+    ? single.data.webUrl && !latest.length
+      ? `Open ${single.data.name} in your browser. App downloads will be listed as they become available.`
+      : `Get the published files for ${single.data.name}. Versions are listed by platform.`
     : 'Choose an app to find its published files and release history.';
 }
 
@@ -52,12 +55,16 @@ const glyph = [
 ];
 ---
 
-<header class="downloads-cover">
+<header class="downloads-cover" data-enter data-reveal-panel>
   <Field variant="downloads" />
   <h1 data-enter><RevealText text={app ? `${app.data.shortName} downloads` : 'Downloads'} /></h1>
   <p class="downloads-intro" data-enter>{summary}</p>
-  <div class="downloads-action">
-    {singleFile ? (
+  <div class="downloads-action" data-enter>
+    {single?.data.webUrl && !latest.length ? (
+      <a class="btn reversed" href={single.data.webUrl}>
+        Open web app
+      </a>
+    ) : singleFile ? (
       <a class="btn reversed" href={singleFile.url}>
         {singleFile.channel === 'stable'
           ? 'Download'
@@ -70,9 +77,10 @@ const glyph = [
       </a>
     ) : apps.length > 1 ? (
       <nav class="download-jumps" aria-label="Jump to an app">
-        {apps.map((product) => (
+        {apps.slice(0, 4).map((product) => (
           <a href={`#builds-${product.id}`}>{product.data.name}</a>
         ))}
+        {apps.length > 4 && <a href="#download-apps">Find another app</a>}
       </nav>
     ) : (
       <a class="btn reversed" href={single?.data.releases ?? repository}>
@@ -84,7 +92,7 @@ const glyph = [
       >Browse the archive <span aria-hidden="true">↓</span></a
     >
   </div>
-  <div class="download-glyph" aria-hidden="true" data-motion-loop>
+  <div class="download-glyph" aria-hidden="true" data-motion-loop data-enter>
     {glyph.map(({ part, rows }) => (
       <span class={`download-${part}`}>
         {rows.map((row, y) =>

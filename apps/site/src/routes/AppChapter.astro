@@ -41,18 +41,22 @@ interface Props {
   chapter?: Chapter;
 }
 const { app, slug, chapter } = Astro.props;
-const title = chapter?.data.title ?? (slug === 'downloads' ? 'Downloads' : 'Technologies');
+const title = chapter?.data.title ?? (slug === 'downloads' ? 'Downloads' : 'Documentation');
 const description =
   chapter?.data.description ??
   (slug === 'downloads'
     ? `Release availability for ${app.data.name}.`
-    : `Technology guides and working examples for ${app.data.name}.`);
+    : `New documentation for ${app.data.name} is on the way.`);
 const rendered = chapter ? await render(chapter) : undefined;
 const Content = rendered?.Content;
 const docs = slug === 'technologies' ? await guidesFor(app) : [];
 ---
 
-<SiteLayout title={`${title} — ${app.data.name}`} description={description} article={!!chapter}
+<SiteLayout
+  title={`${title} — ${app.data.name}`}
+  description={description}
+  article={!!chapter}
+  noIndex={slug === 'technologies' && docs.length === 0}
   ><div class="frame">
     <Breadcrumbs
       items={[

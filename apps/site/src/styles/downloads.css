@@ -12,23 +12,6 @@
   color: #f4f9f3;
   background: #14261d;
 }
-.downloads-cover .ink-field {
-  background-color: #14261d;
-  background-image:
-    url("../assets/downloads-grain.svg"),
-    radial-gradient(
-      ellipse 82% 125% at 94% 132%,
-      #244737 22%,
-      #476a51 48%,
-      #2e513d 64%,
-      transparent 91%
-    ),
-    linear-gradient(112deg, #102319 4%, #1c3528 58%, #233d2e);
-  background-size:
-    160px 160px,
-    100% 100%,
-    100% 100%;
-}
 .downloads-cover h1 {
   grid-area: title;
   max-width: 100%;
@@ -131,20 +114,6 @@
   gap: clamp(2.25rem, 6vw, 6rem);
   scroll-margin-top: 0.75rem;
 }
-.release-stage {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  font: 550 0.81rem / 1.45 var(--code);
-  color: var(--accent);
-}
-.release-stage::before {
-  content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  background: currentColor;
-  border-radius: 50%;
-}
 .release-summary h2 {
   margin-top: 0.65rem;
   font-size: clamp(1.95rem, 3.25vw, 3.5rem);
@@ -171,11 +140,13 @@
   list-style: none;
 }
 .platform-list {
-  border-top: 1px solid var(--line);
+  display: grid;
+  gap: var(--space-3);
 }
 .platform-list > li {
-  padding-block: clamp(1.1rem, 2vw, 1.9rem);
-  border-bottom: 1px solid var(--line);
+  padding: var(--space-5);
+  border-radius: 16px;
+  background: var(--surface);
 }
 .platform-line {
   display: grid;
@@ -242,6 +213,52 @@
   right: 29%;
   top: auto;
   bottom: 0.09em;
+}
+.platform-icon[data-platform="web"] {
+  background: #e5eaf4;
+  color: #344b70;
+}
+.platform-icon[data-platform="web"] i {
+  width: 1.45em;
+  height: 1.1em;
+}
+.platform-icon[data-platform="web"] i::after {
+  left: 0;
+  right: 0;
+  top: 20%;
+}
+.platform-icon[data-platform="google tv"] {
+  background: #f7dfd7;
+  color: #754336;
+}
+.platform-icon[data-platform="google tv"] i {
+  width: 1.5em;
+  height: 1em;
+}
+.platform-icon[data-platform="google tv"] i::after {
+  top: calc(100% + 0.23em);
+  left: 25%;
+  right: 25%;
+}
+.platform-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: 12px;
+  background: var(--ink);
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 550;
+}
+.platform-open:disabled {
+  background: #e1e6e2;
+  color: #526058;
+  cursor: default;
 }
 .platform-heading h3 {
   font-size: clamp(1.35rem, 2vw, 2.05rem);
@@ -389,6 +406,10 @@
   }
   .platform-guide {
     grid-column: 2;
+  }
+  .platform-open {
+    grid-column: 2;
+    justify-self: start;
   }
 }
 @media (forced-colors: active) {

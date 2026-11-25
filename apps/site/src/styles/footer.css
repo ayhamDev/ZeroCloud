@@ -1,10 +1,27 @@
 .site-foot {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   margin-top: var(--section-gap);
   margin-block-end: max(env(safe-area-inset-bottom), clamp(0.875rem, 2.8vw, 2.5rem));
   border-radius: var(--radius-cover);
   background: #15221c;
   color: #f5f7f1;
   --foot-quiet: #b1c1b5;
+}
+.site-foot > .ink-field {
+  inset: 0;
+  opacity: 0.3;
+  background: #15221c url("../assets/downloads-grain.svg") repeat;
+  background-size: 160px 160px;
+}
+.site-foot > .ink-field canvas {
+  transition: none;
+}
+@media print, (forced-colors: active) {
+  .site-foot > .ink-field {
+    display: none;
+  }
 }
 .foot-inner {
   padding-inline: clamp(1.2rem, 4.8vw, 4.75rem);
@@ -52,7 +69,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem 2rem;
-  border-top: 1px solid #46564c;
   margin-top: clamp(1.9rem, 3.8vw, 3.8rem);
   padding-top: clamp(1.1rem, 2.65vw, 2.5rem);
 }
@@ -78,6 +94,11 @@
 }
 .foot-name {
   white-space: nowrap;
+}
+.app-signature .foot-name {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 .foot-signature .loop-mark g:nth-of-type(1) {
   fill: var(--mint);

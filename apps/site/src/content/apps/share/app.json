@@ -1,24 +1,55 @@
 {
-  "name": "ZeroCloudShare",
+  "name": "ZeroCloud Share",
   "shortName": "Share",
   "order": 1,
-  "description": "Direct file sharing between a desktop and an Android device on the same local network.",
-  "introduction": "A file on your laptop should be able to reach the phone beside it, even when the internet is down. Share is being designed around that local connection.",
+  "category": "File sharing",
+  "featured": true,
+  "description": "Send files from any device to any device, whenever you need to.",
+  "introduction": "We’re building Share for the moment you need to hand something over. Choose a file and the device that should receive it.",
+  "overview": {
+    "heading": "A file. A device. A handoff.",
+    "steps": [
+      {
+        "title": "Choose a file",
+        "description": "Start on the device that has what you want to send."
+      },
+      {
+        "title": "Choose the destination",
+        "description": "Pick the device that should receive it, wherever you use Share."
+      },
+      {
+        "title": "Send it directly",
+        "description": "An encrypted handoff is the requirement, from sender to recipient."
+      }
+    ],
+    "note": {
+      "title": "Share sends. Bucket keeps in sync.",
+      "description": "Use Share for a transfer. Choose Bucket when you want a collection to stay available and up to date across devices."
+    }
+  },
   "status": "In development",
-  "targets": ["Desktop", "Android"],
+  "targets": ["Desktop", "Android", "Web"],
+  "faqs": [
+    {
+      "question": "How is Share different from Bucket?",
+      "answer": "Share is for a transfer whenever you need one. Bucket keeps a collection stored and automatically synced across the devices you choose."
+    },
+    {
+      "question": "Does Share only work on a local network?",
+      "answer": "The goal is sharing from any device to any device. A local network is one way for devices to reach each other, rather than the limit of the product."
+    },
+    {
+      "question": "Who receives my files?",
+      "answer": "Share is being designed around the recipient you choose. Device approval and encrypted transfers are requirements for the app."
+    },
+    {
+      "question": "When is a local transfer useful?",
+      "answer": "A reachable local connection can move a file without an internet upload or a cloud transfer fee. Its speed still depends on the devices and the network between them."
+    }
+  ],
   "source": "https://github.com/ayhamDev/ZeroCloud/tree/main/products/share",
   "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
-  "technologies": [
-    "foundations/local-networks",
-    "foundations/bun-workspaces",
-    "interface/react-and-vite",
-    "platforms/electrobun",
-    "platforms/capacitor",
-    "examples/run-the-interface"
-  ],
-  "platformGuides": {
-    "Desktop": "platforms/electrobun",
-    "Android": "platforms/capacitor"
-  },
+  "technologies": [],
+  "platformGuides": {},
   "downloads": []
 }

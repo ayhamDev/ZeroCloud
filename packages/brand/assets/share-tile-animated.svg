@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="zcs-motion zcs-once" data-motion-variant="once" width="128" height="128" viewBox="0 0 128 128" fill="#09090b">
+  <title>ZeroCloud Share app icon</title>
+  <style>
+    .zcs-motion.zcs-once .zcs-plane { opacity: var(--zcs-opacity); transform-box: fill-box; transform-origin: center; }
+    @media (prefers-reduced-motion: no-preference) {
+    .zcs-motion.zcs-once .zcs-plane { animation: zcs-unfold-once var(--product-motion-duration, 1800ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay: var(--zcs-delay); }
+    }
+    [data-motion-product]:not([data-playing]) .zcs-motion.zcs-once .zcs-plane { animation: none; }
+    @media print { .zcs-motion.zcs-once * { animation: none !important; } }
+    @keyframes zcs-unfold-once { 0% { opacity: .28; transform: translate(var(--zcs-x), var(--zcs-y)) scale(.94); } 100% { opacity: var(--zcs-opacity); transform: none; } }
+  </style>
+  <rect width="128" height="128" rx="32" fill="#daeaff"/>
+  <g transform="translate(16 16) scale(1.5)">
+    <g class="zcs-plane zcs-plane-first" style="--zcs-opacity:1;--zcs-delay:0ms;--zcs-x:-2px;--zcs-y:-1px">
+    <circle class="zcs-dot" cx="12" cy="16" r="2.7"/>
+    <circle class="zcs-dot" cx="20" cy="12" r="2.7"/>
+    <circle class="zcs-dot" cx="28" cy="8" r="2.7"/>
+    <circle class="zcs-dot" cx="12" cy="24" r="2.7"/>
+    <circle class="zcs-dot" cx="20" cy="20" r="2.7"/>
+    <circle class="zcs-dot" cx="28" cy="16" r="2.7"/>
+    <circle class="zcs-dot" cx="12" cy="32" r="2.7"/>
+    <circle class="zcs-dot" cx="20" cy="28" r="2.7"/>
+    <circle class="zcs-dot" cx="28" cy="24" r="2.7"/>
+    <circle class="zcs-dot" cx="12" cy="40" r="2.7"/>
+    <circle class="zcs-dot" cx="20" cy="36" r="2.7"/>
+    <circle class="zcs-dot" cx="28" cy="32" r="2.7"/>
+    </g>
+    <g class="zcs-plane zcs-plane-second" style="--zcs-opacity:.62;--zcs-delay:180ms;--zcs-x:2px;--zcs-y:1px">
+    <circle class="zcs-dot" cx="36" cy="32" r="2.7"/>
+    <circle class="zcs-dot" cx="44" cy="28" r="2.7"/>
+    <circle class="zcs-dot" cx="52" cy="24" r="2.7"/>
+    <circle class="zcs-dot" cx="36" cy="40" r="2.7"/>
+    <circle class="zcs-dot" cx="44" cy="36" r="2.7"/>
+    <circle class="zcs-dot" cx="52" cy="32" r="2.7"/>
+    <circle class="zcs-dot" cx="36" cy="48" r="2.7"/>
+    <circle class="zcs-dot" cx="44" cy="44" r="2.7"/>
+    <circle class="zcs-dot" cx="52" cy="40" r="2.7"/>
+    <circle class="zcs-dot" cx="36" cy="56" r="2.7"/>
+    <circle class="zcs-dot" cx="44" cy="52" r="2.7"/>
+    <circle class="zcs-dot" cx="52" cy="48" r="2.7"/>
+    </g>
+  </g>
+</svg>

@@ -140,34 +140,9 @@
   gap: var(--space-4);
   flex: none;
 }
-.status-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  width: fit-content;
-  padding: 0.28rem 0.65rem;
-  border-radius: 999px;
-  background: #e2eee4;
-  color: #254c35;
-  font-weight: 570;
-  font-size: 0.76rem;
-}
-.status-tag::before {
-  content: "";
-  width: 0.38rem;
-  height: 0.38rem;
-  border-radius: 50%;
-  background: var(--accent);
-}
 .app-cover {
   background: #17201b;
   color: white;
-}
-.app-cover .ink-field {
-  background-color: #17221b;
-  background-image:
-    repeating-conic-gradient(#ffffff05 0 25%, transparent 0 50%),
-    linear-gradient(110deg, #151c18, #2b4135);
 }
 .app-cover .eyeline {
   color: var(--mint);

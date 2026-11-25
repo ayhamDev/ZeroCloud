@@ -91,7 +91,7 @@ Native build and device-test commands are documented in the [development guide](
 
 ### Project website
 
-The family website includes an app directory, project principles, technology guides, working examples, and downloads. Each app has its own pages within the family site and can also be built as an independent static website.
+The family website includes a searchable app directory, project principles and downloads. ZeroCloud Hub is listed first as an optional app companion, alongside ZeroCloud Share, ZeroCloud Bucket and ZeroCloud Cast. Public documentation is a clean slate for future guides. Each app has its own pages within the family site and can also be built as an independent static website. See the [release playbook](docs/releases.md) for branches, builds, deployment and rollback.
 
 | From the repository root       | Result                                                                  |
 | ------------------------------ | ----------------------------------------------------------------------- |

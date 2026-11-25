@@ -222,10 +222,10 @@ summary::-webkit-details-marker {
   border-width: 0 1.4px 1.4px 0;
   transform: translateY(-1px) rotate(45deg);
 }
-.nav-folder[open] .caret {
+.nav-folder[open]:not([data-menu-state="closing"]) .caret {
   transform: translateY(1px) rotate(225deg);
 }
-.nav-folder[open] summary,
+.nav-folder[open]:not([data-menu-state="closing"]) summary,
 .primary-nav > a[aria-current] {
   background: var(--raised);
   box-shadow: 0 1px 5px #16241614;

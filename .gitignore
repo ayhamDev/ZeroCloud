@@ -1,5 +1,6 @@
 node_modules/
 .cache/
+.agentmemory/
 .astro/
 .turbo/
 .hutch/

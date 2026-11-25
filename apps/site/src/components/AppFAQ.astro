@@ -1,0 +1,28 @@
+---
+import type { Product } from '../lib/content';
+import RevealText from './RevealText.astro';
+
+interface Props {
+  app: Product;
+}
+const { app } = Astro.props;
+---
+
+{app.data.faqs.length > 0 && (
+  <section class="app-faq" aria-labelledby="app-faq-title">
+    <h2 id="app-faq-title" data-enter>
+      <RevealText text={`About ${app.data.shortName}`} />
+    </h2>
+    <div class="app-questions">
+      {app.data.faqs.map((item) => (
+        <details data-enter>
+          <summary>
+            {item.question}
+            <span aria-hidden="true"></span>
+          </summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+)}

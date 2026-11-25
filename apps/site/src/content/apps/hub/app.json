@@ -1,0 +1,51 @@
+{
+  "name": "ZeroCloud Hub",
+  "shortName": "Hub",
+  "order": 0,
+  "category": "App management",
+  "featured": true,
+  "description": "Discover, install and update your ZeroCloud apps in one place.",
+  "introduction": "We’re building Hub to make finding and managing ZeroCloud apps easier. Here’s what we’re working towards.",
+  "overview": {
+    "heading": "A home for your apps.",
+    "steps": [
+      {
+        "title": "Find an app",
+        "description": "Browse the ZeroCloud family and choose what you need."
+      },
+      {
+        "title": "Make it yours",
+        "description": "Get the right build for your device from the same place."
+      },
+      {
+        "title": "Keep it current",
+        "description": "See available updates alongside the apps you use."
+      }
+    ],
+    "note": {
+      "title": "Hub is optional.",
+      "description": "Every app will remain available as a direct download. Use Hub when it suits you."
+    }
+  },
+  "status": "In development",
+  "targets": ["Desktop", "Android", "Web"],
+  "faqs": [
+    {
+      "question": "Do I need Hub to use the other apps?",
+      "answer": "No. Hub is optional. Each ZeroCloud app will remain available on its own."
+    },
+    {
+      "question": "What is Hub for?",
+      "answer": "Hub is being built as one place to discover ZeroCloud apps, install them and keep track of available updates."
+    },
+    {
+      "question": "Can I use Hub in a browser?",
+      "answer": "A Web option is listed alongside the app downloads. There is no public web URL yet."
+    }
+  ],
+  "source": "https://github.com/ayhamDev/ZeroCloud",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [],
+  "platformGuides": {},
+  "downloads": []
+}

@@ -1,8 +1,11 @@
 ---
+import { featuredProducts } from '../lib/catalog';
 import { allApps, guidesFor, type Product } from '../lib/content';
 import { appLink, guideLink, link, repository } from '../lib/site';
+import Field from './Field.astro';
 import GitHubMark from './GitHubMark.astro';
 import LoopMark from './LoopMark.astro';
+import ProductMark from './ProductMark.astro';
 import RevealText from './RevealText.astro';
 
 interface Props {
@@ -10,6 +13,7 @@ interface Props {
 }
 const { app } = Astro.props;
 const products = app ? [app] : await allApps();
+const featured = featuredProducts(products);
 const guides = await guidesFor(app);
 const firstGuide = guides[0];
 const example = guides.find(
@@ -19,6 +23,7 @@ const name = app?.data.name ?? 'ZeroCloud';
 ---
 
 <footer class="site-foot frame">
+  <Field variant="footer" />
   <div class="foot-inner">
     <div class="foot-directory">
       <p class="foot-note" data-enter>
@@ -29,7 +34,8 @@ const name = app?.data.name ?? 'ZeroCloud';
       <nav class="foot-links" aria-label="Footer navigation">
         <div>
           <h2>Explore</h2>
-          {products.map((product) => <a href={appLink(product.id)}>{product.data.name}</a>)}
+          {featured.map((product) => <a href={appLink(product.id)}>{product.data.name}</a>)}
+          {!app && products.length > featured.length && <a href={link('apps/')}>All apps</a>}
           <a href={link('downloads/')}>Downloads</a>
           {!app && <a href={link('project/')}>Project principles</a>}
         </div>
@@ -47,7 +53,9 @@ const name = app?.data.name ?? 'ZeroCloud';
         class:list={['foot-signature', { 'app-signature': !!app }]}
         aria-label={`${name} home`}
       >
-        <LoopMark /><span class="foot-name">{name}</span>
+        {app ? <ProductMark id={app.id} motion="once" /> : <LoopMark />}<span class="foot-name"
+          >{name}</span
+        >
       </a>
       <div class="foot-utilities">
         <a class="foot-source" href={app?.data.source ?? repository}><GitHubMark />GitHub</a>

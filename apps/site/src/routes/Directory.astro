@@ -1,5 +1,7 @@
 ---
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CatalogBrowser from '../components/CatalogBrowser.astro';
+import ProductMark from '../components/ProductMark.astro';
 import RevealText from '../components/RevealText.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { allApps } from '../lib/content';
@@ -10,31 +12,49 @@ const apps = await allApps();
 
 <SiteLayout
   title="App directory — ZeroCloud"
-  description="Explore the ZeroCloud app family. Each app has its own site, design notes, technology guides, and downloads."
+  description="Explore ZeroCloud Hub, Share, Bucket and Cast. Share files, sync a collection or cast a screen across your devices."
   ><div class="frame">
     <Breadcrumbs items={[{ text: 'Home', href: link() }, { text: 'Apps' }]} />
     <header class="page-lead">
       <h1 data-enter><RevealText text="App directory." /></h1>
-      <p data-enter>Each project has its own site, development notes, and release history.</p>
+      <p data-enter>
+        Choose the apps you need. Hub is here to bring them together when you want it.
+      </p>
     </header>
-    <div class="index-list">
-      {apps.map((app) => (
-        <article class="surface directory-item" data-enter>
-          <div>
-            <span class="eyeline">{app.data.targets.join(' / ')}</span>
-            <h2>
-              <a href={appLink(app.id)}>{app.data.name}</a>
-            </h2>
-            <p>{app.data.description}</p>
-          </div>
-          <div class="directory-actions">
-            <span class="status-tag">{app.data.status}</span>
-            <a class="btn primary" href={appLink(app.id)}>
-              Visit app site →
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
+    <CatalogBrowser kind="apps" categories={[...new Set(apps.map((app) => app.data.category))]}>
+      <div class="index-list">
+        {apps.map((app) => (
+          <article
+            class="surface directory-item"
+            data-enter
+            data-catalog-item
+            data-category={app.data.category}
+            data-catalog-key={[
+              app.data.name,
+              app.data.shortName,
+              app.data.description,
+              app.data.category,
+              ...app.data.targets,
+            ]
+              .join(' ')
+              .toLowerCase()}
+          >
+            <div>
+              <ProductMark id={app.id} />
+              <span class="eyeline">{app.data.targets.join(' / ')}</span>
+              <h2>
+                <a href={appLink(app.id)}>{app.data.name}</a>
+              </h2>
+              <p>{app.data.description}</p>
+            </div>
+            <div class="directory-actions">
+              <a class="btn primary" href={appLink(app.id)}>
+                Explore {app.data.shortName}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </CatalogBrowser>
   </div></SiteLayout
 >

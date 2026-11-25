@@ -1,156 +1,86 @@
 ---
-import { allApps, guidesFor } from '../lib/content';
-import { appLink, guideLink, link } from '../lib/site';
+import { featuredProducts } from '../lib/catalog';
+import { allApps } from '../lib/content';
+import { appLink, link } from '../lib/site';
 import CloudMark from './CloudMark.astro';
 import Field from './Field.astro';
-import Mark from './Mark.astro';
+import ProductMark from './ProductMark.astro';
 import ProjectMeaning from './ProjectMeaning.astro';
 import RevealText from './RevealText.astro';
 
 const apps = await allApps();
-const first = apps[0];
-const guides = await guidesFor();
-const notes = guides.filter((item) =>
-  ['platforms/electrobun', 'platforms/capacitor', 'foundations/local-networks'].includes(item.id),
-);
+const featured = featuredProducts(apps);
 ---
 
 <div class="frame home-sections">
-  <section class="family-cover" aria-labelledby="family-title">
+  <section class="family-cover" aria-labelledby="family-title" data-enter data-reveal-panel>
     <Field />
     <div class="cover-type">
       <h1 id="family-title" class="cover-title" data-enter>
-        <span class="cover-line"><RevealText text="Software for" /></span>{' '}<span
-          class="cover-line"
-          ><RevealText text="your own devices." /></span
-        >
+        <span class="cover-line"><RevealText text="Software for" /></span>{' '}
+        <span class="cover-line"><RevealText text="your own devices." /></span>
       </h1>
       <p class="cover-lead" data-enter>
-        ZeroCloud is building apps that work without an internet connection. First up is file
-        sharing across your local network.
+        Share files, sync a collection or cast a screen. Choose the apps that fit your devices.
       </p>
       <div class="actions" data-enter>
-        <a class="btn primary" href={link('apps/')}
-          >Explore the apps <span aria-hidden="true">→</span></a
-        >
+        <a class="btn primary" href={link('apps/')}>Explore the apps</a>
         <a class="text-link" href="#what-is-zerocloud">What ZeroCloud means</a>
       </div>
     </div>
     <CloudMark />
   </section>
   <ProjectMeaning />
-  <section class="principle-strip" aria-labelledby="why-local">
+  <section class="principle-strip" aria-labelledby="philosophy-title">
     <div class="principle-copy">
-      <h2 id="why-local" class="eyeline" data-enter>For ZeroCloudShare</h2>
+      <h2 id="philosophy-title" class="eyeline" data-enter>Our philosophy</h2>
       <p class="pull" data-enter>
-        <RevealText
-          text="The router can lose its internet connection and still connect the devices in your room."
-        />
+        <RevealText text="Your devices. Your data. Your choice." />
       </p>
-      <a class="text-link" href={link('project/')}
-        >What “local” means <span aria-hidden="true">→</span></a
-      >
     </div>
-    <div class="local-questions">
-      <details open>
-        <summary>When is a local transfer faster?</summary>
-        <p>
-          A local transfer uses the available speed between your devices. Sending a video through
-          cloud storage adds an internet upload and a download. A slow Wi-Fi link can still limit
-          the local route.
-        </p>
-      </details>
-      <details>
-        <summary>Who gets a copy of the file?</summary>
-        <p>
-          Share is being designed for a handoff between the sender and the recipient they choose.
-          Keeping that handoff local removes a hosted copy. Peer authentication and encryption are
-          still being designed.
-        </p>
-      </details>
-      <details>
-        <summary>What does a local transfer cost?</summary>
-        <p>
-          On your own network the direct route uses zero cloud storage and incurs no cloud transfer
-          fee. Your devices and existing network supply the connection.
-        </p>
-      </details>
+    <div class="family-security" data-enter>
+      <h3>Secure by default.</h3>
+      <p>
+        Encryption is a requirement for the data our apps store or exchange. You choose which
+        devices have access.
+      </p>
+      <a class="text-link" href={link('project/')}>Read our principles</a>
     </div>
   </section>
   <section class="home-directory" aria-labelledby="directory-title">
     <div class="section-intro">
       <h2 id="directory-title" data-enter><RevealText text="Inside ZeroCloud" /></h2>
+      <p data-enter>One app at a time. Your choice, always.</p>
     </div>
-    <div class="portal-grid">
-      {first && (
-        <article class="surface portal product-portal" data-enter>
-          {first.id === 'share' ? (
-            <div class="peer-strip">
-              <span class="peer inset">Desktop</span>
-              <span class="dot-path" aria-hidden="true"></span>
-              <span class="peer inset">Android</span>
-            </div>
-          ) : (
-            <div class="inset app-inset">
-              <Mark />
-              <strong>{first.data.shortName}</strong>
-            </div>
-          )}
+    <div class="product-grid">
+      {featured.map((app) => (
+        <article class="product-card" data-product={app.id} data-enter>
+          <div class="product-card-top">
+            <ProductMark id={app.id} motion="once" />
+            {app.id === 'hub' && <span class="product-kind">Optional companion</span>}
+          </div>
           <div>
-            <h3>{first.data.name}</h3>
-            <p>{first.data.description}</p>
+            <h3>{app.data.name}</h3>
+            <p>{app.data.description}</p>
           </div>
-          <a class="portal-link" href={appLink(first.id)}>
-            Visit app site <span aria-hidden="true">↗</span>
-          </a>
+          <div class="product-card-bottom">
+            <a class="text-link" href={appLink(app.id)}>
+              Explore {app.data.shortName}
+            </a>
+          </div>
         </article>
-      )}
-      <article class="surface portal" data-enter>
-        <div>
-          <h3>Technology library</h3>
-          <p>Read how the desktop and Android shells connect to the shared interface.</p>
-        </div>
-        <ul class="inset mini-index">
-          {notes.map((note) => (
-            <li>
-              <a href={guideLink(note.id)}>
-                {note.data.title}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        <a class="portal-link" href={link('docs/')}
-          >Browse documentation <span aria-hidden="true">→</span></a
-        >
-      </article>
-      <article class="surface portal" data-enter>
-        <div>
-          <h3>Downloads</h3>
-          <p>
-            {first
-              ? `Release availability for ${first.data.name}.`
-              : 'Release availability by platform.'}
-          </p>
-        </div>
-        {first && (
-          <div class="inset platform-inset">
-            {first.data.targets.map((target) => (
-              <div>
-                <strong>{target}</strong>
-                <span>
-                  {first.data.downloads.some((d) => d.platform === target)
-                    ? 'Available'
-                    : 'Pre-release'}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-        <a class="portal-link" href={link('downloads/')}
-          >Check releases <span aria-hidden="true">→</span></a
-        >
-      </article>
+      ))}
     </div>
+    {apps.length > featured.length && (
+      <p class="directory-note" data-enter>
+        <a class="text-link" href={link('apps/')}>
+          Explore all {apps.length} apps
+        </a>
+      </p>
+    )}
+    <p class="directory-note" data-enter>
+      Hub brings your apps together. Individual downloads remain yours to choose.
+      <a class="text-link" href={link('downloads/')}>See download availability</a>
+    </p>
   </section>
 </div>

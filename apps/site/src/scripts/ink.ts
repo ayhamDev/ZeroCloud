@@ -12,9 +12,11 @@ export function prepareField(canvas: HTMLCanvasElement) {
   const events = new AbortController();
   const options = { passive: true, signal: events.signal };
   const palette = canvas.dataset.ink;
-  const variant = palette === 'dark' || palette === 'downloads' ? palette : 'light';
+  const variant =
+    palette === 'dark' || palette === 'downloads' || palette === 'footer' ? palette : 'light';
+  const fixed = variant === 'downloads' || variant === 'footer';
   let visible = false;
-  let readyToPaint = variant === 'downloads';
+  let readyToPaint = fixed;
   let pending = false;
   let frame = 0;
   let worker: Worker | undefined;
@@ -50,10 +52,15 @@ export function prepareField(canvas: HTMLCanvasElement) {
     frame = 0;
     if (!canPaint() || !worker) return;
     const rect = canvas.getBoundingClientRect();
-    const width = Math.max(1, Math.min(960, Math.round(rect.width)));
-    const height = Math.max(1, Math.round((width * rect.height) / Math.max(1, rect.width)));
-    const phase =
-      variant === 'downloads' ? 0.48 : 0.48 - (rect.top / Math.max(400, innerHeight)) * 0.55;
+    // The footer is a static texture. Bound both dimensions, including on tall
+    // phone layouts; repaint only when its surface needs an update.
+    const scale =
+      variant === 'footer'
+        ? Math.min(1, 512 / Math.max(1, rect.width, rect.height))
+        : Math.min(1, 960 / Math.max(1, rect.width));
+    const width = Math.max(1, Math.round(rect.width * scale));
+    const height = Math.max(1, Math.round(rect.height * scale));
+    const phase = fixed ? 0.48 : 0.48 - (rect.top / Math.max(400, innerHeight)) * 0.55;
     worker.postMessage({ width, height, phase } satisfies FieldMessage);
   }
   function schedule() {
@@ -71,7 +78,7 @@ export function prepareField(canvas: HTMLCanvasElement) {
     schedule();
   });
   observer.observe(canvas);
-  if (variant !== 'downloads') {
+  if (!fixed) {
     window.addEventListener(
       'scroll',
       () => {

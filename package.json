@@ -15,6 +15,9 @@
     "products/*/packages/*"
   ],
   "scripts": {
+    "memory": "bun run scripts/agentmemory.ts",
+    "dev:check-servers": "bun run scripts/check.ts serve",
+    "check:external": "bun run scripts/check.ts external",
     "build:app-site": "node apps/site/scripts/app-site.mjs build",
     "preview:app-site": "node apps/site/scripts/app-site.mjs preview",
     "dev:app-site": "node apps/site/scripts/app-site.mjs dev",
@@ -52,25 +55,26 @@
     "android:test:compile": "bun run scripts/android.ts compileDebugAndroidTestJavaWithJavac"
   },
   "devDependencies": {
-    "bun": "1.4.5",
+    "@agentmemory/agentmemory": "0.9.33",
+    "@axe-core/playwright": "4.14.0",
     "@biomejs/biome": "2.6.8",
-    "turbo": "2.11.13",
-    "typescript": "7.0.2",
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@playwright/test": "1.65.1",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "8.0.0",
+    "@testing-library/react": "16.3.3",
     "@types/bun": "1.4.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "vitest": "5.1.1",
     "@vitest/coverage-v8": "5.1.1",
+    "bun": "1.4.5",
     "happy-dom": "21.0.4",
-    "@playwright/test": "1.65.1",
-    "@axe-core/playwright": "4.14.0",
-    "@testing-library/react": "16.3.3",
-    "@testing-library/dom": "10.4.2",
-    "@testing-library/jest-dom": "8.0.0",
-    "simple-git-hooks": "2.14.0",
     "lint-staged": "17.6.2",
-    "@commitlint/cli": "21.2.4",
-    "@commitlint/config-conventional": "21.2.4"
+    "simple-git-hooks": "2.14.0",
+    "turbo": "2.11.13",
+    "typescript": "7.0.2",
+    "vitest": "5.1.1"
   },
   "simple-git-hooks": {
     "pre-commit": "bunx --no-install lint-staged",

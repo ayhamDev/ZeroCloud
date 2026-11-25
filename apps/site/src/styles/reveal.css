@@ -8,19 +8,63 @@
   max-inline-size: 100%;
 }
 @media (prefers-reduced-motion: no-preference) {
+  html[data-reveal="pending"] .mast-row > * {
+    opacity: 0;
+  }
+  /* An opacity animation on the row creates a backdrop root and blocks its glass. */
+  html[data-reveal="ready"] .mast-row > * {
+    animation: appbar-arrive 640ms var(--lift) backwards;
+  }
+  html[data-reveal] .mast-row:focus-within > * {
+    opacity: 1;
+    animation: none;
+  }
+  @keyframes appbar-arrive {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  html[data-reveal] [data-enter] {
+    opacity: 0;
+    transform: translate3d(0, var(--enter-y, 24px), 0);
+    transition:
+      opacity 840ms var(--lift),
+      transform 840ms var(--lift);
+    transition-delay: var(--enter-delay, 0ms);
+  }
+  html[data-reveal] [data-reveal-panel] {
+    --enter-y: 0px;
+  }
+  /* Keep hit targets stationary when pointer focus reveals them mid-click. */
+  html[data-reveal] [data-enter]:is(a, button, summary, form, nav, details),
+  html[data-reveal] [data-enter]:has(a, button, input, select, summary, textarea) {
+    --enter-y: 0px;
+  }
+  html[data-reveal] [data-enter].entered {
+    opacity: 1;
+    transform: none;
+  }
+  html[data-reveal] [data-enter]:is(:focus-within, :target, .reveal-now) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .entered .reveal-word {
     clip-path: inset(-0.11em -0.12em -0.16em);
   }
   .entered .reveal-word > span {
     transform-origin: left bottom;
     animation: word-rise 720ms cubic-bezier(0.19, 0.86, 0.24, 1) backwards;
-    animation-delay: calc(var(--word) * 36ms);
+    animation-delay: calc(var(--enter-delay, 0ms) + var(--word) * 36ms);
   }
   .cover-line + .cover-line {
     --line-delay: 90ms;
   }
   .cover-line .reveal-word > span {
-    animation-delay: calc(var(--line-delay, 0ms) + var(--word) * 48ms);
+    animation-delay: calc(var(--enter-delay, 0ms) + var(--line-delay, 0ms) + var(--word) * 48ms);
   }
   .prose h2.entered:not(:has(.reveal-word)) {
     animation: heading-unfold 640ms var(--lift) backwards;
@@ -39,7 +83,7 @@
   }
   @keyframes word-rise {
     from {
-      opacity: 0.18;
+      opacity: 0;
       transform: translateY(90%) rotate(2.4deg);
     }
     to {
@@ -64,5 +108,12 @@
         color: var(--ink);
       }
     }
+  }
+}
+@media print, (forced-colors: active) {
+  html[data-reveal] [data-enter] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

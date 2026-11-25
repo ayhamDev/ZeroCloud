@@ -5,6 +5,8 @@
 @import "./documentation.css";
 @import "./footer.css";
 @import "./reveal.css";
+@import "./navigation.css";
+@import "./products.css";
 
 @media (hover: hover) {
   .flyout a:hover,
@@ -75,19 +77,7 @@
       background-color var(--fast) var(--lift),
       color var(--fast) var(--lift);
   }
-  html .entered:not(:has(.reveal-word)) {
-    animation: settle var(--settle) var(--lift) backwards;
-  }
-  html :is(h1, h2, .pull, .cover-lead).entered:not(:has(.reveal-word)) {
-    animation-name: text-settle;
-  }
-  html .portal:nth-child(2).entered {
-    animation-delay: 65ms;
-  }
-  html .portal:nth-child(3).entered {
-    animation-delay: 120ms;
-  }
-  html .nav-folder[open] .flyout {
+  html .nav-folder[open]:not([data-menu-state]) .flyout {
     animation: settle 0.22s var(--lift) both;
   }
   @supports (animation-timeline: view()) {
@@ -441,9 +431,6 @@
   .inset,
   .btn,
   .primary-nav {
-    border: 1px solid CanvasText;
-  }
-  .status-tag {
     border: 1px solid CanvasText;
   }
   .app-cover {

@@ -1,0 +1,38 @@
+---
+import bucket from '@zerocloud/brand/bucket-icon.svg?raw';
+import animatedBucket from '@zerocloud/brand/bucket-icon-animated.svg?raw';
+import loopBucket from '@zerocloud/brand/bucket-icon-loop.svg?raw';
+import cast from '@zerocloud/brand/cast-icon.svg?raw';
+import animatedCast from '@zerocloud/brand/cast-icon-animated.svg?raw';
+import loopCast from '@zerocloud/brand/cast-icon-loop.svg?raw';
+import hub from '@zerocloud/brand/hub-icon.svg?raw';
+import animatedHub from '@zerocloud/brand/hub-icon-animated.svg?raw';
+import loopHub from '@zerocloud/brand/hub-icon-loop.svg?raw';
+import family from '@zerocloud/brand/icon-current.svg?raw';
+import share from '@zerocloud/brand/share-icon.svg?raw';
+import animatedShare from '@zerocloud/brand/share-icon-animated.svg?raw';
+import loopShare from '@zerocloud/brand/share-icon-loop.svg?raw';
+
+interface Props {
+  id: string;
+  motion?: 'static' | 'once' | 'loop';
+}
+const { id, motion = 'static' } = Astro.props;
+const marks: Record<string, [string, string, string]> = {
+  hub: [hub, animatedHub, loopHub],
+  share: [share, animatedShare, loopShare],
+  bucket: [bucket, animatedBucket, loopBucket],
+  cast: [cast, animatedCast, loopCast],
+};
+const modes = { static: 0, once: 1, loop: 2 } as const;
+const mark = marks[id]?.[modes[motion]] ?? family;
+---
+
+<span
+  class:list={['product-mark', `product-mark-${id}`]}
+  data-motion-mode={motion}
+  data-motion-hub={id === 'hub' && motion !== 'static' ? '' : undefined}
+  data-motion-product={id !== 'hub' && marks[id] && motion !== 'static' ? '' : undefined}
+  aria-hidden="true"
+  set:html={mark}
+/>

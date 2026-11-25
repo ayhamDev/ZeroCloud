@@ -2,6 +2,7 @@
   "verifiedAt": "2026-11-22",
   "bun": "1.4.5",
   "packages": {
+    "@agentmemory/agentmemory": "0.9.33",
     "bun": "1.4.5",
     "@biomejs/biome": "2.6.8",
     "turbo": "2.11.13",

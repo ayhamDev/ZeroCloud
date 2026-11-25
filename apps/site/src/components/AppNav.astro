@@ -11,7 +11,7 @@ const chapters = await chaptersFor(app);
 const items = [
   { title: 'Overview', slug: '' },
   ...chapters.map((entry) => ({ title: entry.data.title, slug: chapterSlug(entry) })),
-  { title: 'Technologies', slug: 'technologies' },
+  { title: 'Documentation', slug: 'technologies' },
   { title: 'Downloads', slug: 'downloads' },
 ];
 ---

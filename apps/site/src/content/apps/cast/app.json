@@ -1,0 +1,52 @@
+{
+  "name": "ZeroCloud Cast",
+  "shortName": "Cast",
+  "order": 3,
+  "category": "Screen casting",
+  "featured": true,
+  "description": "Cast from any device to any device, including your Google TV.",
+  "introduction": "We’re building Cast to bring one device’s screen onto another. Choose where to watch, present or share a screen.",
+  "overview": {
+    "heading": "Your screen. On the screen you choose.",
+    "steps": [
+      { "title": "Choose a screen", "description": "Start with the device you want to cast from." },
+      {
+        "title": "Choose a destination",
+        "description": "Connect to another device, a browser or Google TV."
+      },
+      {
+        "title": "Start casting",
+        "description": "Approved recipients and an encrypted connection are requirements."
+      }
+    ],
+    "note": {
+      "title": "A place for your bigger screen.",
+      "description": "Google TV is included in the platform plan, alongside desktop, Android and the Web. Public builds and web links will appear in Downloads."
+    }
+  },
+  "status": "In development",
+  "targets": ["Desktop", "Android", "Google TV", "Web"],
+  "faqs": [
+    {
+      "question": "Which direction can I cast?",
+      "answer": "The product goal is any device to any device. Cast is being designed around choosing a source and a destination, rather than a fixed phone and TV pairing."
+    },
+    {
+      "question": "Will Cast support Google TV?",
+      "answer": "Google TV is a planned target and has its own entry in Downloads. There is no published build to download yet."
+    },
+    {
+      "question": "Will there be a Web version?",
+      "answer": "Yes, the Web is part of the platform plan. The Open web app action will become available when a public URL is ready."
+    },
+    {
+      "question": "Who can see my screen?",
+      "answer": "Cast is being designed for the destination you approve. Encrypted connections and control over who receives the screen are required parts of the product."
+    }
+  ],
+  "source": "https://github.com/ayhamDev/ZeroCloud",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [],
+  "platformGuides": {},
+  "downloads": []
+}

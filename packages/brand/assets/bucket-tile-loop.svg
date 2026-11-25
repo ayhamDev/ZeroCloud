@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="zcb-motion zcb-loop" data-motion-variant="loop" width="128" height="128" viewBox="0 0 128 128" fill="#09090b">
+  <title>ZeroCloud Bucket app icon</title>
+  <style>
+    .zcb-motion.zcb-loop .zcb-shell, .zcb-motion.zcb-loop .zcb-layer { transform-box: fill-box; transform-origin: center; }
+    .zcb-motion.zcb-loop .zcb-layer { opacity: var(--zcb-opacity, 1); }
+    @media (prefers-reduced-motion: no-preference) {
+    .zcb-motion.zcb-loop .zcb-shell { animation: zcb-container-rest-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; }
+    .zcb-motion.zcb-loop .zcb-layer { animation: zcb-copy-flow-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; animation-delay: var(--zcb-delay); }
+    }
+    [data-motion-product]:not([data-playing]) .zcb-motion.zcb-loop .zcb-shell, [data-motion-product]:not([data-playing]) .zcb-motion.zcb-loop .zcb-layer { animation: none; }
+    @media print { .zcb-motion.zcb-loop * { animation: none !important; } }
+    @keyframes zcb-container-rest-loop { 0%, 12%, 74%, 100% { transform: none; } 36% { transform: translateY(1px); } }
+    @keyframes zcb-copy-flow-loop { 0%, 12%, 74%, 100% { opacity: var(--zcb-opacity,1); transform: none; } 36% { opacity: .92; transform: translateY(-1.5px) scale(1.02); } }
+  </style>
+  <rect width="128" height="128" rx="32" fill="#f5e4c9"/>
+  <g transform="translate(16 16) scale(1.5)">
+    <g class="zcb-shell">
+    <circle class="zcb-dot" cx="12" cy="12" r="2.8"/>
+    <circle class="zcb-dot" cx="20" cy="12" r="2.8"/>
+    <circle class="zcb-dot" cx="44" cy="12" r="2.8"/>
+    <circle class="zcb-dot" cx="52" cy="12" r="2.8"/>
+    <circle class="zcb-dot" cx="14" cy="22" r="2.8"/>
+    <circle class="zcb-dot" cx="16" cy="32" r="2.8"/>
+    <circle class="zcb-dot" cx="18" cy="42" r="2.8"/>
+    <circle class="zcb-dot" cx="24" cy="52" r="2.8"/>
+    <circle class="zcb-dot" cx="32" cy="52" r="2.8"/>
+    <circle class="zcb-dot" cx="40" cy="52" r="2.8"/>
+    <circle class="zcb-dot" cx="46" cy="42" r="2.8"/>
+    <circle class="zcb-dot" cx="48" cy="32" r="2.8"/>
+    <circle class="zcb-dot" cx="50" cy="22" r="2.8"/>
+    </g>
+    <g class="zcb-layer" style="--zcb-opacity:0.62;--zcb-delay:100ms">
+    <circle class="zcb-dot" cx="24" cy="26" r="2.6"/>
+    <circle class="zcb-dot" cx="32" cy="26" r="2.6"/>
+    <circle class="zcb-dot" cx="40" cy="26" r="2.6"/>
+    </g>
+    <g class="zcb-layer" style="--zcb-opacity:0.38;--zcb-delay:300ms">
+    <circle class="zcb-dot" cx="24" cy="34" r="2.6"/>
+    <circle class="zcb-dot" cx="32" cy="34" r="2.6"/>
+    <circle class="zcb-dot" cx="40" cy="34" r="2.6"/>
+    </g>
+  </g>
+</svg>

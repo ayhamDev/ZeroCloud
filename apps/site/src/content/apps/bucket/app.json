@@ -1,0 +1,55 @@
+{
+  "name": "ZeroCloud Bucket",
+  "shortName": "Bucket",
+  "order": 2,
+  "category": "Storage and sync",
+  "featured": true,
+  "description": "Keep your files stored and automatically synced across your devices.",
+  "introduction": "We’re building Bucket as a shared collection that lives on the devices you choose. Each device keeps a copy, and changes follow you automatically.",
+  "overview": {
+    "heading": "Your files, wherever you pick up.",
+    "steps": [
+      {
+        "title": "Create a bucket",
+        "description": "Choose the files and folders you want to keep together."
+      },
+      {
+        "title": "Connect your devices",
+        "description": "Keep encrypted copies on more than one device."
+      },
+      {
+        "title": "Let changes follow you",
+        "description": "Automatic sync and conflict handling are central to the design."
+      }
+    ],
+    "note": {
+      "title": "A new phone. The same bucket.",
+      "description": "The goal is to sync your collection back from another connected device when you replace a phone. Keep another complete, reachable copy so there is something to restore."
+    }
+  },
+  "status": "In development",
+  "targets": ["Desktop", "Android", "Web"],
+  "faqs": [
+    {
+      "question": "How is Bucket different from Share?",
+      "answer": "Share hands a file to another device. Bucket keeps a persistent collection, stores copies on your devices and syncs changes between them."
+    },
+    {
+      "question": "Can I restore my files onto a replacement phone?",
+      "answer": "That is a core use case. The new phone should be able to sync the bucket from another device that still holds a complete copy. The old phone is not the only place the data lives."
+    },
+    {
+      "question": "What happens if two devices change a file?",
+      "answer": "Automatic conflict handling is a product requirement. Bucket is being designed to reconcile changes without leaving you to manage conflict copies; that sync system still needs to be built and verified."
+    },
+    {
+      "question": "Are the copies encrypted?",
+      "answer": "Encryption for stored data and synchronization is a requirement from the start. Security belongs in the core design of Bucket, across every device that holds a copy."
+    }
+  ],
+  "source": "https://github.com/ayhamDev/ZeroCloud",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [],
+  "platformGuides": {},
+  "downloads": []
+}

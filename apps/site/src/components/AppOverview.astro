@@ -1,9 +1,11 @@
 ---
 import { chapterSlug, chaptersFor, type Product } from '../lib/content';
 import { appLink, edition, link } from '../lib/site';
+import AppFAQ from './AppFAQ.astro';
 import AppNav from './AppNav.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import Field from './Field.astro';
+import ProductMark from './ProductMark.astro';
 import RevealText from './RevealText.astro';
 
 interface Props {
@@ -23,35 +25,110 @@ const chapters = await chaptersFor(app);
           { text: app.data.name },
         ]}
   />
-  <section class="app-cover" aria-labelledby="app-title">
-    <Field variant="dark" />
+  <section
+    class="app-cover app-cover-product"
+    aria-labelledby="app-title"
+    data-enter
+    data-reveal-panel
+  >
+    <Field variant="downloads" />
     <div class="app-cover-copy">
-      <p class="eyeline" data-enter>{app.data.status}</p>
       <h1 id="app-title" data-enter><RevealText text={app.data.name} /></h1>
       <p data-enter>{app.data.description}</p>
       <div class="actions" data-enter>
-        <a class="btn reversed" href={appLink(app.id, 'downloads')}>Downloads →</a
-        ><a class="text-link" href={app.data.source}>App source ↗</a>
+        <a class="btn reversed" href={appLink(app.id, 'downloads')}>Downloads</a
+        ><a class="text-link" href={app.data.source}>Project source</a>
+      </div>
+    </div>
+    <div class="app-emblem" data-enter>
+      <div class="app-mark-display">
+        <ProductMark id={app.id} motion="loop" />
       </div>
     </div>
   </section>
   <AppNav app={app} />
-  <div class="app-intro block">
-    <p class="eyeline" data-enter>Overview</p>
-    <p class="pull" data-enter><RevealText text={app.data.introduction} /></p>
-  </div>
-  <div class="chapter-grid">
-    {chapters.map((chapter) => (
-      <a class="surface chapter-tile" href={appLink(app.id, chapterSlug(chapter))} data-enter>
-        <h2>{chapter.data.title}</h2>
-        <p>{chapter.data.description}</p>
-        <span aria-hidden="true">→</span>
-      </a>
-    ))}
-    <a class="surface chapter-tile" href={appLink(app.id, 'technologies')} data-enter
-      ><h2>Technologies</h2>
-      <p>Read the guides and examples selected for {app.data.shortName}.</p>
-      <span aria-hidden="true">→</span></a
-    >
-  </div>
+  <section class="app-overview" aria-labelledby="overview-title">
+    <div class="app-overview-copy">
+      <h2 id="overview-title" data-enter><RevealText text={app.data.overview.heading} /></h2>
+      <p data-enter>{app.data.introduction}</p>
+    </div>
+    <ol class="app-steps">
+      {app.data.overview.steps.map((step, index) => (
+        <li data-enter>
+          <span class="step-number" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <aside class="app-choice" aria-labelledby="choice-title" data-enter>
+    <h2 id="choice-title">{app.data.overview.note.title}</h2>
+    <p>{app.data.overview.note.description}</p>
+  </aside>
+  <AppFAQ app={app} />
+  <nav class="app-resources" aria-label={`${app.data.shortName} resources`}>
+    <a class="surface app-resource" href={appLink(app.id, 'technologies')} data-enter>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 6v15m0-15C9 3 5 3 2 5v14c3-2 7-2 10 1 3-3 7-3 10-1V5c-3-2-7-2-10 1Z"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <h2>Documentation</h2>
+      <p>
+        {app.data.technologies.length
+          ? `Read the ${app.data.shortName} guides.`
+          : `Guides for ${app.data.shortName} will live here.`}
+      </p>
+      <span class="text-link">Visit documentation <span aria-hidden="true">↗</span></span>
+    </a>
+    <a class="surface app-resource" href={appLink(app.id, 'downloads')} data-enter>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 3v12m-5-5 5 5 5-5M4 15v5h16v-5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <h2>Downloads</h2>
+      <p>
+        {app.data.downloads.length
+          ? 'Choose a build for your device.'
+          : 'Public builds will appear here when they are ready.'}
+      </p>
+      <span class="text-link">See downloads <span aria-hidden="true">↗</span></span>
+    </a>
+  </nav>
+  {chapters.length > 0 && (
+    <div class="chapter-grid app-chapters">
+      {chapters.map((chapter) => (
+        <a class="surface chapter-tile" href={appLink(app.id, chapterSlug(chapter))} data-enter>
+          <h2>{chapter.data.title}</h2>
+          <p>{chapter.data.description}</p>
+          <span aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  )}
 </div>

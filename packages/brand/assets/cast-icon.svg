@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
+  <title>ZeroCloud Cast</title>
+  <circle opacity=".82" cx="14" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="22" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="30" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="38" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="46" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="54" cy="10" r="2.6"/>
+  <circle opacity=".82" cx="14" cy="18" r="2.6"/>
+  <circle opacity=".82" cx="14" cy="26" r="2.6"/>
+  <circle opacity=".82" cx="54" cy="18" r="2.6"/>
+  <circle opacity=".82" cx="54" cy="26" r="2.6"/>
+  <circle opacity=".82" cx="54" cy="34" r="2.6"/>
+  <circle opacity=".82" cx="54" cy="42" r="2.6"/>
+  <circle opacity=".82" cx="46" cy="42" r="2.6"/>
+  <circle opacity=".82" cx="38" cy="42" r="2.6"/>
+  <circle cx="10" cy="54" r="3.2"/>
+  <circle opacity="0.72" cx="10" cy="46" r="2.5"/>
+  <circle opacity="0.72" cx="16" cy="48" r="2.5"/>
+  <circle opacity="0.72" cx="18" cy="54" r="2.5"/>
+  <circle opacity="0.38" cx="10" cy="36" r="2.5"/>
+  <circle opacity="0.38" cx="18" cy="38" r="2.5"/>
+  <circle opacity="0.38" cx="26" cy="44" r="2.5"/>
+  <circle opacity="0.38" cx="28" cy="54" r="2.5"/>
+</svg>

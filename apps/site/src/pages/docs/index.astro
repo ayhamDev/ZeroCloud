@@ -10,11 +10,15 @@ const app = await currentEdition();
 const entries = await guidesFor(app);
 const introduction = entries[0];
 const description = app
-  ? `Explore the technologies behind ${app.data.name} and try a working example.`
-  : 'Learn how a local network connects your devices and how Share runs on desktop and Android.';
+  ? `Documentation for ${app.data.name}. A new set of guides is on the way.`
+  : 'A fresh home for ZeroCloud documentation. New guides are on the way.';
 ---
 
-<SiteLayout title={`Documentation — ${app?.data.name ?? 'ZeroCloud'}`} description={description}>
+<SiteLayout
+  title={`Documentation — ${app?.data.name ?? 'ZeroCloud'}`}
+  description={description}
+  noIndex={entries.length === 0}
+>
   <div class="frame library">
     <Breadcrumbs items={[{ text: app?.data.name ?? 'Home', href: link() }, { text: 'Docs' }]} />
     <header class="library-mast">

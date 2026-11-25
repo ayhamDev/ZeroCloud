@@ -1,0 +1,126 @@
+---
+interface Props {
+  kind: 'apps' | 'downloads';
+  categories: string[];
+  filterable?: boolean;
+}
+const { kind, categories, filterable = true } = Astro.props;
+const prefix = `catalog-${kind}`;
+---
+
+<div
+  class="catalog-browser"
+  data-catalog-browser={filterable ? kind : undefined}
+  id={kind === 'downloads' ? 'download-apps' : undefined}
+>
+  {filterable && (
+    <form class="catalog-controls" hidden data-enter>
+      <label class="catalog-field" for={`${prefix}-query`}>
+        <span>Search apps</span>
+        <input
+          id={`${prefix}-query`}
+          type="search"
+          placeholder="Find an app by name or purpose"
+          maxlength="160"
+          autocomplete="off"
+        >
+      </label>
+      <label class="catalog-field catalog-category" for={`${prefix}-category`}>
+        <span>Category</span>
+        <select id={`${prefix}-category`}>
+          <option value="">All categories</option>
+          {categories.map((category) => (
+            <option>{category}</option>
+          ))}
+        </select>
+      </label>
+      <button type="reset" class="catalog-reset">
+        Clear
+      </button>
+    </form>
+  )}
+  {filterable && <p class="catalog-count" role="status" aria-live="polite" hidden></p>}
+  <slot />
+  {filterable && (
+    <div class="catalog-empty" hidden>
+      <h2>No matching apps.</h2>
+      <p>Try a different name or category.</p>
+      <button type="button" class="text-link" data-catalog-clear>
+        Show all apps
+      </button>
+    </div>
+  )}
+</div>
+<script>
+  for (const catalog of document.querySelectorAll<HTMLElement>('[data-catalog-browser]')) {
+    const form = catalog.querySelector<HTMLFormElement>('.catalog-controls');
+    const input = form?.querySelector<HTMLInputElement>('input');
+    const category = form?.querySelector<HTMLSelectElement>('select');
+    const count = catalog.querySelector<HTMLElement>('.catalog-count');
+    const empty = catalog.querySelector<HTMLElement>('.catalog-empty');
+    if (!form || !input || !category || !count || !empty) continue;
+    const items = Array.from(catalog.querySelectorAll<HTMLElement>('[data-catalog-item]'));
+    const queryKey = catalog.dataset.catalogBrowser === 'downloads' ? 'appQuery' : 'q';
+    const address = new URL(location.href);
+    input.value = address.searchParams.get(queryKey) ?? '';
+    const selected = address.searchParams.get('category') ?? '';
+    if (Array.from(category.options).some((option) => option.value === selected))
+      category.value = selected;
+
+    function filter(updateAddress = false) {
+      if (!input || !category || !count || !empty) return;
+      const words = input.value.trim().toLowerCase().split(/\s+/u).filter(Boolean);
+      let matches = 0;
+      for (const item of items) {
+        item.hidden =
+          !words.every((word) => item.dataset.catalogKey?.includes(word)) ||
+          Boolean(category.value && item.dataset.category !== category.value);
+        if (!item.hidden) matches++;
+      }
+      count.textContent = `${matches} ${matches === 1 ? 'app' : 'apps'}`;
+      empty.hidden = matches > 0;
+      if (updateAddress) {
+        const url = new URL(location.href);
+        for (const [key, value] of [
+          [queryKey, input.value.trim()],
+          ['category', category.value],
+        ]) {
+          if (!key) continue;
+          if (value) url.searchParams.set(key, value);
+          else url.searchParams.delete(key);
+        }
+        history.replaceState(null, '', url);
+      }
+    }
+    form.hidden = false;
+    count.hidden = false;
+    form.addEventListener('input', () => filter(true));
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      filter(true);
+    });
+    form.addEventListener('reset', (event) => {
+      event.preventDefault();
+      input.value = '';
+      category.value = '';
+      filter(true);
+    });
+    catalog.querySelector('[data-catalog-clear]')?.addEventListener('click', () => {
+      form.reset();
+      input.focus();
+    });
+    window.addEventListener('hashchange', () => {
+      try {
+        const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (target && items.includes(target) && target.hidden) {
+          form.reset();
+          target.scrollIntoView({
+            block: 'start',
+            behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+          });
+        }
+      } catch {}
+    });
+    filter();
+  }
+</script>

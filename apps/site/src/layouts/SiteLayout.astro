@@ -1,8 +1,12 @@
 ---
 import sans from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 import 'lenis/dist/lenis.css';
+import bucketFavicon from '@zerocloud/brand/bucket-tile.svg?url';
+import castFavicon from '@zerocloud/brand/cast-tile.svg?url';
+import hubFavicon from '@zerocloud/brand/hub-tile.svg?url';
 import faviconDark from '@zerocloud/brand/icon-tiny-dark.svg?url';
 import faviconLight from '@zerocloud/brand/icon-tiny-light.svg?url';
+import shareFavicon from '@zerocloud/brand/share-tile.svg?url';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
 import { currentEdition } from '../lib/content';
@@ -17,6 +21,13 @@ interface Props {
 }
 const { title, description, noIndex = false, article = false } = Astro.props;
 const app = await currentEdition();
+const appFavicons: Record<string, string> = {
+  hub: hubFavicon,
+  share: shareFavicon,
+  bucket: bucketFavicon,
+  cast: castFavicon,
+};
+const appFavicon = app && appFavicons[app.id];
 const name = app?.data.name ?? 'ZeroCloud';
 const canonical = Astro.site && !noIndex ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 const schema = {
@@ -41,10 +52,30 @@ const schema = {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fafbf9">
+    <script is:inline>
+      // Progressive enhancement: HTML stays readable if scripts fail or motion is reduced.
+      try {
+        if (
+          !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+          'IntersectionObserver' in window
+        ) {
+          document.documentElement.dataset.reveal = 'pending';
+          setTimeout(() => {
+            if (document.documentElement.dataset.reveal === 'pending')
+              document.documentElement.removeAttribute('data-reveal');
+          }, 1800);
+        }
+      } catch {}
+    </script>
     <title>{title}</title>
     <meta name="description" content={description}>
-    <link rel="icon" type="image/svg+xml" href={faviconLight}>
-    <link rel="icon" type="image/svg+xml" media="(prefers-color-scheme: dark)" href={faviconDark}>
+    <link rel="icon" type="image/svg+xml" href={appFavicon ?? faviconLight}>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      media="(prefers-color-scheme: dark)"
+      href={appFavicon ?? faviconDark}
+    >
     <link rel="preload" as="font" type="font/woff2" href={sans} crossorigin="anonymous">
     {noIndex && <meta name="robots" content="noindex, follow" />}
     {canonical && <link rel="canonical" href={canonical} />}

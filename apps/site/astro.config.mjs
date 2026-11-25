@@ -1,9 +1,13 @@
-import { existsSync } from 'node:fs';
+import { existsSync, globSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 const app = process.env.ZEROCLOUD_APP;
+const hasGuides =
+  globSync('src/content/guides/**/*.md', {
+    cwd: fileURLToPath(new URL('./', import.meta.url)),
+  }).length > 0;
 if (
   app &&
   (!/^[a-z][a-z0-9-]*$/.test(app) ||
@@ -52,7 +56,17 @@ export default defineConfig({
   output: 'static',
   ...(app && { outDir: `./build/sites/${app}/`, cacheDir: `./.astro/cache/${app}/` }),
   ...(address && { site: address.origin, base: address.pathname }),
-  integrations: [editions, ...(address ? [sitemap()] : [])],
+  integrations: [
+    editions,
+    ...(address
+      ? [
+          sitemap({
+            filter: (page) =>
+              hasGuides || !/\/(?:docs|technologies)(?:\/|$)/u.test(new URL(page).pathname),
+          }),
+        ]
+      : []),
+  ],
   trailingSlash: 'always',
   devToolbar: { enabled: false },
   markdown: { syntaxHighlight: false },

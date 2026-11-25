@@ -1,6 +1,6 @@
 import downloadsFragment from '../shaders/downloads.frag?raw';
 
-export type FieldVariant = 'light' | 'dark' | 'downloads';
+export type FieldVariant = 'light' | 'dark' | 'downloads' | 'footer';
 export type FieldMessage =
   | { surface: OffscreenCanvas; variant: FieldVariant }
   | { width: number; height: number; phase: number };
@@ -35,7 +35,7 @@ function createRenderer(canvas: OffscreenCanvas, variant: FieldVariant) {
   if (!gl) return;
   const vertex = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
   const fragment =
-    variant === 'downloads'
+    variant === 'downloads' || variant === 'footer'
       ? downloadsFragment
       : `precision mediump float;
   uniform vec2 res;uniform float phase;uniform float dark;

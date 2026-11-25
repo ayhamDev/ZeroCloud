@@ -38,6 +38,23 @@
   height: 100%;
   opacity: 0;
 }
+.ink-field[data-field="downloads"] {
+  background-color: #14261d;
+  background-image:
+    url("../assets/downloads-grain.svg"),
+    radial-gradient(
+      ellipse 82% 125% at 94% 132%,
+      #244737 22%,
+      #476a51 48%,
+      #2e513d 64%,
+      transparent 91%
+    ),
+    linear-gradient(112deg, #102319 4%, #1c3528 58%, #233d2e);
+  background-size:
+    160px 160px,
+    100% 100%,
+    100% 100%;
+}
 .cover-type,
 .app-cover-copy {
   padding: clamp(2.4rem, 5.25vw, 5.65rem);
@@ -210,33 +227,20 @@
 .principle-copy .text-link {
   margin-top: 1rem;
 }
-.local-questions details {
-  border-bottom: 1px solid var(--line);
+.family-security {
+  padding-top: var(--space-6);
 }
-.local-questions summary {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 50px;
-  padding-block: 1rem;
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
-  font-weight: 540;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
-  list-style: none;
+.family-security h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
-.local-questions summary::after {
-  content: "+";
-  color: var(--accent);
-}
-.local-questions details[open] summary::after {
-  content: "−";
-}
-.local-questions details p {
-  max-width: 58ch;
-  margin-bottom: 1.1rem;
+.family-security p {
+  max-width: 42ch;
+  margin-top: var(--space-4);
   color: var(--muted);
+}
+.family-security .text-link {
+  margin-top: var(--space-5);
 }
 .pull {
   font-size: clamp(1.8rem, 3.5vw, 3.6rem);
@@ -323,7 +327,6 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.2rem, 5vw, 5rem);
-  border-block-start: 1px solid var(--line);
   margin-top: var(--content-gap);
   padding-top: clamp(var(--space-5), 3vw, var(--space-7));
 }

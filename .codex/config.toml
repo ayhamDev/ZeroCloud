@@ -1,0 +1,7 @@
+# Repository-scoped MCP: this entry applies only to the ZeroCloud project.
+[mcp_servers.agentmemory]
+command = "bun"
+args = ["run", "memory", "mcp"]
+cwd = 'C:\Users\ayham\Desktop\work\ZeroCloud'
+startup_timeout_sec = 180
+tool_timeout_sec = 120

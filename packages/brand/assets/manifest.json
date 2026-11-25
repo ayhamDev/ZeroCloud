@@ -108,5 +108,130 @@
     "file": "once-stacked-dark.svg",
     "source": "once",
     "variant": 5
+  },
+  {
+    "file": "hub-icon.svg",
+    "source": "zerocloud-hub",
+    "variant": 1
+  },
+  {
+    "file": "hub-tile.svg",
+    "source": "zerocloud-hub",
+    "variant": 2
+  },
+  {
+    "file": "hub-lockup.svg",
+    "source": "zerocloud-hub",
+    "variant": 3
+  },
+  {
+    "file": "hub-icon-animated.svg",
+    "source": "zerocloud-hub",
+    "variant": 4
+  },
+  {
+    "file": "hub-tile-animated.svg",
+    "source": "zerocloud-hub",
+    "variant": 5
+  },
+  {
+    "file": "hub-icon-loop.svg",
+    "source": "zerocloud-hub",
+    "variant": 6
+  },
+  {
+    "file": "hub-tile-loop.svg",
+    "source": "zerocloud-hub",
+    "variant": 7
+  },
+  {
+    "file": "share-icon.svg",
+    "source": "zerocloud-share",
+    "variant": 1
+  },
+  {
+    "file": "share-tile.svg",
+    "source": "zerocloud-share",
+    "variant": 2
+  },
+  {
+    "file": "share-icon-animated.svg",
+    "source": "zerocloud-share",
+    "variant": 3
+  },
+  {
+    "file": "share-tile-animated.svg",
+    "source": "zerocloud-share",
+    "variant": 4
+  },
+  {
+    "file": "share-icon-loop.svg",
+    "source": "zerocloud-share",
+    "variant": 5
+  },
+  {
+    "file": "share-tile-loop.svg",
+    "source": "zerocloud-share",
+    "variant": 6
+  },
+  {
+    "file": "bucket-icon.svg",
+    "source": "zerocloud-bucket",
+    "variant": 1
+  },
+  {
+    "file": "bucket-tile.svg",
+    "source": "zerocloud-bucket",
+    "variant": 2
+  },
+  {
+    "file": "bucket-icon-animated.svg",
+    "source": "zerocloud-bucket",
+    "variant": 3
+  },
+  {
+    "file": "bucket-tile-animated.svg",
+    "source": "zerocloud-bucket",
+    "variant": 4
+  },
+  {
+    "file": "bucket-icon-loop.svg",
+    "source": "zerocloud-bucket",
+    "variant": 5
+  },
+  {
+    "file": "bucket-tile-loop.svg",
+    "source": "zerocloud-bucket",
+    "variant": 6
+  },
+  {
+    "file": "cast-icon.svg",
+    "source": "zerocloud-cast",
+    "variant": 1
+  },
+  {
+    "file": "cast-tile.svg",
+    "source": "zerocloud-cast",
+    "variant": 2
+  },
+  {
+    "file": "cast-icon-animated.svg",
+    "source": "zerocloud-cast",
+    "variant": 3
+  },
+  {
+    "file": "cast-tile-animated.svg",
+    "source": "zerocloud-cast",
+    "variant": 4
+  },
+  {
+    "file": "cast-icon-loop.svg",
+    "source": "zerocloud-cast",
+    "variant": 5
+  },
+  {
+    "file": "cast-tile-loop.svg",
+    "source": "zerocloud-cast",
+    "variant": 6
   }
 ]

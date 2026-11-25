@@ -12,13 +12,13 @@ Install dependencies from the root with Bun. Do not create nested package-manage
 - Use accessible markup, keyboard interaction, and reduced-motion support when interfaces are implemented.
 - Do not add speculative protocols, services, plugins, or product behavior during setup work.
 
-Run `bun run check` before considering a change ready. Run the relevant native build when native configuration changes.
+The user controls app development/preview servers and their ports. The dedicated `bun run dev:check-servers` helper is authorized for verification; use it when needed, then run `bun run check:external` before considering a change ready. It runs `bun run check` against the dedicated servers. Do not take over the user's app server. Run the relevant native build when native configuration changes.
 
 `bun run setup:hooks` installs staged-file Biome checks and Conventional Commit validation. Example: `chore: configure workspace tooling`.
 
 Vite provides hot updates for the browser development target. The desktop shell consumes the shared production build; rerun `bun run dev:desktop` after shared interface changes. Use Android Studio for native debugging and emulator/device work.
 
-CI checks Windows and Linux and compiles the Android scaffold. A manual workflow packages desktop shells on Windows, Linux, and macOS. No publishing, signing credentials, or deployment is configured.
+CI checks Windows and Linux and compiles the Android scaffold. A manual workflow packages desktop shells on Windows, Linux, and macOS. The [release playbook](docs/releases.md) covers production branches, Cloudflare Pages previews/deployment, per-product versioning, verified app artifacts and rollback. The project-local `zerocloud-release` skill follows it. Publishing and remote hosting/security settings require an actual authorized release or configuration request.
 
 `renovate.json` provides grouped dependency updates after the repository is connected to Renovate. This setup does not connect an external service.
 

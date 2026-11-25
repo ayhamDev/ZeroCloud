@@ -50,7 +50,7 @@
   padding: 0.64rem 0.85rem;
   background: var(--raised);
   color: var(--ink);
-  border: 1px solid #a1afa3;
+  border: 0;
   border-radius: var(--radius-control);
   font: 460 0.94rem / 1.4 var(--font);
 }
@@ -186,7 +186,7 @@
   transform: rotate(225deg);
 }
 .archive-build {
-  border-top: 1px solid #bcc8be;
+  margin-top: var(--space-3);
 }
 .archive-build summary {
   display: grid;

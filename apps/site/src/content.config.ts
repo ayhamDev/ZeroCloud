@@ -14,10 +14,23 @@ const apps = defineCollection({
       name: z.string().min(1),
       shortName: z.string().min(1),
       order: z.number().int().default(100),
+      category: z.string().min(1).default('Utilities'),
+      featured: z.boolean().default(false),
       description: z.string().min(1),
       introduction: z.string().min(1),
+      overview: z.object({
+        heading: z.string().min(1),
+        steps: z
+          .array(z.object({ title: z.string().min(1), description: z.string().min(1) }))
+          .min(1),
+        note: z.object({ title: z.string().min(1), description: z.string().min(1) }),
+      }),
       status: z.string().min(1),
       targets: z.array(z.string()).min(1),
+      webUrl: https.optional(),
+      faqs: z
+        .array(z.object({ question: z.string().min(1), answer: z.string().min(1) }))
+        .default([]),
       source: https,
       releases: https,
       technologies: z.array(z.string()),
@@ -40,6 +53,10 @@ const apps = defineCollection({
         }),
       ),
     })
+    .refine(
+      (app) => !app.webUrl || app.targets.includes('Web'),
+      'A web app URL must have Web declared as a target.',
+    )
     .refine(
       (app) => app.downloads.every((item) => app.targets.includes(item.platform)),
       'Downloads must use a declared target platform.',

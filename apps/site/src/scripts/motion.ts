@@ -2,46 +2,91 @@ import './desktop-scroll';
 
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 let observer: IntersectionObserver | undefined;
+const targets = Array.from(
+  document.querySelectorAll<HTMLElement>(
+    '[data-enter], .prose h2, .prose p, .prose pre, .cover-emblem, .meaning-index > div, ' +
+      '.release-summary, .platform-list > li, .app-tabs, .foot-links, .foot-imprint',
+  ),
+);
+for (const target of targets) target.setAttribute('data-enter', '');
+
+function reveal(target: HTMLElement, delay = 0, immediate = false) {
+  target.style.setProperty('--enter-delay', `${delay}ms`);
+  if (immediate) target.classList.add('reveal-now');
+  target.classList.add('entered');
+  observer?.unobserve(target);
+}
 
 function watchEntrances() {
   observer?.disconnect();
-  if (preference.matches || !('IntersectionObserver' in window)) return;
+  if (preference.matches || !('IntersectionObserver' in window)) {
+    document.documentElement.removeAttribute('data-reveal');
+    for (const target of targets) reveal(target, 0, true);
+    return;
+  }
   observer = new IntersectionObserver(
-    (entries, source) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('entered');
-        source.unobserve(entry.target);
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort(
+          (a, b) =>
+            targets.indexOf(a.target as HTMLElement) - targets.indexOf(b.target as HTMLElement),
+        );
+      for (const [index, entry] of visible.entries()) {
+        reveal(entry.target as HTMLElement, Math.min(index, 5) * 90);
       }
     },
-    { threshold: 0.08 },
+    { threshold: 0.06, rootMargin: '0px 0px -24px 0px' },
   );
-  const targets = document.querySelectorAll('[data-enter], .prose h2, .prose p, .prose pre');
   for (const target of targets) if (!target.classList.contains('entered')) observer.observe(target);
+  document.documentElement.dataset.reveal = 'ready';
 }
 preference.addEventListener('change', watchEntrances);
 watchEntrances();
 
-const loops = document.querySelectorAll<HTMLElement>('[data-motion-loop]');
+function revealPath(target: Element) {
+  for (const entrance of targets)
+    if (entrance === target || entrance.contains(target)) reveal(entrance, 0, true);
+}
+document.addEventListener('focusin', (event) => {
+  if (event.target instanceof Element) revealPath(event.target);
+});
+function revealAnchor() {
+  if (!location.hash) return;
+  try {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) {
+      revealPath(target);
+      for (const entrance of targets) if (target.contains(entrance)) reveal(entrance, 0, true);
+    }
+  } catch {}
+}
+window.addEventListener('hashchange', revealAnchor);
+revealAnchor();
+
+const loops = document.querySelectorAll<HTMLElement>(
+  '[data-motion-loop], [data-motion-hub], [data-motion-product]',
+);
 if ('IntersectionObserver' in window && loops.length) {
+  const visible = new Set<Element>();
+  function refreshLoops() {
+    for (const loop of loops)
+      loop.toggleAttribute(
+        'data-playing',
+        visible.has(loop) && !preference.matches && !document.hidden,
+      );
+  }
   const visibility = new IntersectionObserver((entries) => {
     for (const entry of entries) {
-      entry.target.toggleAttribute(
-        'data-playing',
-        entry.isIntersecting && !preference.matches && !document.hidden,
-      );
+      if (entry.isIntersecting) visible.add(entry.target);
+      else visible.delete(entry.target);
     }
+    refreshLoops();
   });
-  function watchLoops() {
-    visibility.disconnect();
-    for (const loop of loops) {
-      if (!document.hidden && !preference.matches) visibility.observe(loop);
-      else loop.removeAttribute('data-playing');
-    }
-  }
-  preference.addEventListener('change', watchLoops);
-  document.addEventListener('visibilitychange', watchLoops);
-  watchLoops();
+  for (const loop of loops) visibility.observe(loop);
+  preference.addEventListener('change', refreshLoops);
+  document.addEventListener('visibilitychange', refreshLoops);
+  refreshLoops();
 }
 
 const headings = document.querySelectorAll<HTMLElement>('.prose h2[id]');
