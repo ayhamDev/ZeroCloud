@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>ZeroCloud Seek — Brand preview</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fafbf9; color: #09090b; font: 16px/1.5 system-ui, sans-serif; }
+    main { width: min(1120px, calc(100% - 48px)); margin: 64px auto; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 60px); letter-spacing: -.05em; line-height: 1; }
+    header p { margin: 24px 0 48px; max-width: 52ch; color: #555d58; }
+    .variants { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    figure { margin: 0; padding: 32px; background: #f0ecf7; border-radius: 24px; }
+    .tile { display: grid; place-items: center; min-height: 224px; }
+    .tile > svg { width: min(100%, 192px); height: auto; display: block; }
+    figcaption { margin-top: 24px; font-weight: 600; }
+    figcaption span { display: block; color: #555d58; font-size: 14px; font-weight: 400; margin-top: 8px; }
+    .sizes { display: flex; align-items: center; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+    .sizes svg { display: block; width: var(--size); height: var(--size); }
+    .sizes p { margin: 8px 0 0; color: #555d58; font-size: 14px; }
+    @media (max-width: 700px) { main { margin: 32px auto; } .variants { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>ZeroCloud Seek</h1><p>Radio arcs converge on a found device. The beacon replaces the previous open locator corners.</p></header>
+    <div class="variants">
+      <figure><div class="tile"><svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="#09090b"><title>ZeroCloud Seek app icon</title><rect width="128" height="128" rx="32" fill="#dda0ce"/><g transform="translate(16 16) scale(1.5)"><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/><circle cx="48" cy="32" r="4.3"/><circle cx="58" cy="32" r="2.5" opacity="0.6"/></g></svg>
+
+
+</div><figcaption>Static<span>The final composition.</span></figcaption></figure>
+      <figure><div class="tile"><svg xmlns="http://www.w3.org/2000/svg" class="zcseek-motion zcseek-once" data-motion-variant="once" width="128" height="128" viewBox="0 0 128 128" fill="#09090b"><title>ZeroCloud Seek app icon</title><style>
+      .zcseek-motion.zcseek-once .zcseek-core { transform-box:fill-box; transform-origin:center; }
+      @media (prefers-reduced-motion: no-preference) {
+        .zcseek-motion.zcseek-once .zcseek-signal { animation:zcseek-beacon-once var(--product-motion-duration, 1300ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay:var(--part-delay); }
+        .zcseek-motion.zcseek-once .zcseek-core { animation:zcseek-found-once var(--product-motion-duration, 1300ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay:var(--part-delay); }
+      }
+      [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-once .zcseek-signal, [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-once .zcseek-core { animation:none; }
+      @media print { .zcseek-motion.zcseek-once .zcseek-signal, .zcseek-motion.zcseek-once .zcseek-core { animation:none; } }
+      @keyframes zcseek-beacon-once { 0% { opacity:.15; } 100% { opacity:1; } }
+      @keyframes zcseek-found-once { 0% { opacity:.2; transform:scale(.85); } 70% { opacity:1; transform:scale(1.08); } 100% { opacity:1; transform:none; } }
+    </style><rect width="128" height="128" rx="32" fill="#dda0ce"/><g transform="translate(16 16) scale(1.5)"><g class="zcseek-signal" style="--part-delay:0ms"><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/></g><g class="zcseek-signal" style="--part-delay:160ms"><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/></g><g class="zcseek-core" style="--part-delay:300ms"><circle cx="48" cy="32" r="4.3"/></g><circle cx="58" cy="32" r="2.5" opacity="0.6"/></g></svg>
+
+
+</div><figcaption>Once<span>1.6 seconds including stagger.</span></figcaption></figure>
+      <figure><div class="tile"><svg xmlns="http://www.w3.org/2000/svg" class="zcseek-motion zcseek-loop" data-motion-variant="loop" width="128" height="128" viewBox="0 0 128 128" fill="#09090b"><title>ZeroCloud Seek app icon</title><style>
+      .zcseek-motion.zcseek-loop .zcseek-core { transform-box:fill-box; transform-origin:center; }
+      @media (prefers-reduced-motion: no-preference) {
+        .zcseek-motion.zcseek-loop .zcseek-signal { animation:zcseek-beacon-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; animation-delay:var(--part-delay); }
+        .zcseek-motion.zcseek-loop .zcseek-core { animation:zcseek-found-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; animation-delay:var(--part-delay); }
+      }
+      [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-loop .zcseek-signal, [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-loop .zcseek-core { animation:none; }
+      @media print { .zcseek-motion.zcseek-loop .zcseek-signal, .zcseek-motion.zcseek-loop .zcseek-core { animation:none; } }
+      @keyframes zcseek-beacon-loop { 0%,62%,100% { opacity:1; } 22% { opacity:.28; } 40% { opacity:1; } }
+      @keyframes zcseek-found-loop { 0%,16%,62%,100% { transform:none; } 40% { transform:scale(1.12); } }
+    </style><rect width="128" height="128" rx="32" fill="#dda0ce"/><g transform="translate(16 16) scale(1.5)"><g class="zcseek-signal" style="--part-delay:0ms"><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/></g><g class="zcseek-signal" style="--part-delay:160ms"><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/></g><g class="zcseek-core" style="--part-delay:300ms"><circle cx="48" cy="32" r="4.3"/></g><circle cx="58" cy="32" r="2.5" opacity="0.6"/></g></svg>
+
+
+</div><figcaption>Loop<span>A 4.6-second signal cycle with a quiet rest.</span></figcaption></figure>
+    </div>
+    <section class="sizes" aria-label="Static symbol sizes">
+      <div style="--size:24px"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="currentColor"><title>ZeroCloud Seek</title><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/><circle cx="48" cy="32" r="4.3"/><circle cx="58" cy="32" r="2.5" opacity="0.6"/></svg>
+
+
+<p>24px</p></div>
+<div style="--size:64px"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="currentColor"><title>ZeroCloud Seek</title><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/><circle cx="48" cy="32" r="4.3"/><circle cx="58" cy="32" r="2.5" opacity="0.6"/></svg>
+
+
+<p>64px</p></div>
+<div style="--size:128px"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="currentColor"><title>ZeroCloud Seek</title><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/><circle cx="48" cy="32" r="4.3"/><circle cx="58" cy="32" r="2.5" opacity="0.6"/></svg>
+
+
+<p>128px</p></div>
+    </section>
+  </main>
+  <script>
+    const time = new URLSearchParams(location.search).get('t');
+    if (time !== null && Number.isFinite(Number(time))) {
+      for (const animation of document.getAnimations()) {
+        animation.pause();
+        animation.currentTime = Math.max(0, Number(time)) * 1000;
+      }
+    }
+    window.__ready = true;
+  </script>
+</body>
+</html>

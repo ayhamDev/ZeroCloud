@@ -9,6 +9,12 @@ import hub from '@zerocloud/brand/hub-icon.svg?raw';
 import animatedHub from '@zerocloud/brand/hub-icon-animated.svg?raw';
 import loopHub from '@zerocloud/brand/hub-icon-loop.svg?raw';
 import family from '@zerocloud/brand/icon-current.svg?raw';
+import ledger from '@zerocloud/brand/ledger-icon.svg?raw';
+import animatedLedger from '@zerocloud/brand/ledger-icon-animated.svg?raw';
+import loopLedger from '@zerocloud/brand/ledger-icon-loop.svg?raw';
+import seek from '@zerocloud/brand/seek-icon.svg?raw';
+import animatedSeek from '@zerocloud/brand/seek-icon-animated.svg?raw';
+import loopSeek from '@zerocloud/brand/seek-icon-loop.svg?raw';
 import share from '@zerocloud/brand/share-icon.svg?raw';
 import animatedShare from '@zerocloud/brand/share-icon-animated.svg?raw';
 import loopShare from '@zerocloud/brand/share-icon-loop.svg?raw';
@@ -23,6 +29,8 @@ const marks: Record<string, [string, string, string]> = {
   share: [share, animatedShare, loopShare],
   bucket: [bucket, animatedBucket, loopBucket],
   cast: [cast, animatedCast, loopCast],
+  seek: [seek, animatedSeek, loopSeek],
+  ledger: [ledger, animatedLedger, loopLedger],
 };
 const modes = { static: 0, once: 1, loop: 2 } as const;
 const mark = marks[id]?.[modes[motion]] ?? family;

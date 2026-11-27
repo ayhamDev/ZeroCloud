@@ -6,6 +6,8 @@ import castFavicon from '@zerocloud/brand/cast-tile.svg?url';
 import hubFavicon from '@zerocloud/brand/hub-tile.svg?url';
 import faviconDark from '@zerocloud/brand/icon-tiny-dark.svg?url';
 import faviconLight from '@zerocloud/brand/icon-tiny-light.svg?url';
+import ledgerFavicon from '@zerocloud/brand/ledger-tile.svg?url';
+import seekFavicon from '@zerocloud/brand/seek-tile.svg?url';
 import shareFavicon from '@zerocloud/brand/share-tile.svg?url';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
@@ -26,6 +28,8 @@ const appFavicons: Record<string, string> = {
   share: shareFavicon,
   bucket: bucketFavicon,
   cast: castFavicon,
+  seek: seekFavicon,
+  ledger: ledgerFavicon,
 };
 const appFavicon = app && appFavicons[app.id];
 const name = app?.data.name ?? 'ZeroCloud';

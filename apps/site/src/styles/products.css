@@ -25,6 +25,12 @@
 .product-mark-cast {
   --product-tile: #ffc5b5;
 }
+.product-mark-seek {
+  --product-tile: #dda0ce;
+}
+.product-mark-ledger {
+  --product-tile: #f2e99b;
+}
 .signature .product-mark {
   width: 36px;
   height: 36px;
@@ -56,6 +62,16 @@
 .mega-card:has(.product-mark-cast) {
   --card-fill: #fff0eb;
   --card-hover: #ffe4da;
+}
+[data-product="seek"],
+.mega-card:has(.product-mark-seek) {
+  --card-fill: #f3ddec;
+  --card-hover: #eac6df;
+}
+[data-product="ledger"],
+.mega-card:has(.product-mark-ledger) {
+  --card-fill: #f8f5de;
+  --card-hover: #f1ebc4;
 }
 .product-grid {
   display: grid;

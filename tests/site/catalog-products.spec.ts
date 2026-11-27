@@ -24,12 +24,14 @@ test('app FAQs distinguish transfers, persistent sync and casting', async ({ pag
 
 test('downloads show honest Web placeholders and a Google TV option for Cast', async ({ page }) => {
   await page.goto('./downloads/');
-  await expect(page.locator('.release-entry')).toHaveCount(4);
+  await expect(page.locator('.release-entry')).toHaveCount(6);
   for (const [id, shortName] of [
     ['hub', 'Hub'],
     ['share', 'Share'],
     ['bucket', 'Bucket'],
     ['cast', 'Cast'],
+    ['seek', 'Seek'],
+    ['ledger', 'Ledger'],
   ] as const) {
     const app = page.locator(`#builds-${id}`);
     await expect(app.getByRole('heading', { name: 'Web', exact: true })).toBeVisible();
@@ -65,6 +67,8 @@ for (const [slug, root, count] of [
   ['share', 'zcs-motion', 24],
   ['bucket', 'zcb-motion', 19],
   ['cast', 'zcc-motion', 22],
+  ['seek', 'zcseek-motion', 16],
+  ['ledger', 'zcledger-motion', 21],
 ] as const) {
   test(`${slug} has distinct looping and one-time marks with reduced motion fallback`, async ({
     page,
@@ -89,8 +93,8 @@ for (const [slug, root, count] of [
       .toBe(0);
     await expect(page.locator('.app-cover button')).toHaveCount(0);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await page.goto('./');
-    const once = page.locator(`.product-card[data-product="${slug}"] .product-mark`);
+    await page.goto('./downloads/');
+    const once = page.locator(`#builds-${slug} .product-mark`);
     await once.scrollIntoViewIfNeeded();
     await expect(once).toHaveAttribute('data-playing', '');
     await expect(once).toHaveAttribute('data-motion-mode', 'once');

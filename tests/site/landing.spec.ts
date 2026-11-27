@@ -56,7 +56,7 @@ test('opens app cards and grouped documentation links with keyboard and Escape',
   await apps.focus();
   await page.keyboard.press('Enter');
   const panel = page.locator('.nav-folder[open] .mega-panel');
-  await expect(panel.locator('.mega-card')).toHaveCount(4);
+  await expect(panel.locator('.mega-card')).toHaveCount(6);
   await expect(panel.locator('.mega-card').first()).toHaveAccessibleName('ZeroCloud Hub');
   await expect(panel.getByText('Optional companion', { exact: true })).toBeVisible();
   await expect(panel.getByText(/Send files from any device/)).toBeVisible();
@@ -69,8 +69,8 @@ test('opens app cards and grouped documentation links with keyboard and Escape',
   await page.locator('.nav-folder summary').filter({ hasText: 'Docs' }).click();
   const docs = page.locator('.docs-panel');
   await expect(docs.locator('.mega-card')).toHaveCount(0);
-  await expect(docs.locator('.docs-app')).toHaveCount(4);
-  for (const name of ['Hub', 'Share', 'Bucket', 'Cast']) {
+  await expect(docs.locator('.docs-app')).toHaveCount(6);
+  for (const name of ['Hub', 'Share', 'Bucket', 'Cast', 'Seek', 'Ledger']) {
     const section = docs.getByRole('navigation', { name: `ZeroCloud ${name}`, exact: true });
     await expect(section.getByRole('heading')).toHaveAccessibleName(`ZeroCloud ${name}`);
     await expect(section.getByRole('link', { name: `${name} documentation` })).toHaveAttribute(
@@ -148,7 +148,7 @@ test('finds apps by purpose and category with linkable filters and an empty stat
   await page.getByRole('searchbox', { name: 'Search apps' }).fill('no-such-app');
   await expect(page.getByRole('heading', { name: 'No matching apps.' })).toBeVisible();
   await page.getByRole('button', { name: 'Show all apps' }).click();
-  await expect(cards).toHaveCount(4);
+  await expect(cards).toHaveCount(6);
 });
 
 test('filters download apps without making Hub mandatory or breaking direct app anchors', async ({
@@ -230,7 +230,16 @@ test('publishes app metadata and a sitemap that excludes the empty documentation
   request,
   baseURL,
 }) => {
-  for (const path of ['', 'apps/hub/', 'apps/share/', 'apps/bucket/', 'apps/cast/', 'downloads/']) {
+  for (const path of [
+    '',
+    'apps/hub/',
+    'apps/share/',
+    'apps/bucket/',
+    'apps/cast/',
+    'apps/seek/',
+    'apps/ledger/',
+    'downloads/',
+  ]) {
     await page.goto(`./${path}`);
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', baseURL + path);
     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
@@ -246,6 +255,8 @@ test('publishes app metadata and a sitemap that excludes the empty documentation
   expect(sitemap).toContain(`<loc>${baseURL}apps/hub/</loc>`);
   expect(sitemap).toContain(`<loc>${baseURL}apps/bucket/</loc>`);
   expect(sitemap).toContain(`<loc>${baseURL}apps/cast/</loc>`);
+  expect(sitemap).toContain(`<loc>${baseURL}apps/seek/</loc>`);
+  expect(sitemap).toContain(`<loc>${baseURL}apps/ledger/</loc>`);
   expect(sitemap).not.toContain('/docs/');
   expect(sitemap).not.toContain('/technologies/');
   expect(sitemap).not.toContain('/404');
@@ -256,9 +267,12 @@ test('publishes app metadata and a sitemap that excludes the empty documentation
 for (const [label, route] of [
   ['cover', './'],
   ['guide index', './docs/'],
+  ['app directory', './apps/'],
   ['Hub', './apps/hub/'],
   ['Bucket', './apps/bucket/'],
   ['Cast', './apps/cast/'],
+  ['Seek', './apps/seek/'],
+  ['Ledger', './apps/ledger/'],
   ['downloads', './downloads/'],
 ]) {
   test(`meets automated accessibility checks on the ${label}`, async ({ page }) => {
@@ -301,6 +315,12 @@ test.describe('static HTML', () => {
       './apps/share/',
       './apps/bucket/',
       './apps/cast/',
+      './apps/seek/',
+      './apps/seek/technologies/',
+      './apps/seek/downloads/',
+      './apps/ledger/',
+      './apps/ledger/technologies/',
+      './apps/ledger/downloads/',
       './downloads/',
     ]) {
       await page.goto(route);

@@ -6,14 +6,15 @@ import RevealText from '../components/RevealText.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { allApps } from '../lib/content';
 import { appLink, link } from '../lib/site';
+import '../styles/directory.css';
 
 const apps = await allApps();
 ---
 
 <SiteLayout
   title="App directory — ZeroCloud"
-  description="Explore ZeroCloud Hub, Share, Bucket and Cast. Share files, sync a collection or cast a screen across your devices."
-  ><div class="frame">
+  description="Explore ZeroCloud Hub, Share, Bucket, Cast, Seek and Ledger. Local apps for sharing, storage, casting, finding devices and shared budgeting."
+  ><div class="frame directory-page">
     <Breadcrumbs items={[{ text: 'Home', href: link() }, { text: 'Apps' }]} />
     <header class="page-lead">
       <h1 data-enter><RevealText text="App directory." /></h1>
@@ -25,7 +26,8 @@ const apps = await allApps();
       <div class="index-list">
         {apps.map((app) => (
           <article
-            class="surface directory-item"
+            class="directory-item"
+            data-product={app.id}
             data-enter
             data-catalog-item
             data-category={app.data.category}
@@ -39,19 +41,22 @@ const apps = await allApps();
               .join(' ')
               .toLowerCase()}
           >
-            <div>
-              <ProductMark id={app.id} />
-              <span class="eyeline">{app.data.targets.join(' / ')}</span>
-              <h2>
-                <a href={appLink(app.id)}>{app.data.name}</a>
-              </h2>
-              <p>{app.data.description}</p>
-            </div>
-            <div class="directory-actions">
-              <a class="btn primary" href={appLink(app.id)}>
-                Explore {app.data.shortName}
-              </a>
-            </div>
+            <a class="directory-card" href={appLink(app.id)}>
+              <div class="directory-card-top">
+                <ProductMark id={app.id} />
+                <span class="directory-card-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </div>
+              <div class="directory-card-copy">
+                <h2>{app.data.name}</h2>
+                <p>{app.data.description}</p>
+              </div>
+              <div class="directory-card-bottom">
+                <span class="directory-platforms">{app.data.targets.join(' · ')}</span>
+                <span class="text-link">Explore {app.data.shortName}</span>
+              </div>
+            </a>
           </article>
         ))}
       </div>

@@ -4,6 +4,7 @@ test('app pages use concise sections and paired documentation and download cards
   page,
   request,
 }) => {
+  test.setTimeout(90_000);
   await page.goto('./downloads/');
   const noise = await page
     .locator('.downloads-cover .ink-field')
@@ -13,6 +14,8 @@ test('app pages use concise sections and paired documentation and download cards
     ['share', 'ZeroCloud Share'],
     ['bucket', 'ZeroCloud Bucket'],
     ['cast', 'ZeroCloud Cast'],
+    ['seek', 'ZeroCloud Seek'],
+    ['ledger', 'ZeroCloud Ledger'],
   ] as const) {
     const shortName = name.replace(/^ZeroCloud\s*/u, '');
     const response = await request.get(`./apps/${slug}/`);
@@ -118,10 +121,7 @@ test('the Hub hero loops while cards play once and reduced motion stays static',
 });
 
 for (const width of [320, 500, 640, 768, 1024, 1440]) {
-  test(`a full featured menu stays readable and scrollable at ${width}px`, async ({
-    page,
-    isMobile,
-  }) => {
+  test(`the app carousel stays readable and bounded at ${width}px`, async ({ page, isMobile }) => {
     test.skip(
       isMobile,
       'The desktop project covers the full width matrix; mobile interaction is covered separately.',
@@ -129,53 +129,7 @@ for (const width of [320, 500, 640, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 740 });
     await page.goto('./project/');
     await page.evaluate(() => document.fonts.ready);
-    // Stress the layout with the maximum four featured cards, long descriptions and six categories.
-    // The catalog unit fixture separately verifies selection from 48 synthetic app records.
     const apps = page.locator('.nav-folder').first();
-    await apps.locator('.mega-cards').evaluate((element) => {
-      const first = element.firstElementChild;
-      if (!first) throw new Error('Missing app card');
-      while (element.children.length < 4) element.append(first.cloneNode(true));
-      for (const [index, title] of [
-        'ZeroCloud Workspace Tools',
-        'ZeroCloud Media Library',
-      ].entries()) {
-        const clone = element.children[index + 2];
-        if (!clone) throw new Error('Missing stress card');
-        clone.setAttribute('aria-label', title);
-        const name = clone.querySelector('strong');
-        const description = clone.querySelector('.mega-card-copy > span');
-        if (name) name.textContent = title;
-        if (description)
-          description.textContent =
-            'A longer app description that explains its purpose in a growing family of desktop and Android tools, with enough detail to wrap across several lines.';
-      }
-      const intro = element.previousElementSibling;
-      if (intro) {
-        const topics = document.createElement('nav');
-        topics.className = 'mega-topics';
-        topics.setAttribute('aria-label', 'App categories');
-        for (const title of [
-          'App management',
-          'File sharing',
-          'Writing and editing',
-          'Media tools',
-          'Developer tools',
-          'Utilities',
-        ]) {
-          const link = document.createElement('a');
-          link.href = './apps/';
-          link.textContent = title;
-          topics.append(link);
-        }
-        intro.append(topics);
-      }
-      const all = document.createElement('a');
-      all.className = 'mega-all';
-      all.href = './apps/';
-      all.textContent = 'Browse all 48 apps';
-      element.parentElement?.append(all);
-    });
     for (const docked of [false, true]) {
       await page.evaluate(
         (docked) => window.scrollTo({ top: docked ? 360 : 0, behavior: 'instant' }),
@@ -192,8 +146,10 @@ for (const width of [320, 500, 640, 768, 1024, 1440]) {
       await apps.locator('summary').click();
       await expect(apps).toHaveAttribute('data-menu-state', 'open');
       const panel = apps.locator('.mega-panel');
-      await expect(panel).toBeVisible();
-      await expect(panel.locator('.mega-card')).toHaveCount(4);
+      const track = panel.getByRole('navigation', { name: 'Apps', exact: true });
+      await expect(track.locator('.mega-card')).toHaveCount(6);
+      await expect(panel.getByRole('searchbox')).toHaveCount(0);
+      await expect(panel.locator('.mega-topics, .mega-all')).toHaveCount(0);
       await expect
         .poll(() =>
           panel.evaluate((element) => {
@@ -205,32 +161,16 @@ for (const width of [320, 500, 640, 768, 1024, 1440]) {
       expect(
         await panel.evaluate((element) => element.scrollWidth - element.clientWidth),
       ).toBeLessThanOrEqual(1);
-      if (width > 960) {
-        const cards = await panel.locator('.mega-card').evaluateAll((elements) =>
-          elements.map((element) => {
-            const box = element.getBoundingClientRect();
-            return { x: box.x, y: box.y };
-          }),
-        );
-        expect(cards[2]?.x).toBe(cards[0]?.x);
-        expect(cards[3]?.x).toBe(cards[1]?.x);
-        expect(cards[2]?.y).toBeGreaterThan(cards[0]?.y ?? 0);
-      }
-      if (width <= 960) {
-        const names = await panel.locator('.mega-card-copy strong').evaluateAll((elements) =>
-          elements.slice(0, 2).map((element) => {
-            const style = getComputedStyle(element);
-            return {
-              height: element.getBoundingClientRect().height,
-              lineHeight: Number.parseFloat(style.lineHeight),
-            };
-          }),
-        );
-        for (const name of names) expect(name.height).toBeLessThanOrEqual(name.lineHeight + 1);
-      }
-      const all = panel.getByRole('link', { name: 'Browse all 48 apps' });
-      await all.focus();
-      await expect(all).toBeInViewport();
+      await track.press('End');
+      await expect(
+        panel.getByRole('link', { name: 'ZeroCloud Ledger', exact: true }),
+      ).toBeInViewport();
+      await expect(panel.getByRole('button', { name: 'Next apps' })).toBeDisabled();
+      await track.press('Home');
+      await expect(
+        panel.getByRole('link', { name: 'ZeroCloud Hub', exact: true }),
+      ).toBeInViewport();
+      await expect(panel.getByRole('button', { name: 'Previous apps' })).toBeDisabled();
       await page.keyboard.press('Escape');
       await expect(apps.locator('summary')).toBeFocused();
     }

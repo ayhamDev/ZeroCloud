@@ -10,7 +10,7 @@ const app = await currentEdition();
 <SiteLayout
   title={app ? `${app.data.name} — Overview` : 'ZeroCloud — Software for your own devices'}
   description={app?.data.description ??
-    'Discover ZeroCloud Hub, Share, Bucket and Cast. Share files, sync your collection and cast screens across your devices with zero required cloud services.'}
+    'Discover ZeroCloud Hub, Share, Bucket, Cast, Seek and Ledger. Apps for your own devices, with zero required cloud services.'}
 >
   {app ? <AppOverview app={app} /> : <FamilyHome />}
 </SiteLayout>

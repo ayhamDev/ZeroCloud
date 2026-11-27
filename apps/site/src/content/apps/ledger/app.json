@@ -1,0 +1,67 @@
+{
+  "name": "ZeroCloud Ledger",
+  "shortName": "Ledger",
+  "order": 5,
+  "category": "Budgeting and expenses",
+  "featured": false,
+  "description": "Plan your budget. Track expenses. Share accounts across your paired devices.",
+  "introduction": "Ledger is being designed for everyday spending, budgets and shared accounts. Keep records on your own devices, and sync only the accounts you choose with paired devices.",
+  "overview": {
+    "heading": "A clearer view of your spending.",
+    "steps": [
+      {
+        "title": "Set your budget",
+        "description": "Plan spending by category for yourself, a household, a trip or a small team."
+      },
+      {
+        "title": "Record income and expenses",
+        "description": "Add transactions and notes on the device you are using, even while you are offline."
+      },
+      {
+        "title": "Keep shared accounts in step",
+        "description": "Pair devices and choose which accounts to share. Changes would sync when those devices can reach each other."
+      }
+    ],
+    "note": {
+      "title": "Your accounts. Your chosen devices.",
+      "description": "The plan follows Bucket’s replication approach: encrypted local copies of selected accounts on paired devices. Private accounts stay separate, and shared records reconcile when peers reconnect."
+    }
+  },
+  "status": "In development",
+  "targets": ["Desktop", "Android", "Web"],
+  "faqs": [
+    {
+      "question": "What is a shared account?",
+      "answer": "An account is a set of financial records, including income, expenses, categories and budgets. A shared account would keep those records in sync on the devices you authorize, so a household or team can work from the same history. No cloud login is required in the design."
+    },
+    {
+      "question": "Can I keep some accounts private?",
+      "answer": "Yes. Account sharing is intended to be selective. Pairing a device or sharing one account must not grant access to your other accounts. Each shared account needs its own membership and access permissions."
+    },
+    {
+      "question": "How would synchronization work?",
+      "answer": "Each authorized device would hold an encrypted local copy of the shared account, using the same replication idea as Bucket. Changes would synchronize over approved connections when paired devices are reachable. This account sync system still needs to be built and verified."
+    },
+    {
+      "question": "What if two people make changes while offline?",
+      "answer": "Independent entries should merge automatically when devices reconnect. Competing edits to the same entry must preserve history and be resolved without silently overwriting an amount or counting the same expense twice. Reliable reconciliation is a requirement, not an implemented feature yet."
+    },
+    {
+      "question": "Does Ledger need an internet connection?",
+      "answer": "Local budgeting and expense entry are the goal. You should be able to use your saved records offline. Shared accounts can catch up when paired devices can reach each other over a supported local connection; they do not need a required cloud service."
+    },
+    {
+      "question": "Who can read my financial records?",
+      "answer": "Encrypted storage, authenticated pairing and encrypted synchronization are core requirements. Access must be limited to the people and devices you authorize for each account. These protections need to be implemented and verified before shared records are available."
+    },
+    {
+      "question": "Which platforms are planned?",
+      "answer": "Desktop, Android and Web are listed in Downloads. They are placeholders for now. Public builds and the Open web app link will be added when they are ready."
+    }
+  ],
+  "source": "https://github.com/ayhamDev/ZeroCloud",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [],
+  "platformGuides": {},
+  "downloads": []
+}

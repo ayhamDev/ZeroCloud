@@ -9,13 +9,16 @@ test('dropdowns animate both directions and reverse interrupted exits without a 
   const folder = page.locator('.nav-folder').first();
   const summary = folder.locator('summary');
   const panel = folder.locator('.flyout');
-  await summary.click();
-  const entrance = await panel.evaluate((element) => {
-    const animation = element.getAnimations()[0];
+  const entrance = await folder.evaluate((element) => {
+    // Freeze the sampled frame in the same task that starts its animation.
+    element.querySelector<HTMLElement>('summary')?.click();
+    const panel = element.querySelector<HTMLElement>('.flyout');
+    const animation = panel?.getAnimations()[0];
+    if (!panel) throw new Error('Missing dropdown');
     if (!animation) throw new Error('Missing dropdown entrance');
     animation.pause();
     animation.currentTime = 90;
-    const style = getComputedStyle(element);
+    const style = getComputedStyle(panel);
     const result = { opacity: Number(style.opacity), transform: style.transform };
     animation.play();
     return result;
@@ -24,8 +27,9 @@ test('dropdowns animate both directions and reverse interrupted exits without a 
   expect(entrance.opacity).toBeLessThan(1);
   expect(entrance.transform).not.toBe('none');
   await expect(folder).toHaveAttribute('data-menu-state', 'open');
-  await summary.click();
   const reversal = await folder.evaluate((element) => {
+    // Begin and freeze the exit in one task, before a busy runner can let it finish.
+    element.querySelector<HTMLElement>('summary')?.click();
     const panel = element.querySelector<HTMLElement>('.flyout');
     const animation = panel?.getAnimations()[0];
     if (!panel || !animation) throw new Error('Missing dropdown exit');
@@ -65,7 +69,7 @@ test('switching menus, outside focus and reduced motion keep only the intended l
   await expect(apps.locator('.flyout')).toHaveAttribute('aria-hidden', 'true');
   await expect(docs.locator('summary')).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByRole('link', { name: 'Hub documentation', exact: true })).toBeVisible();
-  await expect(page.getByRole('navigation', { name: 'Featured apps' })).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Apps', exact: true })).toHaveCount(0);
   await expect(docs).toHaveAttribute('data-menu-state', 'open');
   await page.locator('.primary-nav > a').focus();
   await expect(docs.locator('summary')).toHaveAttribute('aria-expanded', 'false');
@@ -127,7 +131,7 @@ test('documentation link columns stay readable, scrollable and accessible as gui
     expect(layout.inside).toBe(true);
     expect(layout.overflow).toBeLessThanOrEqual(1);
     const last = docs
-      .getByRole('navigation', { name: 'ZeroCloud Cast', exact: true })
+      .getByRole('navigation', { name: 'ZeroCloud Ledger', exact: true })
       .getByRole('link', { name: 'Common questions' });
     await last.focus();
     await page.keyboard.press('Shift+Tab');

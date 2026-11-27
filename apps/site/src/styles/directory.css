@@ -1,0 +1,106 @@
+.directory-page .page-lead {
+  margin-block: var(--space-5);
+  padding-block: 0;
+}
+.directory-page .page-lead h1 {
+  font-size: 3rem;
+  line-height: 1;
+}
+.directory-page .page-lead p {
+  max-width: 52rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.directory-page .index-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.directory-page .directory-item {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  border-radius: 24px;
+  background: var(--card-fill, var(--surface));
+}
+.directory-page .directory-item[hidden] {
+  display: none;
+}
+.directory-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-4);
+  height: 100%;
+  min-height: 280px;
+  padding: var(--space-5);
+  border-radius: inherit;
+}
+.directory-card-top,
+.directory-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.directory-page .directory-card .product-mark {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  border-radius: 12px;
+}
+.directory-card-arrow {
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+.directory-page .directory-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  overflow-wrap: anywhere;
+}
+.directory-page .directory-card p {
+  margin-top: var(--space-2);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-wrap: pretty;
+}
+.directory-card-bottom {
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.directory-platforms {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.directory-card-bottom .text-link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+@media (hover: hover) {
+  .directory-card:hover {
+    background: var(--card-hover, var(--surface));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .directory-card {
+    transition: background-color 240ms var(--lift);
+  }
+}
+@media (max-width: 1050px) {
+  .directory-page .index-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .directory-page .index-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .directory-page .page-lead h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .directory-card {
+    min-height: 0;
+  }
+}

@@ -4,8 +4,11 @@ interface Dropdown {
   folder: HTMLDetailsElement;
   summary: HTMLElement;
   panel: HTMLElement;
+  content: HTMLElement;
   expanded: boolean;
   animation?: Animation | undefined;
+  resizing?: Animation | undefined;
+  height: number;
 }
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -13,10 +16,45 @@ const dropdowns: Dropdown[] = [];
 const hidden = { opacity: '0', transform: 'translateY(-8px) scale(0.99)' };
 const visible = { opacity: '1', transform: 'none' };
 
+function naturalHeight(dropdown: Dropdown) {
+  const style = getComputedStyle(dropdown.panel);
+  return Math.min(
+    dropdown.content.offsetHeight +
+      Number.parseFloat(style.paddingTop) +
+      Number.parseFloat(style.paddingBottom),
+    Number.parseFloat(style.maxHeight) || Infinity,
+  );
+}
+
+function clearResize(dropdown: Dropdown) {
+  dropdown.resizing?.cancel();
+  dropdown.resizing = undefined;
+  delete dropdown.panel.dataset.resizing;
+}
+
+function resize(dropdown: Dropdown, from = dropdown.height, to = naturalHeight(dropdown)) {
+  if (!dropdown.folder.open) return;
+  if (dropdown.resizing) from = Number.parseFloat(getComputedStyle(dropdown.panel).height);
+  clearResize(dropdown);
+  dropdown.height = to;
+  if (reducedMotion.matches || Math.abs(from - to) < 1 || !from) return;
+  dropdown.panel.dataset.resizing = '';
+  const animation = dropdown.panel.animate([{ height: `${from}px` }, { height: `${to}px` }], {
+    duration: 360,
+    easing: 'cubic-bezier(0.32, 0.72, 0, 1)',
+    fill: 'both',
+  });
+  dropdown.resizing = animation;
+  animation.onfinish = () => {
+    if (dropdown.resizing === animation) clearResize(dropdown);
+  };
+}
+
 function settle(dropdown: Dropdown) {
   dropdown.folder.open = dropdown.expanded;
   dropdown.animation?.cancel();
   dropdown.animation = undefined;
+  if (!dropdown.expanded || reducedMotion.matches) clearResize(dropdown);
   dropdown.folder.dataset.menuState = dropdown.expanded ? 'open' : 'closed';
 }
 
@@ -25,6 +63,10 @@ function show(dropdown: Dropdown, expanded: boolean) {
   const { folder, summary, panel } = dropdown;
   const current = folder.open ? getComputedStyle(panel) : undefined;
   const from = current ? { opacity: current.opacity, transform: current.transform } : hidden;
+  const previous = expanded
+    ? dropdowns.find((other) => other !== dropdown && other.expanded)
+    : undefined;
+  const previousHeight = previous && Number.parseFloat(getComputedStyle(previous.panel).height);
   dropdown.animation?.cancel();
   dropdown.expanded = expanded;
   summary.setAttribute('aria-expanded', String(expanded));
@@ -35,6 +77,9 @@ function show(dropdown: Dropdown, expanded: boolean) {
     // Native exclusive groups would hide the previous panel before its exit.
     for (const other of dropdowns) if (other !== dropdown) show(other, false);
     folder.open = true;
+    const target = naturalHeight(dropdown);
+    resize(dropdown, previousHeight || target, target);
+    if (previous && previousHeight) resize(previous, previousHeight, target);
   }
   if (reducedMotion.matches || typeof panel.animate !== 'function') {
     settle(dropdown);
@@ -54,8 +99,9 @@ function show(dropdown: Dropdown, expanded: boolean) {
 for (const folder of document.querySelectorAll<HTMLDetailsElement>('.nav-folder')) {
   const summary = folder.querySelector<HTMLElement>('summary');
   const panel = folder.querySelector<HTMLElement>('.flyout');
-  if (!summary || !panel) continue;
-  const dropdown = { folder, summary, panel, expanded: folder.open };
+  const content = panel?.querySelector<HTMLElement>('.menu-content');
+  if (!summary || !panel || !content) continue;
+  const dropdown: Dropdown = { folder, summary, panel, content, expanded: folder.open, height: 0 };
   dropdowns.push(dropdown);
   folder.removeAttribute('name');
   folder.dataset.menuState = folder.open ? 'open' : 'closed';
@@ -64,6 +110,11 @@ for (const folder of document.querySelectorAll<HTMLDetailsElement>('.nav-folder'
   panel.id = `navigation-panel-${dropdowns.length}`;
   panel.inert = !folder.open;
   panel.setAttribute('aria-hidden', String(!folder.open));
+  new ResizeObserver(() => {
+    if (!dropdown.expanded) return;
+    const target = naturalHeight(dropdown);
+    if (Math.abs(target - dropdown.height) > 0.5) resize(dropdown, undefined, target);
+  }).observe(content);
   summary.addEventListener('click', (event) => {
     event.preventDefault();
     show(dropdown, !dropdown.expanded);

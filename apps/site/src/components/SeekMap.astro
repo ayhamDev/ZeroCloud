@@ -1,0 +1,124 @@
+<section class="seek-map" aria-labelledby="seek-map-title">
+  <div class="seek-map-copy" data-enter>
+    <h2 id="seek-map-title">See where to look.</h2>
+    <p>
+      An optional map could turn compatible range readings into an estimated search area. Known
+      reference points or a calibrated floor plan would help place it in your space.
+    </p>
+    <p>
+      Seek would show how uncertain that estimate is. When there is not enough information, it
+      should fall back to proximity clues or the last known sighting.
+    </p>
+  </div>
+  <figure data-enter>
+    <svg
+      viewBox="0 0 560 320"
+      role="img"
+      aria-labelledby="seek-map-description"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title id="seek-map-description">
+        Concept illustration: three reference points around a shaded estimated search area. This is
+        not a live device reading.
+      </title>
+      <defs>
+        <pattern id="seek-reference-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="12" cy="12" r="1" fill="currentColor" opacity=".1" />
+        </pattern>
+      </defs>
+      <rect width="560" height="320" fill="url(#seek-reference-grid)" />
+      <path
+        d="M206 105c32-38 105-50 152-18 52 35 66 112 18 148-42 32-111 35-155 2-45-34-51-88-15-132Z"
+        fill="#ce83b8"
+        opacity=".3"
+      />
+      <path
+        d="M250 129c23-23 62-25 86-7 29 21 33 60 10 83-23 23-67 21-91 0-22-19-27-53-5-76Z"
+        fill="#b4669d"
+        opacity=".22"
+      />
+      <g fill="#7b355f">
+        <circle cx="116" cy="84" r="6" />
+        <circle cx="448" cy="110" r="6" />
+        <circle cx="164" cy="258" r="6" />
+      </g>
+      <g fill="currentColor" opacity=".45">
+        <circle cx="140" cy="96" r="2" />
+        <circle cx="164" cy="108" r="2" />
+        <circle cx="188" cy="120" r="2" />
+        <circle cx="424" cy="118" r="2" />
+        <circle cx="400" cy="126" r="2" />
+        <circle cx="376" cy="134" r="2" />
+        <circle cx="188" cy="246" r="2" />
+        <circle cx="212" cy="234" r="2" />
+        <circle cx="236" cy="222" r="2" />
+      </g>
+      <g fill="currentColor" font-size="14" font-family="inherit">
+        <text x="116" y="62" text-anchor="middle">Reference</text>
+        <text x="448" y="88" text-anchor="middle">Reference</text>
+        <text x="164" y="288" text-anchor="middle">Reference</text>
+        <text x="296" y="152" text-anchor="middle">
+          Estimated
+          <tspan x="296" dy="1.25em">search area</tspan>
+        </text>
+      </g>
+    </svg>
+    <figcaption>Concept view. An estimated area, not an exact position.</figcaption>
+  </figure>
+</section>
+
+<style>
+  .seek-map {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-8);
+    margin-block: var(--space-8);
+  }
+  .seek-map h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .seek-map p {
+    margin-top: var(--space-4);
+    color: var(--muted);
+    max-width: 44ch;
+  }
+  .seek-map figure {
+    margin: 0;
+    padding: var(--space-5);
+    border-radius: 24px;
+    background: #f3ddec;
+  }
+  .seek-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .seek-map figcaption {
+    margin-top: var(--space-4);
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    max-width: 40ch;
+  }
+  @media (max-width: 760px) {
+    .seek-map {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-5);
+      margin-block: var(--space-7);
+    }
+    .seek-map h2 {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .seek-map figure {
+      padding: var(--space-4);
+    }
+    .seek-map svg text {
+      font-size: 28px;
+    }
+  }
+</style>

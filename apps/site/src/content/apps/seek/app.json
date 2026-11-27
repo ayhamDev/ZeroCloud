@@ -1,0 +1,67 @@
+{
+  "name": "ZeroCloud Seek",
+  "shortName": "Seek",
+  "order": 4,
+  "category": "Device finding",
+  "featured": false,
+  "description": "Find your nearby devices. Follow the signal, then ring them.",
+  "introduction": "Seek is being designed to help you find a misplaced phone, tablet or computer using your trusted devices. Start with nearby signals, then let a sound guide you the rest of the way.",
+  "overview": {
+    "heading": "From missing to nearby.",
+    "steps": [
+      {
+        "title": "Add your devices",
+        "description": "Pair the devices you trust before you need to find them."
+      },
+      {
+        "title": "Follow the signal",
+        "description": "Use Bluetooth and local connections for proximity clues. More precise ranging would depend on compatible hardware."
+      },
+      {
+        "title": "Make it ring",
+        "description": "Ask a reachable device to play a sound. Flash and vibration are also planned where the device allows them."
+      }
+    ],
+    "note": {
+      "title": "Your devices. Your search.",
+      "description": "Trusted pairing, encrypted communication and explicit permission to find or ring a device are core requirements. Your device list and last-seen history should stay under your control, with no required cloud account."
+    }
+  },
+  "status": "In development",
+  "targets": ["Desktop", "Android", "Web"],
+  "faqs": [
+    {
+      "question": "How would Seek find a device?",
+      "answer": "Seek is planned to combine Bluetooth discovery, local-network reachability and signal trends. Signal strength can suggest whether you are getting closer; it cannot reliably give an exact distance or direction. Supported technologies such as UWB or Wi-Fi RTT could improve ranging on compatible devices."
+    },
+    {
+      "question": "Could Seek show a map?",
+      "answer": "An estimated search area is part of the plan. Placing it on a map needs a reference, such as known device positions or a calibrated floor plan, plus suitable measurements. Radio-based room mapping is a research direction, not a promise that any phone can scan walls or reconstruct every room."
+    },
+    {
+      "question": "Would it work without the internet?",
+      "answer": "Local finding is the goal. Previously paired devices should be able to cooperate over supported nearby connections without a cloud service. Radio range, device permissions and background restrictions still apply."
+    },
+    {
+      "question": "What if the device is offline or switched off?",
+      "answer": "Live finding and ringing need a reachable, powered device. When it cannot be reached, Seek is planned to show locally saved last-seen information, including its age. That is a historical clue, not a current location. Other trusted devices could contribute sightings when they can detect it."
+    },
+    {
+      "question": "Could it ring a muted device?",
+      "answer": "Ringing, flashing and vibration will depend on what each platform permits. Seek cannot promise to override silent mode, system restrictions or a device that has lost power."
+    },
+    {
+      "question": "Who could find or ring my devices?",
+      "answer": "Only devices and people you explicitly authorize should be able to request a search or a ring. Secure enrollment, authenticated commands and encrypted connections are required parts of the design. Seek is not intended to track arbitrary nearby devices or people."
+    },
+    {
+      "question": "Will there be a Web version?",
+      "answer": "A Web companion is planned, with a placeholder in Downloads. Browser radio access and background operation are limited, so some finding features may require the native app. There is no public build or web app yet."
+    }
+  ],
+  "source": "https://github.com/ayhamDev/ZeroCloud",
+  "releases": "https://github.com/ayhamDev/ZeroCloud/releases",
+  "technologies": [],
+  "platformGuides": {},
+  "downloads": []
+}

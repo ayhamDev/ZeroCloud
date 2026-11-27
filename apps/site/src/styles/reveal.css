@@ -8,11 +8,11 @@
   max-inline-size: 100%;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html[data-reveal="pending"] .mast-row > * {
+  html[data-reveal="pending"] .mast-row:not([data-arrived]) > * {
     opacity: 0;
   }
   /* An opacity animation on the row creates a backdrop root and blocks its glass. */
-  html[data-reveal="ready"] .mast-row > * {
+  html[data-reveal="ready"] .mast-row:not([data-arrived]) > * {
     animation: appbar-arrive 640ms var(--lift) backwards;
   }
   html[data-reveal] .mast-row:focus-within > * {

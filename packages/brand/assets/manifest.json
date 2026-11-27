@@ -233,5 +233,65 @@
     "file": "cast-tile-loop.svg",
     "source": "zerocloud-cast",
     "variant": 6
+  },
+  {
+    "file": "seek-icon.svg",
+    "source": "zerocloud-seek",
+    "variant": 1
+  },
+  {
+    "file": "seek-tile.svg",
+    "source": "zerocloud-seek",
+    "variant": 2
+  },
+  {
+    "file": "seek-icon-animated.svg",
+    "source": "zerocloud-seek",
+    "variant": 3
+  },
+  {
+    "file": "seek-tile-animated.svg",
+    "source": "zerocloud-seek",
+    "variant": 4
+  },
+  {
+    "file": "seek-icon-loop.svg",
+    "source": "zerocloud-seek",
+    "variant": 5
+  },
+  {
+    "file": "seek-tile-loop.svg",
+    "source": "zerocloud-seek",
+    "variant": 6
+  },
+  {
+    "file": "ledger-icon.svg",
+    "source": "zerocloud-ledger",
+    "variant": 1
+  },
+  {
+    "file": "ledger-tile.svg",
+    "source": "zerocloud-ledger",
+    "variant": 2
+  },
+  {
+    "file": "ledger-icon-animated.svg",
+    "source": "zerocloud-ledger",
+    "variant": 3
+  },
+  {
+    "file": "ledger-tile-animated.svg",
+    "source": "zerocloud-ledger",
+    "variant": 4
+  },
+  {
+    "file": "ledger-icon-loop.svg",
+    "source": "zerocloud-ledger",
+    "variant": 5
+  },
+  {
+    "file": "ledger-tile-loop.svg",
+    "source": "zerocloud-ledger",
+    "variant": 6
   }
 ]

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="zcseek-motion zcseek-loop" data-motion-variant="loop" width="128" height="128" viewBox="0 0 128 128" fill="#09090b"><title>ZeroCloud Seek app icon</title><style>
+      .zcseek-motion.zcseek-loop .zcseek-core { transform-box:fill-box; transform-origin:center; }
+      @media (prefers-reduced-motion: no-preference) {
+        .zcseek-motion.zcseek-loop .zcseek-signal { animation:zcseek-beacon-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; animation-delay:var(--part-delay); }
+        .zcseek-motion.zcseek-loop .zcseek-core { animation:zcseek-found-loop var(--product-motion-duration, 4600ms) cubic-bezier(.32,.72,0,1) infinite; animation-delay:var(--part-delay); }
+      }
+      [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-loop .zcseek-signal, [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-loop .zcseek-core { animation:none; }
+      @media print { .zcseek-motion.zcseek-loop .zcseek-signal, .zcseek-motion.zcseek-loop .zcseek-core { animation:none; } }
+      @keyframes zcseek-beacon-loop { 0%,62%,100% { opacity:1; } 22% { opacity:.28; } 40% { opacity:1; } }
+      @keyframes zcseek-found-loop { 0%,16%,62%,100% { transform:none; } 40% { transform:scale(1.12); } }
+    </style><rect width="128" height="128" rx="32" fill="#dda0ce"/><g transform="translate(16 16) scale(1.5)"><g class="zcseek-signal" style="--part-delay:0ms"><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/></g><g class="zcseek-signal" style="--part-delay:160ms"><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/></g><g class="zcseek-core" style="--part-delay:300ms"><circle cx="48" cy="32" r="4.3"/></g><circle cx="58" cy="32" r="2.5" opacity="0.6"/></g></svg>

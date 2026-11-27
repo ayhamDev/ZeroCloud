@@ -1,5 +1,4 @@
 ---
-import { featuredProducts } from '../lib/catalog';
 import {
   allApps,
   chapterSlug,
@@ -18,12 +17,10 @@ interface Props {
 }
 const { app } = Astro.props;
 const apps = app ? [app] : await allApps();
-const featured = featuredProducts(apps);
-const categories = [...new Set(apps.map((product) => product.data.category))];
 const guides = await guidesFor(app);
 const groups = groupsOf(guides);
 const documentation = await Promise.all(
-  featured.map(async (product) => ({
+  apps.map(async (product) => ({
     product,
     links: [
       ...(await chaptersFor(product)).map((chapter) => ({
@@ -57,127 +54,115 @@ const current = Astro.url.pathname;
           {app ? app.data.shortName : 'Apps'}<i class="caret" aria-hidden="true"></i>
         </summary>
         <div class="flyout mega-panel">
-          <div class="mega-intro">
-            <span class="mega-eyebrow">The ZeroCloud family</span>
-            <p>Find the right app<br>for your device.</p>
-            {apps.length > 4 && (
-              <>
-                <form
-                  class="mega-search"
-                  action={link('apps/')}
-                  method="get"
-                  hidden
-                  data-menu-search
-                >
-                  <label for="menu-app-query">Find an app</label>
-                  <div>
-                    <input id="menu-app-query" type="search" name="q" placeholder="Search apps" />
-                    <button type="submit">Search</button>
-                  </div>
-                </form>
-                <nav class="mega-topics" aria-label="App categories">
-                  {categories.slice(0, 6).map((category) => (
-                    <a href={link(`apps/?category=${encodeURIComponent(category)}`)}>{category}</a>
-                  ))}
-                </nav>
-              </>
-            )}
-            <a class="text-link" href={app ? appLink(app.id) : link('apps/')}>
-              {app ? 'App overview' : 'All apps'}
-            </a>
-          </div>
-          <nav class="mega-cards" aria-label="Featured apps">
-            {featured.map((product) => (
-              <a class="mega-card" href={appLink(product.id)} aria-label={product.data.name}>
-                <ProductMark id={product.id} />
-                <span class="mega-card-copy">
-                  <strong>{product.data.name}</strong>
-                  <span>{product.data.description}</span>
-                </span>
-                <span class="mega-card-note">
-                  {product.id === 'hub'
-                    ? 'Optional companion'
-                    : product.data.targets.includes('Google TV')
-                      ? 'Google TV, apps & web'
-                      : product.data.targets.includes('Web')
-                        ? 'Apps & web'
-                        : product.data.targets.join(' & ')}
-                </span>
+          <div class="menu-content apps-menu-content">
+            <div class="mega-intro">
+              <span class="mega-eyebrow">The ZeroCloud family</span>
+              <p>Find the right app<br>for your device.</p>
+              <a class="text-link" href={app ? appLink(app.id) : link('apps/')}>
+                {app ? 'App overview' : 'All apps'}
               </a>
-            ))}
-          </nav>
-          {apps.length > featured.length && (
-            <a class="mega-all" href={link('apps/')}>
-              Browse all {apps.length} apps <span aria-hidden="true">→</span>
-            </a>
-          )}
+            </div>
+            <div class="app-carousel" data-app-carousel>
+              <!-- biome-ignore lint/a11y/noNoninteractiveTabindex: This horizontal scroll container needs a keyboard focus target for its arrow, Home and End controls. -->
+              <nav class="mega-cards" aria-label="Apps" tabindex="0" id="navigation-apps">
+                {apps.map((product) => (
+                  <a class="mega-card" href={appLink(product.id)} aria-label={product.data.name}>
+                    <ProductMark id={product.id} />
+                    <span class="mega-card-copy">
+                      <strong>{product.data.name}</strong>
+                      <span>{product.data.description}</span>
+                    </span>
+                    <span class="mega-card-note">
+                      {product.id === 'hub'
+                        ? 'Optional companion'
+                        : product.data.targets.includes('Google TV')
+                          ? 'Google TV, apps & web'
+                          : product.data.targets.includes('Web')
+                            ? 'Apps & web'
+                            : product.data.targets.join(' & ')}
+                    </span>
+                  </a>
+                ))}
+              </nav>
+              {apps.length > 1 && (
+                <div class="carousel-controls" hidden>
+                  <p
+                    class="carousel-status"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  ></p>
+                  <div>
+                    <button
+                      type="button"
+                      data-carousel-prev
+                      aria-label="Previous apps"
+                      aria-controls="navigation-apps"
+                    >
+                      <span aria-hidden="true">←</span>
+                    </button>
+                    <button
+                      type="button"
+                      data-carousel-next
+                      aria-label="Next apps"
+                      aria-controls="navigation-apps"
+                    >
+                      <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </details>
       <details class="nav-folder" name="primary-folders">
         <summary>Docs<i class="caret" aria-hidden="true"></i></summary>
         <div class="flyout mega-panel docs-panel">
-          <div class="docs-heading">
-            <span class="mega-eyebrow">Documentation</span>
-            <a class="text-link" href={link('docs/')}>Documentation home</a>
-          </div>
-          <div class="docs-apps">
-            {documentation.map(({ product, links }) => (
-              <nav class="docs-app" aria-labelledby={`menu-docs-${product.id}`}>
-                <h2 id={`menu-docs-${product.id}`}>
-                  <ProductMark id={product.id} />
-                  <span>{product.data.name}</span>
-                </h2>
-                <ul>
-                  {links.map((item) => (
+          <div class="menu-content docs-menu-content">
+            <div class="docs-heading">
+              <span class="mega-eyebrow">Documentation</span>
+              <a class="text-link" href={link('docs/')}>Documentation home</a>
+            </div>
+            <div class="docs-apps">
+              {documentation.map(({ product, links }) => (
+                <nav class="docs-app" aria-labelledby={`menu-docs-${product.id}`}>
+                  <h2 id={`menu-docs-${product.id}`}>
+                    <ProductMark id={product.id} />
+                    <span>{product.data.name}</span>
+                  </h2>
+                  <ul>
+                    {links.map((item) => (
+                      <li>
+                        <a href={item.href}>{item.title}</a>
+                      </li>
+                    ))}
                     <li>
-                      <a href={item.href}>{item.title}</a>
+                      <a
+                        href={appLink(product.id, 'technologies')}
+                        aria-label={`${product.data.shortName} documentation`}
+                      >
+                        Documentation
+                      </a>
                     </li>
-                  ))}
-                  <li>
-                    <a
-                      href={appLink(product.id, 'technologies')}
-                      aria-label={`${product.data.shortName} documentation`}
-                    >
-                      Documentation
-                    </a>
-                  </li>
-                  {product.data.faqs.length > 0 && (
-                    <li>
-                      <a href={`${appLink(product.id)}#app-faq-title`}>Common questions</a>
-                    </li>
-                  )}
-                </ul>
-              </nav>
-            ))}
-          </div>
-          {groups.length > 0 && (
-            <nav class="docs-topics" aria-label="Documentation topics">
-              <span class="mega-eyebrow">By topic</span>
-              {groups.slice(0, 6).map((group) => (
-                <a href={guideLink(group.slug)}>{group.title}</a>
+                    {product.data.faqs.length > 0 && (
+                      <li>
+                        <a href={`${appLink(product.id)}#app-faq-title`}>Common questions</a>
+                      </li>
+                    )}
+                  </ul>
+                </nav>
               ))}
-            </nav>
-          )}
-          {guides.length > 12 && (
-            <form
-              class="mega-search docs-search"
-              action={link('docs/')}
-              method="get"
-              hidden
-              data-menu-search
-            >
-              <label for="menu-doc-query">Find a guide</label>
-              <div>
-                <input
-                  id="menu-doc-query"
-                  type="search"
-                  name="q"
-                  placeholder="Search documentation"
-                />
-                <button type="submit">Search</button>
-              </div>
-            </form>
-          )}
+            </div>
+            {groups.length > 0 && (
+              <nav class="docs-topics" aria-label="Documentation topics">
+                <span class="mega-eyebrow">By topic</span>
+                {groups.slice(0, 6).map((group) => (
+                  <a href={guideLink(group.slug)}>{group.title}</a>
+                ))}
+              </nav>
+            )}
+          </div>
         </div>
       </details>
       <a
@@ -194,8 +179,17 @@ const current = Astro.url.pathname;
 <script>
   import '../scripts/navigation';
 
-  for (const search of document.querySelectorAll<HTMLElement>('[data-menu-search]'))
-    search.hidden = false;
+  const appMenu = document.querySelector('.nav-folder');
+  let carouselLoaded = false;
+  function loadCarousel() {
+    if (carouselLoaded) return;
+    carouselLoaded = true;
+    void import('../scripts/app-carousel');
+  }
+  appMenu?.addEventListener('pointerenter', loadCarousel, { once: true });
+  appMenu?.addEventListener('focusin', loadCarousel, { once: true });
+  appMenu?.addEventListener('toggle', loadCarousel, { once: true });
+
   const header = document.querySelector<HTMLElement>('.masthead');
   const anchor = document.querySelector('.mast-anchor');
   if (header && anchor && 'IntersectionObserver' in window) {

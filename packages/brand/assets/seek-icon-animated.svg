@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="zcseek-motion zcseek-once" data-motion-variant="once" width="64" height="64" viewBox="0 0 64 64" fill="currentColor"><title>ZeroCloud Seek</title><style>
+      .zcseek-motion.zcseek-once .zcseek-core { transform-box:fill-box; transform-origin:center; }
+      @media (prefers-reduced-motion: no-preference) {
+        .zcseek-motion.zcseek-once .zcseek-signal { animation:zcseek-beacon-once var(--product-motion-duration, 1300ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay:var(--part-delay); }
+        .zcseek-motion.zcseek-once .zcseek-core { animation:zcseek-found-once var(--product-motion-duration, 1300ms) cubic-bezier(.32,.72,0,1) 1 both; animation-delay:var(--part-delay); }
+      }
+      [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-once .zcseek-signal, [data-motion-product]:not([data-playing]) .zcseek-motion.zcseek-once .zcseek-core { animation:none; }
+      @media print { .zcseek-motion.zcseek-once .zcseek-signal, .zcseek-motion.zcseek-once .zcseek-core { animation:none; } }
+      @keyframes zcseek-beacon-once { 0% { opacity:.15; } 100% { opacity:1; } }
+      @keyframes zcseek-found-once { 0% { opacity:.2; transform:scale(.85); } 70% { opacity:1; transform:scale(1.08); } 100% { opacity:1; transform:none; } }
+    </style><g class="zcseek-signal" style="--part-delay:0ms"><circle cx="44" cy="58" r="2.5" opacity="0.5"/><circle cx="34.05" cy="56.02" r="2.5" opacity="0.5"/><circle cx="25.62" cy="50.38" r="2.5" opacity="0.5"/><circle cx="19.98" cy="41.95" r="2.5" opacity="0.5"/><circle cx="18" cy="32" r="2.5" opacity="0.5"/><circle cx="19.98" cy="22.05" r="2.5" opacity="0.5"/><circle cx="25.62" cy="13.62" r="2.5" opacity="0.5"/><circle cx="34.05" cy="7.98" r="2.5" opacity="0.5"/><circle cx="44" cy="6" r="2.5" opacity="0.5"/></g><g class="zcseek-signal" style="--part-delay:160ms"><circle cx="44" cy="46" r="2.7"/><circle cx="34.1" cy="41.9" r="2.7"/><circle cx="30" cy="32" r="2.7"/><circle cx="34.1" cy="22.1" r="2.7"/><circle cx="44" cy="18" r="2.7"/></g><g class="zcseek-core" style="--part-delay:300ms"><circle cx="48" cy="32" r="4.3"/></g><circle cx="58" cy="32" r="2.5" opacity="0.6"/></svg>

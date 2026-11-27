@@ -1,6 +1,20 @@
 import './desktop-scroll';
 
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
+const appbar = document.querySelector<HTMLElement>('.mast-row');
+function settleAppbar() {
+  appbar?.setAttribute('data-arrived', '');
+}
+// Focus can cancel the entrance early. Retire it permanently so losing focus
+// (including when a carousel arrow becomes disabled) cannot replay the fade.
+appbar?.addEventListener('focusin', settleAppbar, { once: true });
+appbar?.addEventListener('animationend', (event) => {
+  if (event.animationName === 'appbar-arrive') settleAppbar();
+});
+if (preference.matches || appbar?.matches(':focus-within')) settleAppbar();
+preference.addEventListener('change', () => {
+  if (preference.matches) settleAppbar();
+});
 let observer: IntersectionObserver | undefined;
 const targets = Array.from(
   document.querySelectorAll<HTMLElement>(
